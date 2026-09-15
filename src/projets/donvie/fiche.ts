@@ -62,7 +62,7 @@ const fiche: Projet = {
       detail: "Écrans, flux et prototype",
     },
   ],
-  depots: [{ libelle: "Application", url: null, visibilite: "public" }],
+  depots: [{ libelle: "Application mobile (React) et conception", url: null, visibilite: "public" }],
 };
 
 export default fiche;
