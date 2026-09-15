@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Marque Banque App : une voûte — fronton d'agence et bouclier à la fois —
+       posée sur son socle, avec la diagonale ascendante du mouvement d'argent.
+       Quatre formes seulement : c'est ce qui la garde lisible à 16 pixels. -->
+  <defs>
+    <linearGradient id="voute" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b7fd4"/>
+      <stop offset="1" stop-color="#12457f"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="11" fill="#0d1117"/>
+  <rect x="8" y="37" width="32" height="4.5" rx="2.25" fill="url(#voute)"/>
+  <path d="M12.5 35 V24 A11.5 11.5 0 0 1 35.5 24 V35" fill="none"
+        stroke="url(#voute)" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M18.5 28.5 L24 22.5 L29.5 27" fill="none" stroke="#e6edf3"
+        stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

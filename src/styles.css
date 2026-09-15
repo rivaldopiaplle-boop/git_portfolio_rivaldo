@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/*
+ * Thème clair par défaut. Les objets « techniques » — terminal, chaîne CI/CD,
+ * extraits de code, visuels dessinés — sont des îlots sombres : la classe
+ * `.sombre` redéfinit les mêmes jetons, les composants n'en savent rien.
+ */
+@theme {
+  --color-fond: #f4f5f8;
+  --color-surface: #ffffff;
+  --color-surface-2: #f7f8fb;
+  --color-surface-3: #eceef3;
+  --color-ligne: rgb(15 20 32 / 0.08);
+  --color-ligne-forte: rgb(15 20 32 / 0.16);
+  --color-encre: #0f1420;
+  --color-encre-2: #4b5467;
+  --color-encre-3: #7d8598;
+  --color-vert: #0c9467;
+  --color-cyan: #0a7fb0;
+  --color-violet: #6d5bd0;
+  --color-orange: #c96a17;
+  --color-rose: #cf3f79;
+
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  --animate-defiler: defiler 48s linear infinite;
+  --animate-defiler-inverse: defiler 56s linear infinite reverse;
+  --animate-clignote: clignote 1.1s steps(1) infinite;
+  --animate-pulsation: pulsation 2.2s ease-out infinite;
+
+  @keyframes defiler {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes clignote {
+    50% {
+      opacity: 0;
+    }
+  }
+  @keyframes pulsation {
+    0% {
+      box-shadow: 0 0 0 0 currentColor;
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 7px transparent;
+    }
+  }
+}
+
+.sombre {
+  --color-fond: #07080d;
+  --color-surface: #0d0f16;
+  --color-surface-2: #141722;
+  --color-surface-3: #1c2030;
+  --color-ligne: rgb(255 255 255 / 0.08);
+  --color-ligne-forte: rgb(255 255 255 / 0.16);
+  --color-encre: #eef0f6;
+  --color-encre-2: #a3aabd;
+  --color-encre-3: #6b7389;
+  --color-vert: #3ee6a3;
+  --color-cyan: #5cc8ff;
+  --color-violet: #a18bff;
+  --color-orange: #f59e3d;
+  --color-rose: #ff7eb6;
+  --icone-claire: #e6e8ef;
+  color: var(--color-encre);
+  color-scheme: dark;
+}
+
+@utility conteneur {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3.5vw, 2.5rem);
+}
+
+@layer base {
+  html {
+    background: var(--color-fond);
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+  body {
+    background: var(--color-fond);
+    color: var(--color-encre);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-vert) 25%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-vert);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  h1 em,
+  h2 em,
+  h3 em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Texte en dégradé de la marque — s'adapte à l'îlot où il se trouve */
+.accent {
+  background: linear-gradient(95deg, var(--color-vert) 10%, var(--color-cyan) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.08em;
+}
+
+/* Quadrillage estompé */
+.grille {
+  --trait: color-mix(in srgb, var(--color-encre) 6%, transparent);
+  background-image:
+    linear-gradient(to right, var(--trait) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--trait) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, black 25%, transparent 78%);
+}
+
+/* Halo qui suit le pointeur sur les cartes (voir suivrePointeur) */
+.projecteur {
+  isolation: isolate;
+}
+.projecteur::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--x, 50%) var(--y, 50%),
+    color-mix(in srgb, var(--color-vert) 9%, transparent),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.projecteur:hover::before {
+  opacity: 1;
+}
+
+/* Carte blanche posée sur le fond gris — la brique de base de l'interface */
+.carte {
+  background: var(--color-surface);
+  border: 1px solid var(--color-ligne);
+  box-shadow:
+    0 1px 2px rgb(15 20 32 / 0.04),
+    0 8px 24px -12px rgb(15 20 32 / 0.08);
+}
+.sombre .carte,
+.carte.sombre {
+  box-shadow: none;
+}
+
+.bords-fondus {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Barre de défilement discrète dans la barre latérale */
+.defilement-fin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(15 20 32 / 0.15) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-defiler,
+  .animate-defiler-inverse,
+  .animate-clignote,
+  .animate-pulsation {
+    animation: none;
+  }
+}
+
+@media print {
+  aside,
+  header {
+    display: none !important;
+  }
+}

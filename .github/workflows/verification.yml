@@ -1,0 +1,48 @@
+# La chaîne du portfolio.
+#
+# Pas de conteneur : le site est statique, Vercel le construit et le sert
+# lui-même. Ce qui peut casser en silence, en revanche, c'est ce que le site
+# promet — un lien de démo mort, un dépôt passé en privé, un QR code vers une
+# 404. C'est ce que cette chaîne surveille, à chaque poussée et chaque lundi.
+
+name: Vérification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Chaque lundi à 7 h (Paris) : un lien peut mourir sans qu'on pousse rien.
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+jobs:
+  site:
+    name: Types et construction
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Installer
+        run: npm ci
+      - name: Vérifier les types
+        run: npm run verifier
+      - name: Construire
+        run: npm run build
+
+  promesses:
+    name: Liens et QR codes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Installer
+        run: npm ci
+      - name: Chaque projet a quelque chose à montrer, chaque QR code répond
+        run: npm run verifier:liens
