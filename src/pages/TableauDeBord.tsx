@@ -19,7 +19,7 @@ import { CATEGORIES, ORDRE_CATEGORIES } from "../projets/categories";
 import type { Projet } from "../projets/types";
 
 export default function TableauDeBord() {
-  useTitre(`${PROFIL.prenom} ${PROFIL.nom} — ${PROFIL.titre}`);
+  useTitre(`${PROFIL.prenom} ${PROFIL.nom} | ${PROFIL.titre}`);
   const { ouvrirContact } = useCoquille();
   const [apercu, setApercu] = useState<Projet | null>(null);
 
@@ -40,10 +40,10 @@ export default function TableauDeBord() {
         }
         titre={
           <>
-            Bonjour, je suis {PROFIL.prenom}.
+            {PROFIL.prenom} {PROFIL.nom}
           </>
         }
-        description={`Élève ingénieur en ${PROFIL.niveau} à l'${PROFIL.ecole}, orienté DevOps : je construis des applications complètes et la chaîne qui les teste, les empaquette et les met en ligne. Tout est rangé dans la barre latérale ; voici l'essentiel.`}
+        description={`Élève ingénieur en ${PROFIL.niveau} à l'${PROFIL.ecole}, orientation DevOps : conception d'applications complètes et de la chaîne qui les teste, les empaquette et les met en ligne. La barre latérale donne accès à l'ensemble du portfolio ; cette page en présente l'essentiel.`}
         actions={
           <>
             <ActionEnTete href={PROFIL.cv} telecharger>
@@ -58,9 +58,9 @@ export default function TableauDeBord() {
 
       <ZonePage className="space-y-8">
         <section>
-          <TitreBloc titre="Par où commencer ?" sous="Trois façons de juger mon travail, de la plus rapide à la plus complète." />
+          <TitreBloc titre="Par où commencer ?" sous="Trois façons d'évaluer ce travail, de la plus rapide à la plus complète." />
           <div className="grid gap-3 md:grid-cols-3">
-            <CarteAction numero="1" duree="1 min" icone={Workflow} vers="/chaine" titre="Voir une chaîne CI/CD s'exécuter" texte="Les vrais workflows de mes deux plateformes, étage par étage." />
+            <CarteAction numero="1" duree="1 min" icone={Workflow} vers="/chaine" titre="Voir une chaîne CI/CD s'exécuter" texte="Les workflows réels des deux plateformes, étage par étage." />
             <CarteAction
               numero="2"
               duree="2 min"
@@ -77,7 +77,7 @@ export default function TableauDeBord() {
         <section className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           <Kpi vers="/projets" libelle="Projets" valeur={PROJETS.length} detail="du microcontrôleur au cloud" icone={FolderKanban} />
           <Kpi vers="/projets?statut=en-ligne" libelle="En ligne" valeur={enLigne.length} detail={enLigne.map((p) => p.titre).join(" · ")} icone={Globe} />
-          <Kpi vers="/chaine" libelle="Vérifications" valeur={1500} suffixe="+" detail="automatiques, à chaque poussée" icone={ShieldCheck} />
+          <Kpi vers="/chaine" libelle="Vérifications" valeur={1500} suffixe="+" detail="rejouées à chaque modification" icone={ShieldCheck} />
           <Kpi vers="/competences" libelle="Technologies" valeur={nombreTechnos} detail="toutes utilisées en projet" icone={Layers} />
         </section>
 
@@ -85,7 +85,7 @@ export default function TableauDeBord() {
           <div>
             <TitreBloc
               titre="Projets phares"
-              sous="Deux plateformes complètes, en ligne, et qui continuent d'évoluer."
+              sous="Deux plateformes complètes, menées jusqu'à la mise en production, et qui continuent d'évoluer."
               action={
                 <Link to="/projets?categorie=devops" className="shrink-0 text-sm text-vert hover:underline">
                   Catégorie DevOps
@@ -137,7 +137,7 @@ function Repartition() {
   const technos = technosFrequentes(PROJETS, 8);
   return (
     <div className="carte rounded-2xl p-5">
-      <TitreBloc titre="Répartition" sous="Par catégorie — un clic filtre le catalogue." />
+      <TitreBloc titre="Répartition" sous="Par catégorie : un clic filtre le catalogue." />
       <div className="space-y-1">
         {ORDRE_CATEGORIES.map((cle) => {
           const { nom, icone: Icone, couleur } = CATEGORIES[cle];

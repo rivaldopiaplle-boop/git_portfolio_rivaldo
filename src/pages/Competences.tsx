@@ -8,7 +8,7 @@ import { useTitre } from "../outils";
 import { PROJETS } from "../projets";
 
 export default function Competences() {
-  useTitre("Compétences — Rivaldo Piaplle");
+  useTitre("Compétences | Rivaldo Piaplle");
   const [params, setParams] = useSearchParams();
   const index = Math.max(0, COMPETENCES.findIndex((c) => String(COMPETENCES.indexOf(c)) === params.get("domaine")));
   const domaine = COMPETENCES[index] ?? COMPETENCES[0]!;

@@ -14,7 +14,7 @@ const fiche: Projet = {
     "Projet d'études et de recherche. Un géwël sénégalais, maître de musique, a perdu la vue mais pas son talent. La canne qu'il tient déjà devient à la fois capteur et instrument : elle déclenche un son de sabar immédiat, et alimente un avatar Godot qui complète le mouvement du corps entier.",
   categorie: "robotique",
   statut: "en-cours",
-  annee: "2026 — 2027",
+  annee: "2026-2027",
   cadre: "ENIB · projet d'études et de recherche",
   couleur: "#b03a7a",
   stack: ["godot", "python"],
@@ -29,7 +29,7 @@ const fiche: Projet = {
         "Une caméra à 30 images par seconde impose 33 ms rien qu'à l'acquisition",
         "Chaîne vision complète : environ 85 ms, gigue de ± 15 ms",
         "Chaîne embarquée (IMU et piézo) : environ 10 ms, gigue de ± 1 ms",
-        "Limite jouable en percussion : 20 ms — et un musicien s'adapte à un retard constant, jamais à un retard qui varie",
+        "Limite jouable en percussion : 20 ms ; un musicien s'adapte à un retard constant, jamais à un retard qui varie",
       ],
     },
     {

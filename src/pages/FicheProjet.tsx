@@ -28,7 +28,7 @@ export default function FicheProjet() {
   const projet = trouverProjet(slug);
   const [params, setParams] = useSearchParams();
   const [image, setImage] = useState<number | null>(null);
-  useTitre(projet ? `${projet.titre} — Rivaldo Piaplle` : "Projet introuvable");
+  useTitre(projet ? `${projet.titre} | Rivaldo Piaplle` : "Projet introuvable");
   usePanneauDroit(`fiche-${slug}`, () => (projet ? <PanneauProjet projet={projet} /> : null));
 
   if (!projet) return <Introuvable />;
@@ -203,7 +203,7 @@ function OngletApercu({ projet, ouvrirImage, voirGalerie }: { projet: Projet; ou
 
       {projet.role && (
         <div className="carte rounded-2xl p-5">
-          <TitreBloc titre="Mon rôle" sous={projet.equipe ? "Dans un projet d'équipe, ce que j'ai porté personnellement." : undefined} />
+          <TitreBloc titre="Rôle tenu" sous={projet.equipe ? "La part conduite personnellement au sein de l'équipe." : undefined} />
           <ul className="grid gap-2 md:grid-cols-2">
             {projet.role.map((ligne) => (
               <li key={ligne} className="flex gap-2.5 rounded-xl bg-surface-2 p-3 text-sm leading-relaxed text-encre-2">

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /*
- * Thème clair par défaut. Les objets « techniques » — terminal, chaîne CI/CD,
- * extraits de code, visuels dessinés — sont des îlots sombres : la classe
+ * Thème clair par défaut. Les objets « techniques » (terminal, chaîne CI/CD,
+ * extraits de code, visuels dessinés) sont des îlots sombres : la classe
  * `.sombre` redéfinit les mêmes jetons, les composants n'en savent rien.
  */
 @theme {
@@ -115,7 +115,7 @@
   }
 }
 
-/* Texte en dégradé de la marque — s'adapte à l'îlot où il se trouve */
+/* Texte en dégradé de la marque : il s'adapte à l'îlot où il se trouve */
 .accent {
   background: linear-gradient(95deg, var(--color-vert) 10%, var(--color-cyan) 90%);
   -webkit-background-clip: text;
@@ -157,7 +157,7 @@
   opacity: 1;
 }
 
-/* Carte blanche posée sur le fond gris — la brique de base de l'interface */
+/* Carte blanche posée sur le fond gris : la brique de base de l'interface */
 .carte {
   background: var(--color-surface);
   border: 1px solid var(--color-ligne);

@@ -13,9 +13,9 @@ export interface ElementParcours {
 
 export const FORMATION: ElementParcours[] = [
   {
-    periode: "Depuis sept. 2025",
-    titre: "Diplôme d'ingénieur — informatique",
-    lieu: "ENIB — École nationale d'ingénieurs de Brest",
+    periode: "Depuis septembre 2025",
+    titre: "Diplôme d'ingénieur en informatique",
+    lieu: "ENIB, École nationale d'ingénieurs de Brest",
     details: [
       "4ᵉ année : systèmes embarqués numériques, conception d'applications interactives, réseaux et systèmes, gestion de projet, projet pluridisciplinaire",
       "5ᵉ année : ingénierie logicielle et patrons de conception, projet d'études et de recherche",
@@ -23,13 +23,17 @@ export const FORMATION: ElementParcours[] = [
     projets: ["donvie", "hopital-java", "robot-guitariste", "robot-ros2"],
   },
   {
-    periode: "2023 — 2024",
+    periode: "2023-2024",
     titre: "Licence en sciences de l'ingénieur, option mécatronique",
     lieu: "École nationale supérieure polytechnique de Yaoundé (ENSPY), Cameroun",
     mention: "Très bien · MGP 3,41 / 4",
+    details: [
+      "Grande école d'ingénieurs de référence en Afrique centrale, admission sur concours national",
+      "Mécatronique : électronique, automatique, mécanique et informatique industrielle",
+    ],
   },
   {
-    periode: "2020 — 2021",
+    periode: "2020-2021",
     titre: "Baccalauréat scientifique, série C",
     lieu: "Lycée bilingue de Toungue 2, Bafoussam, Cameroun",
     mention: "Bien · 15,13 / 20",
@@ -39,7 +43,7 @@ export const FORMATION: ElementParcours[] = [
 export const EXPERIENCES: ElementParcours[] = [
   {
     periode: "2026",
-    titre: "Parcours DevOps — deux plateformes en ligne",
+    titre: "Parcours DevOps : deux plateformes complètes",
     lieu: "Formation et projets personnels",
     details: [
       "Banque App : NestJS, React, Expo, chaîne d'intégration à cinq tâches, Render et Supabase",
@@ -49,28 +53,28 @@ export const EXPERIENCES: ElementParcours[] = [
     projets: ["banque", "rivdinde", "chaine-cicd-conteneurs", "api-rest-prisma"],
   },
   {
-    periode: "Févr. — avr. 2026",
+    periode: "Février à avril 2026",
     titre: "Développement full-stack web et mobile",
     lieu: "ENIB, Brest · en équipe",
-    details: ["Application de gestion des dons de sang", "React, TypeScript, Node.js, MySQL, chaîne CI/CD sur GitHub"],
+    details: ["Application de gestion des dons de sang", "Interface React et TypeScript, conçue sur maquettes Figma"],
     projets: ["donvie"],
   },
   {
-    periode: "Janv. — févr. 2026",
-    titre: "Développeur Java — application hospitalière",
+    periode: "Janvier à février 2026",
+    titre: "Développeur Java, application hospitalière",
     lieu: "ENIB, Brest",
     details: ["JavaFX, Maven, SQLite", "Architecture en couches, gestion des patients, du personnel et des rendez-vous"],
     projets: ["hopital-java"],
   },
   {
-    periode: "Mai — sept. 2023",
-    titre: "Développeur full-stack — application e-commerce",
+    periode: "Mai à septembre 2023",
+    titre: "Développeur full-stack, application e-commerce",
     lieu: "CynoMedia, Yaoundé, Cameroun",
     details: ["Front JavaScript : produits, panier, interactions", "API Node.js modulaire sur MongoDB, validée avec Postman"],
   },
   {
-    periode: "Mars — juin 2023",
-    titre: "Développeur full-stack — gestion de bibliothèque",
+    periode: "Mars à juin 2023",
+    titre: "Développeur full-stack, gestion de bibliothèque",
     lieu: "ENSPY, Yaoundé, Cameroun",
     details: ["Logique métier en Java, interface en JavaScript, base SQL"],
   },

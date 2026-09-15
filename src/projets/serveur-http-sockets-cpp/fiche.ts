@@ -4,7 +4,7 @@ const fiche: Projet = {
   slug: "serveur-http-sockets-cpp",
   ordre: 38,
   titre: "Serveur HTTP écrit sur les sockets",
-  accroche: "Des datagrammes UDP au serveur HTTP multi-clients qui sert pages, formulaires et WebSocket — sans aucune bibliothèque web.",
+  accroche: "Des datagrammes UDP au serveur HTTP multi-clients qui sert pages, formulaires et WebSocket, sans aucune bibliothèque web.",
   resume:
     "Progression en C++ sur l'API des sockets : échanges UDP puis TCP, en texte et en binaire, client HTTP, puis un serveur HTTP qui lit lui-même les en-têtes, sert des fichiers, traite des formulaires GET et POST et ouvre une connexion WebSocket. C'est ce qui rend lisible tout le reste : derrière une requête d'API, il y a une socket et un protocole texte.",
   categorie: "devops",
@@ -38,7 +38,7 @@ const fiche: Projet = {
     {
       fichier: "05-serveur-http/prog_http_server.cpp",
       langage: "cpp",
-      commentaire: "Le cœur d'un serveur : on écoute, on accepte, et chaque client part dans son propre fil d'exécution — sinon le deuxième visiteur attend le départ du premier.",
+      commentaire: "Le cœur d'un serveur : on écoute, on accepte, et chaque client part dans son propre fil d'exécution : sinon le deuxième visiteur attend le départ du premier.",
       code: `SOCKET listen_socket = crs::socket(PF_INET, SOCK_STREAM, 0); // TCP
 crs::bind(listen_socket, portNumber);
 crs::listen(listen_socket);                                  // mode écoute

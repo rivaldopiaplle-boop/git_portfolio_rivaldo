@@ -1,14 +1,14 @@
 import type { Projet } from "./types";
 
 /**
- * Le registre. Chaque projet vit dans son dossier — `src/projets/<slug>/` —
+ * Le registre. Chaque projet vit dans son dossier `src/projets/<slug>/`,
  * avec sa fiche et ses images. Ajouter un dossier avec un `fiche.ts` suffit à
  * le faire apparaître : rien à déclarer ici.
  *
  * Toutes les fiches suivent le même gabarit (`Projet`), et chaque vue n'affiche
  * que ce qu'une fiche contient. Un projet en cours peut donc rester en
  * brouillon (`publie: false`) : le jour où il est prêt, il prend sa place
- * partout — tableau de bord, catalogue, compteurs, barre latérale — sans
+ * partout (tableau de bord, catalogue, compteurs, barre latérale) sans
  * qu'aucun écran ne change.
  */
 const fiches = import.meta.glob<{ default: Projet }>("./*/fiche.ts", { eager: true });

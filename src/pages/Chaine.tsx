@@ -12,11 +12,11 @@ const PRINCIPES = [
   { icone: ShieldCheck, titre: "Tester contre du vrai", texte: "PostgreSQL et serveur de courriel réels dans la chaîne : une imitation ne casse jamais comme la production." },
   { icone: Lock, titre: "Rien ne fuit", texte: "L'historique Git entier passé au crible à chaque poussée. La vigilance ne protège pas un secret." },
   { icone: Undo2, titre: "Toujours pouvoir revenir", texte: "Images étiquetées par hash de commit, jamais latest : on sait ce qui tourne, on redéploie la version d'avant." },
-  { icone: Gauge, titre: "Refuser de démarrer mal", texte: "Le serveur s'arrête s'il trouve une commodité de développement en production — et nomme le drapeau fautif." },
+  { icone: Gauge, titre: "Refuser de démarrer mal", texte: "Le serveur s'arrête s'il trouve une commodité de développement en production, et nomme le drapeau fautif." },
 ];
 
 export default function Chaine() {
-  useTitre("Chaîne CI/CD — Rivaldo Piaplle");
+  useTitre("Chaîne CI/CD | Rivaldo Piaplle");
   const avecChaine = PROJETS.filter((p) => p.pipeline);
   const [params, setParams] = useSearchParams();
   const projet = avecChaine.find((p) => p.slug === params.get("projet")) ?? avecChaine[0];

@@ -16,13 +16,13 @@ const RUBRIQUES = [
 type IdRubrique = (typeof RUBRIQUES)[number]["id"];
 
 export default function Parcours() {
-  useTitre("Parcours — Rivaldo Piaplle");
+  useTitre("Parcours | Rivaldo Piaplle");
   const [params, setParams] = useSearchParams();
   const actif: IdRubrique = RUBRIQUES.find((r) => r.id === params.get("rubrique"))?.id ?? "experiences";
 
   return (
     <>
-      <EnTetePage titre="Parcours" description="De la mécatronique à Yaoundé au cycle ingénieur à Brest, et deux plateformes mises en ligne en chemin." />
+      <EnTetePage titre="Parcours" description="De la mécatronique à Yaoundé au cycle ingénieur à Brest, et deux plateformes menées jusqu&apos;à la production en chemin." />
       <ZonePage>
         <div className="grid gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
           <nav aria-label="Rubriques du parcours" className="md:sticky md:top-[76px] md:self-start">

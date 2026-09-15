@@ -27,7 +27,7 @@ export interface LienDemo {
 }
 
 /**
- * Un dépôt. `prive` : il existe mais un visiteur tomberait sur une 404 —
+ * Un dépôt. `prive` : il existe mais un visiteur tomberait sur une 404 :
  * on l'affiche sans lien ni QR code. `url: null` : pas encore poussé.
  */
 export interface Depot {
@@ -95,7 +95,7 @@ export interface Projet {
   /**
    * `false` : brouillon. La fiche existe et se remplit au fil du projet, mais
    * le site ne la montre pas. Passer à `true` (ou retirer la ligne) suffit à la
-   * publier — toutes les vues la prennent en compte sans rien toucher d'autre.
+   * publier : toutes les vues la prennent en compte sans rien toucher d'autre.
    */
   publie?: boolean;
   phare?: boolean;

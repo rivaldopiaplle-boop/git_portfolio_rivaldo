@@ -6,10 +6,10 @@ const fiche: Projet = {
   titre: "Périphériques FPGA en VHDL",
   accroche: "Du comparateur 1 bit au périphérique UART complet et au microphone PDM, sur FPGA iCE40, chaque module avec son banc de test.",
   resume:
-    "Conception matérielle en VHDL sur la carte iCEBreaker (FPGA Lattice iCE40, horloge 12 MHz) : chenillard, chronomètre à compteurs cascadés, périphérique UART avec générateur de débit à 230 400 bauds, et acquisition d'un microphone PDM renvoyée par la liaison série. Environ 2 900 lignes de VHDL, et un banc de test par module — car sur un FPGA, on ne débogue pas avec des affichages.",
+    "Conception matérielle en VHDL sur la carte iCEBreaker (FPGA Lattice iCE40, horloge 12 MHz) : chenillard, chronomètre à compteurs cascadés, périphérique UART avec générateur de débit à 230 400 bauds, et acquisition d'un microphone PDM renvoyée par la liaison série. Environ 2 900 lignes de VHDL, et un banc de test par module, car sur un FPGA, on ne débogue pas avec des affichages.",
   categorie: "robotique",
   statut: "termine",
-  annee: "2025 — 2026",
+  annee: "2025-2026",
   cadre: "ENIB · électronique numérique",
   couleur: "#6b4fb0",
   puce: "iCE40 · VHDL",

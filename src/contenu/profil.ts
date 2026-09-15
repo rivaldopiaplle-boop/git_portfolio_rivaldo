@@ -1,11 +1,11 @@
 /**
- * Qui je suis, en un seul endroit. Une valeur à `null` masque simplement
+ * Les informations de profil, en un seul endroit. Une valeur à `null` masque simplement
  * l'élément correspondant du site (lien, bouton).
  */
 export const PROFIL = {
   prenom: "Rivaldo",
   nom: "Piaplle",
-  titre: "DevOps & Full-stack",
+  titre: "DevOps et développement full-stack",
   ecole: "ENIB",
   ecoleLong: "École nationale d'ingénieurs de Brest",
   niveau: "5ᵉ année",

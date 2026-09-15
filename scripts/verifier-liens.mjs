@@ -4,7 +4,7 @@
  *
  *   1. chaque projet publié a quelque chose à montrer (démo, dépôt public,
  *      image ou extrait de code) ;
- *   2. chaque adresse qui porte un QR code répond vraiment — démos et dépôts
+ *   2. chaque adresse qui porte un QR code répond vraiment, démos et dépôts
  *      publics. Un QR code vers une 404 est pire que pas de QR code ;
  *   3. aucun dépôt marqué « public » n'est en réalité privé.
  *
@@ -79,9 +79,9 @@ await Promise.all(
       const reponse = await fetch(url, { redirect: "follow", headers: { "user-agent": "Mozilla/5.0 (verifier-liens du portfolio)" }, signal: AbortSignal.timeout(90_000) });
       if (reponse.ok) console.log(`  ✓ ${reponse.status} ${url}`);
       else if (NON_VERIFIABLES.includes(reponse.status) || HOTES_FERMES_AUX_ROBOTS.includes(new URL(url).hostname)) console.log(`  ~ ${reponse.status} ${url} (non vérifiable automatiquement)`);
-      else echec(`${reponse.status} ${url} — ${origine}`);
+      else echec(`${reponse.status} ${url}, ${origine}`);
     } catch (erreur) {
-      echec(`injoignable ${url} — ${origine} (${erreur.cause?.code ?? erreur.message})`);
+      echec(`injoignable ${url}, ${origine} (${erreur.cause?.code ?? erreur.message})`);
     }
   }),
 );

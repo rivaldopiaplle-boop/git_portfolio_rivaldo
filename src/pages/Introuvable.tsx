@@ -4,7 +4,7 @@ import { ZonePage } from "../composants/EnTetePage";
 import { useTitre } from "../outils";
 
 export default function Introuvable() {
-  useTitre("Page introuvable — Rivaldo Piaplle");
+  useTitre("Page introuvable | Rivaldo Piaplle");
   return (
     <ZonePage>
       <div className="carte mx-auto mt-10 max-w-lg rounded-2xl p-8 text-center">

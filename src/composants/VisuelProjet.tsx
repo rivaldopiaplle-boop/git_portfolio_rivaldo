@@ -12,7 +12,7 @@ interface Props {
 
 /**
  * La vignette d'un projet : sa couverture quand elle existe, sinon un visuel
- * dessiné à ses couleurs — une application pour le logiciel, un circuit pour
+ * dessiné à ses couleurs : une application pour le logiciel, un circuit pour
  * la robotique.
  */
 export function VisuelProjet({ projet, className }: Props) {

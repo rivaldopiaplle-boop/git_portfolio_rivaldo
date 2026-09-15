@@ -6,10 +6,10 @@ const fiche: Projet = {
   titre: "Réseau de capteurs sur bus CAN",
   accroche: "Des cartes STM32 qui mesurent, un bus CAN qui transporte, une interface qui montre l'orientation en 3D.",
   resume:
-    "Des nœuds STM32 lisent humidité, température, pression, distance, vitesse du vent et centrale inertielle, puis publient leurs mesures sur un bus CAN — le réseau des automobiles, où chaque trame porte un identifiant plutôt qu'une adresse. Une interface PyQt les affiche en direct, avec l'orientation reconstituée par fusion des capteurs.",
+    "Des nœuds STM32 lisent humidité, température, pression, distance, vitesse du vent et centrale inertielle, puis publient leurs mesures sur un bus CAN, le réseau des automobiles, où chaque trame porte un identifiant plutôt qu'une adresse. Une interface PyQt les affiche en direct, avec l'orientation reconstituée par fusion des capteurs.",
   categorie: "robotique",
   statut: "termine",
-  annee: "2025 — 2026",
+  annee: "2025-2026",
   cadre: "ENIB · réseaux et systèmes embarqués",
   couleur: "#2f8f6b",
   puce: "STM32F1 · CAN",
@@ -45,7 +45,7 @@ const fiche: Projet = {
     {
       fichier: "rescapt/src/main.c",
       langage: "c",
-      commentaire: "Chaque capteur a son rythme : le vent se compte toutes les 100 ms, l'environnement bien plus lentement. Une seule boucle, des échéances séparées — pas d'attente bloquante.",
+      commentaire: "Chaque capteur a son rythme : le vent se compte toutes les 100 ms, l'environnement bien plus lentement. Une seule boucle, des échéances séparées, sans attente bloquante.",
       code: `hts221_activate();          /* humidité et température */
 hts221_storeCalibration();
 lps22hb_setup();            /* pression */

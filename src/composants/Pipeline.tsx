@@ -19,7 +19,7 @@ const DUREE_ETAPE = 1900;
 /**
  * Une chaîne CI/CD qui s'exécute sous les yeux : chaque étage passe au vert à
  * son tour, puis la chaîne repart. Elle se couche à l'horizontale dès que *sa
- * zone* est assez large — pas l'écran : le panneau droit peut être ouvert.
+ * zone* est assez large, et non l'écran : le panneau droit peut être ouvert.
  * À poser dans un îlot `.sombre`. Parent : poser `key` pour repartir de zéro.
  */
 export function Pipeline({ etapes, couleur }: { etapes: EtapePipeline[]; couleur: string }) {

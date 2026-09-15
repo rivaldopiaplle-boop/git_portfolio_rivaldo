@@ -4,7 +4,7 @@ import { PROFIL } from "../contenu/profil";
 import { useTitre } from "../outils";
 
 export default function Cv() {
-  useTitre("CV — Rivaldo Piaplle");
+  useTitre("CV | Rivaldo Piaplle");
   return (
     <>
       <EnTetePage

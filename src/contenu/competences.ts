@@ -11,32 +11,32 @@ export interface Competence {
 
 export const COMPETENCES: Competence[] = [
   {
-    titre: "CI/CD & qualité",
+    titre: "CI/CD et qualité",
     texte: "Des chaînes qui testent contre de vraies bases, bloquent les secrets et ne publient que ce qui est vert.",
     icone: Workflow,
     technos: ["githubactions", "docker", "pytest", "vitest", "eslint", "ruff", "k6", "puppeteer"],
   },
   {
-    titre: "Conteneurs & mise en ligne",
+    titre: "Conteneurs et mise en ligne",
     texte:
       "Piles Docker Compose, reverse proxy, variables de construction ou d'exécution, sondes de santé, hébergement gratuit maîtrisé.",
     icone: Container,
     technos: ["docker", "nginx", "caddy", "render", "vercel", "supabase", "neon", "linux"],
   },
   {
-    titre: "Back-end & données",
+    titre: "Back-end et données",
     texte: "API REST versionnées, règles métier côté serveur, migrations qui concordent avec le schéma.",
     icone: Database,
     technos: ["nestjs", "django", "express", "nextjs", "prisma", "postgresql", "mysql", "jwt"],
   },
   {
-    titre: "Front & mobile",
+    titre: "Front et mobile",
     texte: "Interfaces typées avec leurs états vides, de chargement et d'erreur ; applications installables.",
     icone: Smartphone,
     technos: ["react", "vue", "typescript", "mui", "primevue", "tailwind", "expo", "ionic"],
   },
   {
-    titre: "Embarqué & robotique",
+    titre: "Embarqué et robotique",
     texte: "Micrologiciel temps réel, pilotes de capteurs, ROS 2 et vision par ordinateur.",
     icone: Cpu,
     technos: ["c", "stm32", "arm", "freertos", "ros", "raspberrypi", "opencv", "python"],

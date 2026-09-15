@@ -6,7 +6,7 @@ const fiche: Projet = {
   titre: "MyHopital",
   accroche: "Une application de bureau JavaFX pour un hôpital : trois rôles, rendez-vous sans conflit, dossiers médicaux.",
   resume:
-    "Prototype desktop de gestion hospitalière en JavaFX : authentification par rôle (directeur, gestionnaire, médecin), patients, médecins, rendez-vous, consultations, dossiers et documents médicaux. Architecture en couches — interface, services, dépôts, domaine — avec une base SQLite locale et un import initial depuis des CSV.",
+    "Prototype desktop de gestion hospitalière en JavaFX : authentification par rôle (directeur, gestionnaire, médecin), patients, médecins, rendez-vous, consultations, dossiers et documents médicaux. Architecture en couches (interface, services, dépôts, domaine), avec une base SQLite locale et un import initial depuis des CSV.",
   categorie: "applications",
   statut: "termine",
   annee: "2026",

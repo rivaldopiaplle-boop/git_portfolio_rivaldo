@@ -30,7 +30,7 @@ function lireVue(): Vue {
 }
 
 export default function Projets() {
-  useTitre("Projets — Rivaldo Piaplle");
+  useTitre("Projets | Rivaldo Piaplle");
   const [params, setParams] = useSearchParams();
   const [apercu, setApercu] = useState<Projet | null>(null);
   const [vue, setVue] = useState<Vue>(lireVue);
@@ -71,7 +71,7 @@ export default function Projets() {
     <>
       <EnTetePage
         titre="Projets"
-        description="Chaque projet a une fiche : le problème, les choix, ce qu'on peut ouvrir — site, dépôt, captures ou extraits de code."
+        description="Chaque projet a une fiche : le problème, les choix, ce qu'on peut ouvrir : site, dépôt, captures ou extraits de code."
         actions={
           <div role="group" aria-label="Affichage" className="inline-flex rounded-xl border border-ligne bg-surface-2 p-1">
             {(

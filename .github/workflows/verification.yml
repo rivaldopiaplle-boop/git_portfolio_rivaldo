@@ -2,7 +2,7 @@
 #
 # Pas de conteneur : le site est statique, Vercel le construit et le sert
 # lui-même. Ce qui peut casser en silence, en revanche, c'est ce que le site
-# promet — un lien de démo mort, un dépôt passé en privé, un QR code vers une
+# promet : un lien de démo mort, un dépôt passé en privé, un QR code vers une
 # 404. C'est ce que cette chaîne surveille, à chaque poussée et chaque lundi.
 
 name: Vérification

@@ -22,7 +22,7 @@ export function LigneDepot({ depot }: { depot: Depot }) {
         </span>
         <div className="min-w-0">
           <p className="text-sm font-medium text-encre">{depot.libelle}</p>
-          <p className="mt-0.5 text-xs text-encre-3">Dépôt privé — accessible sur demande</p>
+          <p className="mt-0.5 text-xs text-encre-3">Dépôt privé, accessible sur demande</p>
           <button
             type="button"
             onClick={() => ouvrirContact(true)}

@@ -1,4 +1,4 @@
-# Portfolio — Rivaldo Piaplle
+# Portfolio : Rivaldo Piaplle
 
 Portfolio orienté DevOps, construit comme une application : tableau de bord, catalogue de
 projets filtrable, fiches à onglets, panneau latéral, popups. Deux plateformes complètes en
@@ -37,7 +37,7 @@ src/
 
 ## Ajouter un projet
 
-1. Créer `src/projets/<slug>/fiche.ts` — copier une fiche courte, par exemple `api-rest-prisma`.
+1. Créer `src/projets/<slug>/fiche.ts`, copier une fiche courte, par exemple `api-rest-prisma`.
 2. Y déposer ses images et les importer : `import capture from "./capture.webp"`.
 3. C'est tout : le tableau de bord, le catalogue, les compteurs et la barre latérale le prennent en compte.
 

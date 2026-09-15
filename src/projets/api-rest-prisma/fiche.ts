@@ -3,7 +3,7 @@ import type { Projet } from "../types";
 const fiche: Projet = {
   slug: "api-rest-prisma",
   ordre: 35,
-  titre: "API REST — Next.js & Prisma",
+  titre: "API REST avec Next.js et Prisma",
   accroche: "Une API protégée par clé, branchée sur PostgreSQL Supabase, avec son interface d'administration.",
   resume:
     "Un projet d'abord construit en Express avec un stockage JSON, puis refondu en une application Next.js unique : routes d'API protégées par l'en-tête x-api-key, Prisma sur Supabase, jeu de données initial et requêtes rejouables.",

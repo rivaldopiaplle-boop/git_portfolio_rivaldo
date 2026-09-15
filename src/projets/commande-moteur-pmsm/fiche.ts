@@ -6,10 +6,10 @@ const fiche: Projet = {
   titre: "Commande d'un moteur synchrone",
   accroche: "Un moteur synchrone piloté par un STM32F446 : modulation vectorielle, schémas-blocs et interface de pilotage sur bus CAN.",
   resume:
-    "Travaux sur la commande d'un moteur synchrone à aimants permanents : micrologiciel temps réel sur carte Nucleo F446 avec son étage de puissance, modélisation de la commande par schémas-blocs, et interface de bureau qui pilote le moteur par le bus CAN. La base de commande vient de l'enseignant ; ma part est l'étude, l'intégration et l'interface.",
+    "Travaux sur la commande d'un moteur synchrone à aimants permanents : micrologiciel temps réel sur carte Nucleo F446 avec son étage de puissance, modélisation de la commande par schémas-blocs, et interface de bureau qui pilote le moteur par le bus CAN. La base de commande vient de l'enseignant ; la contribution personnelle porte sur l'étude, l'intégration et l'interface.",
   categorie: "robotique",
   statut: "termine",
-  annee: "2025 — 2026",
+  annee: "2025-2026",
   cadre: "ENIB · commande des machines",
   couleur: "#b5542b",
   puce: "STM32F446",
@@ -17,7 +17,7 @@ const fiche: Projet = {
   probleme:
     "Faire tourner un moteur synchrone régulièrement demande de calculer, à chaque période de découpage, trois tensions qui composent le bon champ tournant. Le calcul doit tenir dans quelques dizaines de microsecondes, sans virgule flottante.",
   solution:
-    "Un micrologiciel temps réel qui échantillonne les courants et calcule la modulation vectorielle en virgule fixe, et une interface séparée qui donne les consignes par le bus CAN — le moteur ne dépend jamais de l'interface pour tourner.",
+    "Un micrologiciel temps réel qui échantillonne les courants et calcule la modulation vectorielle en virgule fixe, et une interface séparée qui donne les consignes par le bus CAN : le moteur ne dépend jamais de l'interface pour tourner.",
   sections: [
     {
       titre: "Qui a écrit quoi",
@@ -25,7 +25,7 @@ const fiche: Projet = {
       points: [
         "Base de commande (modulation vectorielle en virgule fixe) : fournie par l'enseignant",
         "pysimCoder, l'éditeur de schémas-blocs : outil libre tiers",
-        "Ma part : étude des schémas de commande, intégration sur la carte, interface de pilotage sur bus CAN",
+        "Contribution personnelle : étude des schémas de commande, intégration sur la carte, interface de pilotage sur bus CAN",
       ],
     },
     {

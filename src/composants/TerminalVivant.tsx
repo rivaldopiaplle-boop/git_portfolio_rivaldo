@@ -12,12 +12,12 @@ interface Ligne {
 /** Relevé des vraies chaînes des deux projets phares, rejoué en boucle. */
 const LIGNES: Ligne[] = [
   { genre: "commande", texte: "git push origin main" },
-  { genre: "titre", texte: "Intégration — banque-app" },
+  { genre: "titre", texte: "Intégration : banque-app" },
   { genre: "ok", texte: "API · types, linter, migrations" },
   { genre: "ok", texte: "Banc de preuves", valeur: "994/994" },
   { genre: "ok", texte: "Secrets · historique passé au crible" },
   { genre: "ok", texte: "Refuse de démarrer mal configuré" },
-  { genre: "titre", texte: "Vérification — rivdinde" },
+  { genre: "titre", texte: "Vérification : rivdinde" },
   { genre: "ok", texte: "pytest sur PostgreSQL", valeur: "326" },
   { genre: "ok", texte: "Web + mobile · tests, build", valeur: "211" },
   { genre: "titre", texte: "Publication" },
@@ -69,7 +69,7 @@ export function TerminalVivant() {
           <span className="size-2.5 rounded-full bg-[#ff5f57]" />
           <span className="size-2.5 rounded-full bg-[#febc2e]" />
           <span className="size-2.5 rounded-full bg-[#28c840]" />
-          <span className="ml-3 font-mono text-[11px] text-encre-3">github-actions — main</span>
+          <span className="ml-3 font-mono text-[11px] text-encre-3">github-actions / main</span>
           <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-vert">
             <span className="size-1.5 animate-pulsation rounded-full bg-vert text-vert/60" />
             en direct

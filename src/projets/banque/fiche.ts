@@ -11,15 +11,26 @@ import simulateur from "./simulateur-reseau.webp";
 
 const GH = "https://github.com/rivaldopiaplle-boop";
 
+/**
+ * Adresses de la mise en ligne. L'API Render ne répond plus (testée sans réponse
+ * pendant 300 s) : le site s'ouvrirait, mais la connexion échouerait. Tant que
+ * `EN_LIGNE` vaut `false`, la fiche ne propose aucun lien qui casserait, et le
+ * projet est présenté comme livré plutôt que comme visitable. Remettre `true`
+ * dès que l'API répond suffit à faire revenir les deux boutons et leurs QR codes.
+ */
+const EN_LIGNE = false;
+const SITE = "https://banque-web.onrender.com/";
+const SIMULATEUR = "https://banque-simulateur.onrender.com/";
+
 const fiche: Projet = {
   slug: "banque",
   ordre: 10,
   titre: "Banque App",
-  accroche: "Une banque complète — du distributeur de billets au journal d'audit — prouvée par 994 vérifications à chaque poussée.",
+  accroche: "Une banque complète, du distributeur de billets au journal d'audit, prouvée par 994 vérifications rejouées à chaque poussée.",
   resume:
     "Application bancaire à trois espaces cloisonnés : les clients consultent leurs comptes, virent, gèrent leurs cartes et déposent des demandes ; les conseillers instruisent le portefeuille qui leur est confié ; les administrateurs organisent l'établissement et surveillent le système. Un serveur, un front web, une application mobile et un simulateur de réseau monétique, montés en une commande et vérifiés par une chaîne d'intégration continue. Le projet continue d'évoluer : sa feuille de route est publique.",
   categorie: "devops",
-  statut: "en-ligne",
+  statut: EN_LIGNE ? "en-ligne" : "termine",
   annee: "2026",
   cadre: "Formation DevOps · projet personnel",
   couleur: "#2b7fd4",
@@ -27,14 +38,14 @@ const fiche: Projet = {
   logo,
   couverture: { src: clientTableau, alt: "Tableau de bord de l'espace client : soldes, flux mensuels, dernières opérations", format: "ecran" },
   galerie: [
-    { src: clientTableau, alt: "Espace client : synthèse des comptes", legende: "Espace client — synthèse, flux mensuels, répartition", format: "ecran" },
-    { src: clientCartes, alt: "Espace client : gestion des cartes", legende: "Cartes — plafonds, opposition, carte virtuelle", format: "ecran" },
-    { src: clientVirements, alt: "Espace client : virements", legende: "Virements — immédiats, différés, permanents", format: "ecran" },
-    { src: clientOperations, alt: "Espace client : historique des opérations", legende: "Opérations — historique filtrable", format: "ecran" },
-    { src: adminTableau, alt: "Espace administrateur : pilotage", legende: "Administration — pilotage des conseillers et des portefeuilles", format: "ecran" },
-    { src: adminJournal, alt: "Espace administrateur : journal d'audit", legende: "Journal d'audit — chaque geste sensible est tracé", format: "ecran" },
-    { src: simulateur, alt: "Simulateur de réseau monétique : distributeur", legende: "Simulateur de réseau — distributeur, guichet, terminal, SEPA", format: "ecran" },
-    { src: connexion, alt: "Écran de connexion de la banque", legende: "Connexion — comptes de démonstration par rôle", format: "ecran" },
+    { src: clientTableau, alt: "Espace client : synthèse des comptes", legende: "Espace client : synthèse, flux mensuels, répartition", format: "ecran" },
+    { src: clientCartes, alt: "Espace client : gestion des cartes", legende: "Cartes : plafonds, opposition, carte virtuelle", format: "ecran" },
+    { src: clientVirements, alt: "Espace client : virements", legende: "Virements : immédiats, différés, permanents", format: "ecran" },
+    { src: clientOperations, alt: "Espace client : historique des opérations", legende: "Opérations : historique filtrable", format: "ecran" },
+    { src: adminTableau, alt: "Espace administrateur : pilotage", legende: "Administration : pilotage des conseillers et des portefeuilles", format: "ecran" },
+    { src: adminJournal, alt: "Espace administrateur : journal d'audit", legende: "Journal d'audit : chaque geste sensible est tracé", format: "ecran" },
+    { src: simulateur, alt: "Simulateur de réseau monétique : distributeur", legende: "Simulateur de réseau : distributeur, guichet, terminal, SEPA", format: "ecran" },
+    { src: connexion, alt: "Écran de connexion de la banque", legende: "Connexion : comptes de démonstration par rôle", format: "ecran" },
   ],
   stack: ["nestjs", "typescript", "prisma", "postgresql", "react", "mui", "reactquery", "expo", "docker", "githubactions", "render", "supabase", "nginx", "caddy", "jwt"],
   chiffres: [
@@ -48,14 +59,14 @@ const fiche: Projet = {
   probleme:
     "Une banque de démonstration ment presque toujours : l'argent y apparaît d'un clic, les règles vivent dans les formulaires, et personne ne sait si la dernière correction a cassé autre chose. Le défi : construire l'inverse, et le prouver automatiquement.",
   solution:
-    "Un monorepo à quatre pièces — API NestJS, front React, application Expo, simulateur de réseau monétique — qui partagent leurs types. Chaque règle métier vit côté serveur. Un banc de 994 preuves parle à l'API en HTTP, comme un navigateur, et GitHub Actions le rejoue contre une vraie base à chaque poussée.",
+    "Un monorepo à quatre pièces (API NestJS, front React, application Expo, simulateur de réseau monétique) qui partagent leurs types. Chaque règle métier vit côté serveur. Un banc de 994 preuves parle à l'API en HTTP, comme un navigateur, et GitHub Actions le rejoue contre une vraie base à chaque poussée.",
   sections: [
     {
       titre: "Trois métiers, un serveur qui dispose",
       texte: "Le formulaire propose, le serveur dispose : un attribut min sur un champ de date ne protège de rien dès qu'on appelle l'API directement.",
       points: [
         "Identité gelée : nom et date de naissance ne changent que par une demande approuvée",
-        "Gestes sensibles — opposition, plafonds, virement au-delà de 1 000 € — : mot de passe redemandé côté serveur",
+        "Gestes sensibles (opposition, plafonds, virement au-delà de 1 000 €) : mot de passe redemandé côté serveur",
         "Principe des quatre yeux : un administrateur n'approuve jamais sa propre demande",
         "Numéro de carte physique jamais stocké ; carte virtuelle chiffrée en AES-256",
         "Journal d'audit filtrable par action, criticité et période",
@@ -74,11 +85,11 @@ const fiche: Projet = {
       titre: "Une chaîne qui enlève la décision",
       texte: "Un banc de preuves qu'on ne lance que quand on y pense finit par ne plus être lancé. La chaîne le relance à chaque poussée.",
       points: [
-        "API éprouvée contre PostgreSQL 17 et Mailpit réels, en fuseau Europe/Paris — le jour bancaire est une règle métier",
+        "API éprouvée contre PostgreSQL 17 et Mailpit réels, en fuseau Europe/Paris, car le jour bancaire est une règle métier",
         "Concordance schéma Prisma ↔ migrations, ESLint à zéro avertissement",
         "Tâche « secrets » : l'historique Git entier passé au crible, npm audit",
         "Tâche « déploiement » : le serveur doit refuser de démarrer mal configuré, puis la pile entière monte et répond",
-        "Images publiées sur GitHub Container Registry, étiquetées par hash de commit — jamais latest",
+        "Images publiées sur GitHub Container Registry, étiquetées par hash de commit, jamais latest",
       ],
     },
     {
@@ -122,7 +133,12 @@ const fiche: Projet = {
     { genre: "hebergement", titre: "En ligne", taches: [{ nom: "Render + Supabase", controles: ["Site, API, simulateur", "PostgreSQL géré"] }] },
     { genre: "surveillance", titre: "Réveil", taches: [{ nom: "Tâche planifiée", controles: ["Sonde toutes les 10 min", "reveiller.mjs avant démo"] }] },
   ],
-  demos: [],
+  demos: EN_LIGNE
+    ? [
+        { libelle: "Site de la banque", url: SITE, detail: "Comptes de démonstration proposés sur l'écran de connexion, un par rôle" },
+        { libelle: "Simulateur de réseau monétique", url: SIMULATEUR, detail: "Distributeur, guichet, terminal marchand et compensation SEPA" },
+      ]
+    : [],
   depots: [
     { libelle: "Front web et une partie du serveur", url: `${GH}/git_banque-app`, visibilite: "public" },
     { libelle: "Projet complet : serveur, mobile, simulateur, documents", url: `${GH}/git_banque-app_v2`, visibilite: "prive" },

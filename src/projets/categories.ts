@@ -10,21 +10,21 @@ type Icone = ComponentType<{ className?: string; style?: CSSProperties }>;
  */
 export const CATEGORIES: Record<Categorie, { nom: string; court: string; description: string; icone: Icone; couleur: string }> = {
   devops: {
-    nom: "DevOps & plateformes",
+    nom: "DevOps et plateformes",
     court: "DevOps",
     description: "Applications complètes, chaînes CI/CD, conteneurs et mise en ligne.",
     icone: Workflow,
     couleur: "#0c9467",
   },
   applications: {
-    nom: "Applications & logiciel",
+    nom: "Applications et logiciel",
     court: "Applications",
     description: "Conception d'interfaces, applications web et architecture logicielle.",
     icone: AppWindow,
     couleur: "#0a7fb0",
   },
   robotique: {
-    nom: "Robotique & embarqué",
+    nom: "Robotique et embarqué",
     court: "Robotique",
     description: "Microcontrôleurs, ROS 2, mécanique, et le mouvement humain.",
     icone: Bot,

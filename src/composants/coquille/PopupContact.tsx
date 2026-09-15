@@ -20,7 +20,7 @@ export function PopupContact() {
 
   const envoyer = (e: FormEvent) => {
     e.preventDefault();
-    const sujet = `${objet}${entreprise ? ` — ${entreprise}` : ""}`;
+    const sujet = `${objet}${entreprise ? ` - ${entreprise}` : ""}`;
     const corps = `${message}\n\n${nom}${entreprise ? `\n${entreprise}` : ""}`;
     window.location.href = `mailto:${PROFIL.email}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
     ouvrirContact(false);
