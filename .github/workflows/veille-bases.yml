@@ -1,0 +1,62 @@
+# Garder la base de la banque en activité, et prévenir si elle tombe.
+#
+# ── La panne que cette tâche empêche ─────────────────────────────────────────
+#
+# Supabase met en pause un projet gratuit après sept jours sans activité. L'API
+# de la banque ne trouve plus sa base, échoue au démarrage, et Render finit par
+# la marquer « Failed service ». Le site s'ouvre, la connexion ne répond plus.
+#
+# ── Pourquoi une fois par jour, et pas toutes les dix minutes ────────────────
+#
+# La sonde /api/v1/sante de la banque exécute un SELECT 1 sur la base : un appel
+# par jour suffit à remettre le compteur d'inactivité de Supabase à zéro.
+#
+# Garder les services Render éveillés toute la journée serait une autre affaire.
+# L'offre gratuite donne 750 heures par mois pour tout le compte, et le réveil
+# de RivDinde en consomme déjà 465. C'est la leçon tirée sur RivDinde : on tient
+# la base en vie, et on accepte une minute de réveil au premier visiteur.
+#
+# ── Pourquoi ici ─────────────────────────────────────────────────────────────
+#
+# Ce dépôt est public : ses minutes GitHub Actions sont gratuites, sans le
+# plafond de 2 000 minutes d'un dépôt privé. Et l'adresse de l'API est déjà
+# écrite dans la fiche de la banque, qu'on vérifie ailleurs.
+#
+# ── À savoir ─────────────────────────────────────────────────────────────────
+#
+# Si la base ne répond pas, la tâche échoue, et GitHub envoie un courriel : c'est
+# voulu, mieux vaut l'apprendre avant un recruteur. GitHub désactive une tâche
+# planifiée après 60 jours sans commit sur le dépôt ; « Enable workflow » dans
+# l'onglet Actions, ou n'importe quel commit, la relance.
+
+name: Veille des bases
+
+on:
+  schedule:
+    # Chaque matin à 6 h 17 UTC : loin des heures pleines où GitHub prend du retard.
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  banque:
+    name: Base de la banque
+    runs-on: ubuntu-latest
+    steps:
+      - name: Interroger la sonde de santé
+        run: |
+          sonde="https://banque-api-u2kx.onrender.com/api/v1/sante"
+          # Un service endormi met jusqu'à une minute à répondre.
+          reponse=$(curl -s --max-time 120 "$sonde" || true)
+          echo "Réponse : ${reponse:-aucune}"
+          case "$reponse" in
+            *'"base":"disponible"'*)
+              echo "La base répond : Supabase compte une activité de plus."
+              ;;
+            *)
+              echo "::error::La base de la banque ne répond pas. Vérifier le projet Supabase (en pause ?), puis le service banque-api sur Render."
+              exit 1
+              ;;
+          esac

@@ -6,11 +6,19 @@ const fiche: Projet = {
   titre: "Commande d'un moteur synchrone",
   accroche: "Un moteur synchrone piloté par un STM32F446 : modulation vectorielle, schémas-blocs et interface de pilotage sur bus CAN.",
   resume:
-    "Travaux sur la commande d'un moteur synchrone à aimants permanents : micrologiciel temps réel sur carte Nucleo F446 avec son étage de puissance, modélisation de la commande par schémas-blocs, et interface de bureau qui pilote le moteur par le bus CAN. La base de commande vient de l'enseignant ; la contribution personnelle porte sur l'étude, l'intégration et l'interface.",
+    "Travaux sur la commande d'un moteur synchrone à aimants permanents : micrologiciel temps réel sur carte Nucleo F446 avec son étage de puissance, modélisation de la commande par schémas-blocs, et interface de bureau qui pilote le moteur par le bus CAN. La base de commande est fournie par l'enseignant ; l'étude, l'intégration sur la carte et l'interface de pilotage constituent le travail réalisé.",
   categorie: "robotique",
   statut: "termine",
-  annee: "2025-2026",
+  annee: "2026",
   cadre: "ENIB · commande des machines",
+  equipe: "Projet d'équipe",
+  role: [
+    "Étude des schémas de commande du moteur synchrone et de la modulation vectorielle",
+    "Modélisation de la commande par schémas-blocs sous pysimCoder",
+    "Intégration sur carte Nucleo STM32F446 : mesure des courants, codeur incrémental, découpage",
+    "Interface de pilotage en Qt reliée par le bus CAN, avec une version à bus simulé",
+    "Essais sur l'étage de puissance triphasé",
+  ],
   couleur: "#b5542b",
   puce: "STM32F446",
   stack: ["c", "stm32", "freertos", "can", "qt", "python"],
@@ -25,7 +33,7 @@ const fiche: Projet = {
       points: [
         "Base de commande (modulation vectorielle en virgule fixe) : fournie par l'enseignant",
         "pysimCoder, l'éditeur de schémas-blocs : outil libre tiers",
-        "Contribution personnelle : étude des schémas de commande, intégration sur la carte, interface de pilotage sur bus CAN",
+        "Travail réalisé : étude des schémas de commande, intégration sur la carte, interface de pilotage sur bus CAN",
       ],
     },
     {
@@ -51,7 +59,7 @@ const fiche: Projet = {
 SocketCanMock::CanFrame frame;   // consigne de vitesse ou de couple`,
     },
   ],
-  depots: [{ libelle: "Micrologiciel, schémas et interface", url: null, visibilite: "public" }],
+  depots: [{ libelle: "Micrologiciel, schémas et interface", url: "https://github.com/rivaldopiaplle-boop/git_commande-moteur", visibilite: "public" }],
 };
 
 export default fiche;

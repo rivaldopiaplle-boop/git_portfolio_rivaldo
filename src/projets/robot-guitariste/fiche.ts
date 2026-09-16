@@ -17,7 +17,7 @@ const fiche: Projet = {
     "Projet pluridisciplinaire d'équipe : concevoir un mécanisme capable de se placer sur les frettes et d'attaquer la corde en rythme. Du geste humain filmé et analysé à la cinématique simulée, jusqu'au micrologiciel temps réel et à l'interface de pilotage. Contribution personnelle : la modélisation des mécanismes, les outils de simulation et l'intégration du système.",
   categorie: "robotique",
   statut: "termine",
-  annee: "2026",
+  annee: "2025",
   cadre: "ENIB · projet pluridisciplinaire",
   equipe: "Projet d'équipe",
   couleur: "#c96a17",
@@ -41,6 +41,10 @@ const fiche: Projet = {
     "Intégration globale : cohérence mécanique, électronique et logicielle, vérification des interactions",
     "Fiabilisation : précision, répétabilité et robustesse, vérifiées par simulation et essais",
     "Documentation technique : schémas, diagrammes de flux, tableaux de résultats, présentations",
+    "Analyse du geste humain : prise de médiator filmée et décomposée image par image avec Kinovea",
+    "Conception mécanique sous SolidWorks : translation le long du manche, bras de médiator, tendeur",
+    "Micrologiciel STM32F411 : moteur pas-à-pas en micro-pas, solénoïde, tempo, mode accordage par DSP",
+    "Interface de pilotage en Python sur liaison série : morceau, accordage, état du moteur",
   ],
   sections: [
     {
@@ -76,7 +80,7 @@ def note_freq(note, octave):
     return 440.0 * (2 ** ((n - A4_INDEX) / 12))`,
     },
   ],
-  depots: [{ libelle: "Micrologiciel, simulation et interface", url: null, visibilite: "public" }],
+  depots: [{ libelle: "Micrologiciel, simulation et interface", url: "https://github.com/rivaldopiaplle-boop/git_robot-guitariste", visibilite: "public" }],
 };
 
 export default fiche;

@@ -6,6 +6,9 @@ ligne, leurs chaînes CI/CD rejouées à l'écran, et des projets d'applications
 
 **React 19 · TypeScript · Vite · Tailwind CSS 4 · Motion · Simple Icons · Vercel**
 
+**En ligne** : https://git-portfolio-rivaldo.vercel.app
+**Version téléphone** (celle du QR code du CV) : https://git-portfolio-rivaldo.vercel.app/mobile
+
 ## Démarrer
 
 ```bash

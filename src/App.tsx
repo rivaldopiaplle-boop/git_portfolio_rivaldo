@@ -8,6 +8,7 @@ import Competences from "./pages/Competences";
 import Cv from "./pages/Cv";
 import FicheProjet from "./pages/FicheProjet";
 import Introuvable from "./pages/Introuvable";
+import Mobile from "./pages/Mobile";
 import Parcours from "./pages/Parcours";
 import Projets from "./pages/Projets";
 import TableauDeBord from "./pages/TableauDeBord";
@@ -18,6 +19,16 @@ export default function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  // La version téléphone vit hors de la coquille : pas de barre latérale sur un
+  // écran qu'on tient d'une main. C'est l'adresse du QR code du CV.
+  if (location.pathname === "/mobile" || location.pathname.startsWith("/mobile/")) {
+    return (
+      <MotionConfig reducedMotion="user">
+        <Mobile />
+      </MotionConfig>
+    );
+  }
 
   return (
     <MotionConfig reducedMotion="user">

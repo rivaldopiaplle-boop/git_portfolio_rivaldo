@@ -105,7 +105,10 @@ function PanneauContact() {
           </p>
           <p className="mt-4 flex items-start gap-2 text-sm text-encre">
             <span className="mt-1.5 size-1.5 shrink-0 animate-pulsation rounded-full bg-vert text-vert/50" />
-            {PROFIL.recherche}
+            <span>
+              {PROFIL.recherche}
+              <span className="block text-xs text-encre-2">{PROFIL.disponibilite}</span>
+            </span>
           </p>
         </div>
       </div>

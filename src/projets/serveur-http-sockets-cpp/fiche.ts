@@ -68,7 +68,7 @@ if((requestMethod == "POST") && (requestUri == "/txt")) {
 }`,
     },
   ],
-  depots: [{ libelle: "Les six paliers", url: null, visibilite: "public" }],
+  depots: [{ libelle: "Les six paliers", url: "https://github.com/rivaldopiaplle-boop/git_serveur-http-sockets", visibilite: "prive" }],
 };
 
 export default fiche;

@@ -11,6 +11,7 @@ export const PROFIL = {
   niveau: "5ᵉ année",
   ville: "Brest",
   recherche: "Stage de fin d'études",
+  disponibilite: "4 à 6 mois, à partir du 2 janvier 2027",
   /** Adresse d'étudiant, donnée en premier. Elle cessera de servir au diplôme. */
   email: "f25piapll@enib.fr",
   /** Adresse durable, donnée juste après : un recruteur écrit parfois des mois plus tard. */

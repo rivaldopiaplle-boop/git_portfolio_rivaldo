@@ -15,6 +15,14 @@ const fiche: Projet = {
   couleur: "#0e8fa8",
   puce: "micro-ROS",
   stack: ["c", "stm32", "freertos", "ros", "raspberrypi", "python", "opencv", "qt"],
+  role: [
+    "Base temps réel : STM32F411 sous FreeRTOS, nœud micro-ROS qui publie capteurs et vitesses",
+    "Motorisation : PWM à 50 kHz, commandes de déplacement et de vitesse reçues de ROS 2",
+    "Capteurs : temps de vol VL53L0X, infrarouges, vitesse de chaque moteur",
+    "Vision sur Raspberry Pi : OpenCV, seuillage HSV, barycentre et surface de la cible publiés",
+    "Architecture ROS 2 : qualité de service par flux, fils d'exécution et files bornées",
+    "Intégration et essais du robot complet, du capteur à la décision de trajectoire",
+  ],
   sections: [
     {
       titre: "La base, en temps réel",
@@ -92,7 +100,7 @@ rclc_executor_add_subscription(&executor, &subscriber_bary, &bary_msg,
     &bary_callback, ON_NEW_DATA);`,
     },
   ],
-  depots: [{ libelle: "Base, vision et interface", url: null, visibilite: "public" }],
+  depots: [{ libelle: "Base, vision et interface", url: "https://github.com/rivaldopiaplle-boop/robot-ros2-vision", visibilite: "public" }],
 };
 
 export default fiche;

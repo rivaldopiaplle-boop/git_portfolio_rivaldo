@@ -9,8 +9,17 @@ const fiche: Projet = {
     "Des nœuds STM32 lisent humidité, température, pression, distance, vitesse du vent et centrale inertielle, puis publient leurs mesures sur un bus CAN, le réseau des automobiles, où chaque trame porte un identifiant plutôt qu'une adresse. Une interface PyQt les affiche en direct, avec l'orientation reconstituée par fusion des capteurs.",
   categorie: "robotique",
   statut: "termine",
-  annee: "2025-2026",
+  annee: "2026",
   cadre: "ENIB · réseaux et systèmes embarqués",
+  equipe: "Projet d'équipe",
+  role: [
+    "Pilotes CAN, I²C, SPI et UART écrits pour la carte STM32",
+    "Intégration des capteurs : humidité, température, pression, distance, anémomètre, centrale inertielle",
+    "Orientation calculée par fusion de capteurs (algorithme de Madgwick)",
+    "Plan d'identifiants CAN : chaque mesure a sa trame",
+    "Interface PyQt5 : écoute du bus avec python-can, orientation affichée en 3D avec OpenGL",
+    "Commande d'un servomoteur Dynamixel sur liaison série",
+  ],
   couleur: "#2f8f6b",
   puce: "STM32F1 · CAN",
   stack: ["c", "stm32", "can", "python", "qt"],
@@ -75,7 +84,7 @@ msg->id     = CanHandle.pRxMsg->IDE == CAN_ID_STD
 msg->format = CanHandle.pRxMsg->IDE == CAN_ID_STD ? CANStandard : CANExtended;`,
     },
   ],
-  depots: [{ libelle: "Micrologiciel et interface", url: null, visibilite: "public" }],
+  depots: [{ libelle: "Micrologiciel et interface", url: "https://github.com/rivaldopiaplle-boop/git_reseau-capteurs", visibilite: "public" }],
 };
 
 export default fiche;

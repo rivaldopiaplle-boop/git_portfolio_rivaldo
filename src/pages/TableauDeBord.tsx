@@ -35,7 +35,7 @@ export default function TableauDeBord() {
         surtitre={
           <span className="inline-flex items-center gap-2 rounded-full border border-vert/25 bg-vert/10 px-2.5 py-0.5 font-medium text-vert">
             <span className="size-1.5 animate-pulsation rounded-full bg-vert text-vert/40" />
-            {PROFIL.recherche}
+            {PROFIL.recherche}, {PROFIL.disponibilite}
           </span>
         }
         titre={

@@ -9,8 +9,15 @@ const fiche: Projet = {
     "Conception matérielle en VHDL sur la carte iCEBreaker (FPGA Lattice iCE40, horloge 12 MHz) : chenillard, chronomètre à compteurs cascadés, périphérique UART avec générateur de débit à 230 400 bauds, et acquisition d'un microphone PDM renvoyée par la liaison série. Environ 2 900 lignes de VHDL, et un banc de test par module, car sur un FPGA, on ne débogue pas avec des affichages.",
   categorie: "robotique",
   statut: "termine",
-  annee: "2025-2026",
+  annee: "2026",
   cadre: "ENIB · électronique numérique",
+  equipe: "Projet d'équipe",
+  role: [
+    "Conception de l'ensemble des modules en VHDL : comparateur, chenillard, chronomètre, UART, microphone PDM",
+    "Générateur de débit à 230 400 bauds dérivé de l'horloge de 12 MHz",
+    "Un banc de test par module, simulé avec GHDL et lu dans GTKWave",
+    "Synthèse et programmation de la carte iCEBreaker avec Yosys et nextpnr",
+  ],
   couleur: "#6b4fb0",
   puce: "iCE40 · VHDL",
   stack: ["vhdl", "fpga"],
@@ -96,7 +103,7 @@ process(clk)
 end process;`,
     },
   ],
-  depots: [{ libelle: "Modules VHDL et bancs de test", url: null, visibilite: "public" }],
+  depots: [{ libelle: "Modules VHDL et bancs de test", url: "https://github.com/rivaldopiaplle-boop/git_fpga-vhdl-icebreaker", visibilite: "public" }],
 };
 
 export default fiche;

@@ -8,8 +8,8 @@ import { cx, useTitre } from "../outils";
 import { trouverProjet } from "../projets";
 
 const RUBRIQUES = [
-  { id: "experiences", nom: "Expériences", icone: Briefcase, compte: EXPERIENCES.length },
   { id: "formation", nom: "Formation", icone: GraduationCap, compte: FORMATION.length },
+  { id: "experiences", nom: "Expériences", icone: Briefcase, compte: EXPERIENCES.length },
   { id: "atouts", nom: "Langues et atouts", icone: Sparkles },
 ] as const;
 
@@ -18,7 +18,7 @@ type IdRubrique = (typeof RUBRIQUES)[number]["id"];
 export default function Parcours() {
   useTitre("Parcours | Rivaldo Piaplle");
   const [params, setParams] = useSearchParams();
-  const actif: IdRubrique = RUBRIQUES.find((r) => r.id === params.get("rubrique"))?.id ?? "experiences";
+  const actif: IdRubrique = RUBRIQUES.find((r) => r.id === params.get("rubrique"))?.id ?? "formation";
 
   return (
     <>

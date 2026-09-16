@@ -185,6 +185,7 @@ function Contenu({ reduite, fermer }: { reduite: boolean; fermer?: () => void })
               Disponible
             </p>
             <p className="mt-1 text-[11px] leading-snug text-encre-2">{PROFIL.recherche}</p>
+            <p className="text-[11px] leading-snug text-encre-3">{PROFIL.disponibilite}</p>
           </div>
         )}
         <button
