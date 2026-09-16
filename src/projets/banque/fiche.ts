@@ -98,7 +98,7 @@ const fiche: Projet = {
       points: [
         "Tâche planifiée qui réveille les services toutes les dix minutes, et reveiller.mjs pour voir l'état avant une démonstration",
         "Courriels par l'API HTTP de Brevo : l'hébergeur ferme les ports SMTP sortants",
-        "Adresses lues au démarrage du conteneur : changer une URL ne demande pas de reconstruire l'image",
+        "Côté serveur, les adresses sont lues au démarrage du conteneur ; côté site, Vite les grave à la construction, donc changer d'adresse impose de reconstruire",
         "Poste de travail en une commande : node demarrer.mjs attend réellement que chaque service réponde",
       ],
     },
