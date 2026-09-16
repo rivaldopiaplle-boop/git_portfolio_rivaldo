@@ -68,7 +68,7 @@ export default function TableauDeBord() {
               href={demo?.url}
               vers="/projets/rivdinde"
               titre="Ouvrir une plateforme en ligne"
-              texte="RivDinde, sans créer de compte : catalogue, fiche produit, application mobile."
+              texte="RivDinde et Banque App tournent en ligne, sans création de compte : des identifiants de démonstration sont fournis."
             />
             <CarteAction numero="3" duree="5 min" icone={BookOpen} vers="/projets/banque" titre="Lire une étude de cas" texte="Banque App : le problème, les choix, la chaîne et ce qui arrive ensuite." />
           </div>

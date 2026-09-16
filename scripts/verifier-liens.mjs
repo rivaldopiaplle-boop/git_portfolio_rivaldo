@@ -4,8 +4,8 @@
  *
  *   1. chaque projet publié a quelque chose à montrer (démo, dépôt public,
  *      image ou extrait de code) ;
- *   2. chaque adresse qui porte un QR code répond vraiment, démos et dépôts
- *      publics. Un QR code vers une 404 est pire que pas de QR code ;
+ *   2. chaque adresse que le site donne répond vraiment, démos (QR code) et dépôts
+ *      publics (lien). Une adresse vers une 404 est pire que pas d'adresse ;
  *   3. aucun dépôt marqué « public » n'est en réalité privé.
  *
  * Il lit les fiches telles quelles : Node retire les types TypeScript, et un
@@ -72,7 +72,7 @@ for (const fiche of fiches) {
   for (const depot of fiche.depots) if (depot.url && depot.visibilite === "public") adresses.set(depot.url, `${fiche.slug} · dépôt public`);
 }
 
-console.log(`\n── ${adresses.size} adresses avec QR code`);
+console.log(`\n── ${adresses.size} adresses promises au visiteur`);
 await Promise.all(
   [...adresses].map(async ([url, origine]) => {
     try {

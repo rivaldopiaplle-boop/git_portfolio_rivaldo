@@ -128,6 +128,9 @@ function PanneauContact() {
             {copie ? <Check className="size-4 text-vert" /> : <Copy className="size-4" />}
             <span className="truncate">{copie ? "Adresse copiée" : PROFIL.email}</span>
           </button>
+          <p className="px-1 text-[11px] text-encre-3">
+            ou <span className="text-encre-2">{PROFIL.emailSecondaire}</span>
+          </p>
           <div className="grid grid-cols-3 gap-2">
             <a href={PROFIL.github} target="_blank" rel="noreferrer" className="flex flex-col items-center gap-1 rounded-xl border border-ligne py-2.5 text-[11px] text-encre-2 transition hover:bg-surface-2">
               <IconeTechno techno="github" monochrome taille={16} /> GitHub

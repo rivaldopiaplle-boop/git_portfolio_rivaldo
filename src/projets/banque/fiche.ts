@@ -12,13 +12,12 @@ import simulateur from "./simulateur-reseau.webp";
 const GH = "https://github.com/rivaldopiaplle-boop";
 
 /**
- * Adresses de la mise en ligne. L'API Render ne répond plus (testée sans réponse
- * pendant 300 s) : le site s'ouvrirait, mais la connexion échouerait. Tant que
- * `EN_LIGNE` vaut `false`, la fiche ne propose aucun lien qui casserait, et le
- * projet est présenté comme livré plutôt que comme visitable. Remettre `true`
- * dès que l'API répond suffit à faire revenir les deux boutons et leurs QR codes.
+ * Adresses de la mise en ligne. Cet interrupteur existe parce que l'hébergement
+ * est gratuit : le jour où l'API ne répond plus, le passer à `false` retire d'un
+ * coup les liens, les QR codes et la mention « en ligne », plutôt que de laisser
+ * un visiteur tomber sur un écran de connexion mort.
  */
-const EN_LIGNE = false;
+const EN_LIGNE = true;
 const SITE = "https://banque-web.onrender.com/";
 const SIMULATEUR = "https://banque-simulateur.onrender.com/";
 
@@ -96,7 +95,7 @@ const fiche: Projet = {
       titre: "En ligne, sans rien payer",
       texte: "Supabase pour la base, Render pour les trois conteneurs : site, API et simulateur.",
       points: [
-        "Tâche planifiée qui réveille les services toutes les dix minutes, et reveiller.mjs pour voir l'état avant une démonstration",
+        "Tâche planifiée qui réveille les services toutes les dix minutes, et reveiller.mjs pour les réveiller avant une démonstration",
         "Courriels par l'API HTTP de Brevo : l'hébergeur ferme les ports SMTP sortants",
         "Côté serveur, les adresses sont lues au démarrage du conteneur ; côté site, Vite les grave à la construction, donc changer d'adresse impose de reconstruire",
         "Poste de travail en une commande : node demarrer.mjs attend réellement que chaque service réponde",
@@ -135,7 +134,11 @@ const fiche: Projet = {
   ],
   demos: EN_LIGNE
     ? [
-        { libelle: "Site de la banque", url: SITE, detail: "Comptes de démonstration proposés sur l'écran de connexion, un par rôle" },
+        {
+          libelle: "Site de la banque",
+          url: SITE,
+          detail: "Tout part de là : un compte de démonstration par rôle. Premier chargement jusqu'à une minute, le serveur gratuit se réveille",
+        },
         { libelle: "Simulateur de réseau monétique", url: SIMULATEUR, detail: "Distributeur, guichet, terminal marchand et compensation SEPA" },
       ]
     : [],

@@ -34,7 +34,8 @@ export function PopupContact() {
       sousTitre={PROFIL.recherche}
       pied={
         <p className="text-xs text-encre-3">
-          Le message s'ouvre dans votre messagerie, adressé à <span className="text-encre-2">{PROFIL.email}</span>.
+          Le message s'ouvre dans votre messagerie, adressé à <span className="text-encre-2">{PROFIL.email}</span>, avec{" "}
+          <span className="text-encre-2">{PROFIL.emailSecondaire}</span> en second recours.
         </p>
       }
     >
