@@ -42,6 +42,19 @@ export interface Depot {
   visibilite: "public" | "prive";
 }
 
+/**
+ * Une preuve qu'un visiteur peut ouvrir : l'exécution d'une chaîne, une image
+ * publiée, un rapport. Elle s'affiche en lien, comme un dépôt : on ne scanne pas
+ * un journal de construction avec un téléphone.
+ */
+export interface Preuve {
+  libelle: string;
+  url: string;
+  detail?: string;
+  /** Image d'état, par exemple un badge GitHub Actions, affichée au-dessus du lien. */
+  badge?: string;
+}
+
 export interface SectionEtude {
   titre: string;
   texte?: string;
@@ -123,4 +136,5 @@ export interface Projet {
   feuilleDeRoute?: EtapeFeuilleDeRoute[];
   extraits?: Extrait[];
   demos?: LienDemo[];
+  preuves?: Preuve[];
 }

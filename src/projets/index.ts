@@ -39,6 +39,7 @@ export function demoPrincipale(projet: Projet, telephone: boolean) {
 export function ceQuOnPeutVoir(projet: Projet) {
   return {
     demos: projet.demos?.length ?? 0,
+    preuves: projet.preuves?.length ?? 0,
     depotsPublics: projet.depots.filter((d) => d.visibilite === "public" && d.url).length,
     images: projet.galerie?.length ?? 0,
     extraits: projet.extraits?.length ?? 0,

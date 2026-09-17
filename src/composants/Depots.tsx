@@ -1,7 +1,7 @@
 import { ArrowUpRight, Check, Copy, GitBranch, Lock, Mail } from "lucide-react";
 import { useState } from "react";
 import { sansProtocole } from "../outils";
-import type { Depot } from "../projets/types";
+import type { Depot, Preuve } from "../projets/types";
 import { useCoquille } from "./coquille/contexte";
 
 /**
@@ -13,6 +13,25 @@ import { useCoquille } from "./coquille/contexte";
  * codes sont réservés à ce qui se scanne debout, devant quelqu'un : un site, une
  * application mobile, des maquettes.
  */
+/** Une preuve : son badge d'état s'il en a un, puis le lien pour aller voir. */
+export function LignePreuve({ preuve }: { preuve: Preuve }) {
+  return (
+    <div className="rounded-2xl border border-ligne bg-surface-2/60 p-3.5">
+      <p className="text-sm font-medium text-encre">{preuve.libelle}</p>
+      {preuve.detail && <p className="mt-0.5 text-xs text-encre-3">{preuve.detail}</p>}
+      {preuve.badge && <img src={preuve.badge} alt="" className="mt-2 h-5" />}
+      <a
+        href={preuve.url}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-2.5 inline-flex items-center gap-1 rounded-full bg-encre px-3 py-1 text-xs font-medium text-surface transition hover:bg-encre/85"
+      >
+        Aller voir <ArrowUpRight className="size-3" />
+      </a>
+    </div>
+  );
+}
+
 export function LigneDepot({ depot }: { depot: Depot }) {
   const { ouvrirContact } = useCoquille();
   const [copie, setCopie] = useState(false);
@@ -68,7 +87,7 @@ export function LigneDepot({ depot }: { depot: Depot }) {
         </span>
         <div className="min-w-0">
           <p className="text-sm font-medium text-encre">{depot.libelle}</p>
-          <p className="mt-0.5 text-xs text-encre-3">Dépôt privé, accessible sur demande</p>
+          <p className="mt-0.5 text-xs text-encre-3">Dépôt privé. Accès en lecture par invitation GitHub, sur demande</p>
           <button
             type="button"
             onClick={() => ouvrirContact(true)}

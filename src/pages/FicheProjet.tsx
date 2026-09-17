@@ -8,7 +8,7 @@ import { EtatRoute, TitreBloc } from "../composants/Blocs";
 import { Compteur } from "../composants/Compteur";
 import { usePanneauDroit } from "../composants/coquille/contexte";
 import { TitrePanneau } from "../composants/coquille/PanneauDroit";
-import { LigneDepot } from "../composants/Depots";
+import { LigneDepot, LignePreuve } from "../composants/Depots";
 import { ActionEnTete, EnTetePage, ZonePage } from "../composants/EnTetePage";
 import { IconeTechno, PastilleTechno } from "../composants/IconeTechno";
 import { Onglets, type Onglet } from "../composants/Onglets";
@@ -367,6 +367,16 @@ function PanneauProjet({ projet }: { projet: Projet }) {
           <div className="space-y-2">
             {projet.demos.map((demo) => (
               <BlocQr key={demo.url} url={demo.url} libelle={demo.libelle} detail={demo.detail} />
+            ))}
+          </div>
+        </div>
+      )}
+      {projet.preuves && projet.preuves.length > 0 && (
+        <div>
+          <TitrePanneau>Preuves</TitrePanneau>
+          <div className="space-y-2">
+            {projet.preuves.map((preuve) => (
+              <LignePreuve key={preuve.url} preuve={preuve} />
             ))}
           </div>
         </div>

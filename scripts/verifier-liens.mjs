@@ -4,8 +4,8 @@
  *
  *   1. chaque projet publié a quelque chose à montrer (démo, dépôt public,
  *      image ou extrait de code) ;
- *   2. chaque adresse que le site donne répond vraiment, démos (QR code) et dépôts
- *      publics (lien). Une adresse vers une 404 est pire que pas d'adresse ;
+ *   2. chaque adresse que le site donne répond vraiment, démos (QR code), dépôts
+ *      publics et preuves (liens). Une adresse vers une 404 est pire que pas d'adresse ;
  *   3. aucun dépôt marqué « public » n'est en réalité privé.
  *
  * Il lit les fiches telles quelles : Node retire les types TypeScript, et un
@@ -61,8 +61,12 @@ const echec = (message) => {
 console.log(`\n── ${fiches.length} projets publiés`);
 for (const fiche of fiches) {
   const visible =
-    (fiche.demos?.length ?? 0) + fiche.depots.filter((d) => d.visibilite === "public" && d.url).length + (fiche.galerie?.length ?? 0) + (fiche.extraits?.length ?? 0);
-  if (visible === 0) echec(`${fiche.slug} : rien à montrer (démo, dépôt public, image ou extrait)`);
+    (fiche.demos?.length ?? 0) +
+    (fiche.preuves?.length ?? 0) +
+    fiche.depots.filter((d) => d.visibilite === "public" && d.url).length +
+    (fiche.galerie?.length ?? 0) +
+    (fiche.extraits?.length ?? 0);
+  if (visible === 0) echec(`${fiche.slug} : rien à montrer (démo, preuve, dépôt public, image ou extrait)`);
   else console.log(`  ✓ ${fiche.slug}`);
 }
 
@@ -70,6 +74,10 @@ const adresses = new Map();
 for (const fiche of fiches) {
   for (const demo of fiche.demos ?? []) adresses.set(demo.url, `${fiche.slug} · démo « ${demo.libelle} »`);
   for (const depot of fiche.depots) if (depot.url && depot.visibilite === "public") adresses.set(depot.url, `${fiche.slug} · dépôt public`);
+  for (const preuve of fiche.preuves ?? []) {
+    adresses.set(preuve.url, `${fiche.slug} · preuve « ${preuve.libelle} »`);
+    if (preuve.badge) adresses.set(preuve.badge, `${fiche.slug} · badge de « ${preuve.libelle} »`);
+  }
 }
 
 console.log(`\n── ${adresses.size} adresses promises au visiteur`);
