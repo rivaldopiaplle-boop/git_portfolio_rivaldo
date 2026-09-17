@@ -7,7 +7,12 @@ import { useCoquille } from "./coquille/contexte";
 /**
  * Un dépôt, selon ce qu'un visiteur peut réellement en faire :
  * public → lien à ouvrir ou à copier ; privé → signalé, sans lien (il tomberait
- * sur une 404) mais avec un accès sur demande ; pas encore poussé → annoncé.
+ * sur une 404), et ce sont les extraits de code de la fiche qui montrent le
+ * travail ; pas encore poussé → annoncé.
+ *
+ * C'est la pratique courante : un recruteur lit ce qui est public et n'accepte
+ * presque jamais une invitation sur un dépôt privé. Le bouton de demande reste
+ * là pour celui qui insiste, il ne remplace pas les extraits.
  *
  * Pas de QR code ici : on lit du code sur un écran, pas sur un téléphone. Les QR
  * codes sont réservés à ce qui se scanne debout, devant quelqu'un : un site, une
@@ -87,7 +92,7 @@ export function LigneDepot({ depot }: { depot: Depot }) {
         </span>
         <div className="min-w-0">
           <p className="text-sm font-medium text-encre">{depot.libelle}</p>
-          <p className="mt-0.5 text-xs text-encre-3">Dépôt privé. Accès en lecture par invitation GitHub, sur demande</p>
+          <p className="mt-0.5 text-xs text-encre-3">Dépôt privé : il contient du code fourni par le cours. Les extraits de la fiche montrent le travail</p>
           <button
             type="button"
             onClick={() => ouvrirContact(true)}
