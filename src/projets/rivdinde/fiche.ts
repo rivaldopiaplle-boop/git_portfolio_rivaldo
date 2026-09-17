@@ -122,8 +122,8 @@ const fiche: Projet = {
     { genre: "surveillance", titre: "Réveil", taches: [{ nom: "Tâche planifiée", controles: ["Toutes les 10 min, de 5 h à 20 h", "/sante : révision servie"] }] },
   ],
   demos: [
-    { libelle: "Site web", url: SITE, detail: "Vitrine publique, comptes de démonstration fournis" },
-    { libelle: "Application mobile", url: `${SITE}/mobile/`, detail: "À ouvrir sur un téléphone" },
+    { libelle: "Site web", url: SITE, detail: "Vitrine publique, comptes de démonstration fournis", support: "web" },
+    { libelle: "Application mobile", url: `${SITE}/mobile/`, detail: "À ouvrir sur un téléphone", support: "mobile" },
   ],
   depots: [
     { libelle: "API, front web, tests et intégration", url: `${GH}/git_e_commerce_livraison`, visibilite: "public" },

@@ -1,4 +1,7 @@
+import { Smartphone } from "lucide-react";
 import type { CSSProperties, ReactNode } from "react";
+import { Link } from "react-router";
+import { useEcranTelephone, vientDeLaVueMobile } from "../../outils";
 import { BarreHaute } from "./BarreHaute";
 import { BarreLaterale, LARGEUR_BARRE, LARGEUR_REDUITE } from "./BarreLaterale";
 import { useCoquille } from "./contexte";
@@ -12,6 +15,10 @@ import { PopupContact } from "./PopupContact";
 export function Coquille({ children }: { children: ReactNode }) {
   const { reduite } = useCoquille();
   const largeur = reduite ? LARGEUR_REDUITE : LARGEUR_BARRE;
+  const telephone = useEcranTelephone();
+  // Venu de la version téléphone et toujours sur un téléphone : le chemin du
+  // retour reste sous le pouce, sans devoir ouvrir le menu.
+  const retourMobile = telephone && vientDeLaVueMobile();
 
   return (
     <div className="min-h-svh bg-fond" style={{ "--barre": `${largeur}px` } as CSSProperties}>
@@ -32,6 +39,14 @@ export function Coquille({ children }: { children: ReactNode }) {
         </div>
       </div>
       <PopupContact />
+      {retourMobile && (
+        <Link
+          to="/mobile"
+          className="fixed bottom-[calc(16px+env(safe-area-inset-bottom))] left-1/2 z-40 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-encre px-4 py-2.5 text-sm font-medium text-surface shadow-lg shadow-encre/20"
+        >
+          <Smartphone className="size-4" /> Version téléphone
+        </Link>
+      )}
     </div>
   );
 }

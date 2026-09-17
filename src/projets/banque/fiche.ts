@@ -138,8 +138,15 @@ const fiche: Projet = {
           libelle: "Site de la banque",
           url: SITE,
           detail: "Tout part de là : un compte de démonstration par rôle. Premier chargement jusqu'à une minute, le serveur gratuit se réveille",
+          support: "web",
         },
-        { libelle: "Simulateur de réseau monétique", url: SIMULATEUR, detail: "Distributeur, guichet, terminal marchand et compensation SEPA" },
+        {
+          libelle: "Application mobile",
+          url: `${SITE}installer`,
+          detail: "Android : l'application native à installer. iPhone : l'application web posée sur l'écran d'accueil",
+          support: "mobile",
+        },
+        { libelle: "Simulateur de réseau monétique", url: SIMULATEUR, detail: "Distributeur, guichet, terminal marchand et compensation SEPA", support: "web" },
       ]
     : [],
   depots: [

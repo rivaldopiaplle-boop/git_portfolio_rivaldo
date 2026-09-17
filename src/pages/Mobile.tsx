@@ -1,14 +1,14 @@
 import { ArrowUpRight, Briefcase, ChevronRight, Download, FolderKanban, GraduationCap, House, Mail, Monitor, UserRound } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link, useSearchParams } from "react-router";
 import { BadgeStatut } from "../composants/BadgeStatut";
 import { IconeTechno } from "../composants/IconeTechno";
 import { Logo } from "../composants/Logo";
 import { EXPERIENCES, FORMATION, type ElementParcours } from "../contenu/parcours";
 import { PROFIL } from "../contenu/profil";
-import { cx, useTitre } from "../outils";
-import { PHARES, PROJETS } from "../projets";
+import { cx, retenirVueMobile, useTitre } from "../outils";
+import { demoPrincipale, PHARES, PROJETS } from "../projets";
 import { CATEGORIES, ORDRE_CATEGORIES } from "../projets/categories";
 import type { Categorie, Projet } from "../projets/types";
 
@@ -33,6 +33,10 @@ type IdOnglet = (typeof ONGLETS)[number]["id"];
 export default function Mobile() {
   useTitre("Rivaldo Piaplle | Portfolio");
   const [params, setParams] = useSearchParams();
+
+  // Une fiche ouverte d'ici s'affiche dans la version complète : elle saura
+  // proposer le retour.
+  useEffect(() => retenirVueMobile(), []);
   const actif: IdOnglet = ONGLETS.find((o) => o.id === params.get("onglet"))?.id ?? "accueil";
 
   const choisir = (id: IdOnglet) => {
@@ -167,7 +171,7 @@ function Chiffre({ valeur, libelle, onClick }: { valeur: number; libelle: string
 }
 
 function CartePhare({ projet }: { projet: Projet }) {
-  const demo = projet.demos?.[0];
+  const demo = demoPrincipale(projet, true);
   return (
     <article className="carte overflow-hidden rounded-2xl">
       <div className="h-1" style={{ background: projet.couleur }} />
@@ -188,7 +192,7 @@ function CartePhare({ projet }: { projet: Projet }) {
         <div className="mt-4 grid grid-cols-2 gap-2">
           {demo ? (
             <a href={demo.url} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-1.5 rounded-xl bg-encre px-3 py-2.5 text-sm font-medium text-surface">
-              Ouvrir <ArrowUpRight className="size-4" />
+              {demo.support === "mobile" ? "L'application" : "Ouvrir"} <ArrowUpRight className="size-4" />
             </a>
           ) : (
             <span />

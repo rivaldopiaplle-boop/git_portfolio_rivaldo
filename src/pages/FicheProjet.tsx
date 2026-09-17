@@ -15,8 +15,8 @@ import { Onglets, type Onglet } from "../composants/Onglets";
 import { Pipeline } from "../composants/Pipeline";
 import { CouvertureProjet, ImageCadree } from "../composants/VisuelProjet";
 import { Visionneuse } from "../composants/Visionneuse";
-import { useTitre } from "../outils";
-import { PROJETS, trouverProjet } from "../projets";
+import { useEcranTelephone, useTitre } from "../outils";
+import { demoPrincipale, PROJETS, trouverProjet } from "../projets";
 import { CATEGORIES, STATUTS } from "../projets/categories";
 import type { Media, Projet } from "../projets/types";
 import Introuvable from "./Introuvable";
@@ -29,6 +29,7 @@ export default function FicheProjet() {
   const [params, setParams] = useSearchParams();
   const [image, setImage] = useState<number | null>(null);
   useTitre(projet ? `${projet.titre} | Rivaldo Piaplle` : "Projet introuvable");
+  const telephone = useEcranTelephone();
   usePanneauDroit(`fiche-${slug}`, () => (projet ? <PanneauProjet projet={projet} /> : null));
 
   if (!projet) return <Introuvable />;
@@ -44,7 +45,7 @@ export default function FicheProjet() {
   const choisir = (id: IdOnglet) => setParams(id === "apercu" ? {} : { onglet: id }, { replace: true, preventScrollReset: true });
 
   const categorie = CATEGORIES[projet.categorie];
-  const demo = projet.demos?.[0];
+  const demo = demoPrincipale(projet, telephone);
   const depotPublic = projet.depots.find((d) => d.visibilite === "public" && d.url);
 
   return (

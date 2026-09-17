@@ -25,6 +25,16 @@ export function trouverProjet(slug: string | undefined) {
   return PROJETS.find((p) => p.slug === slug);
 }
 
+/**
+ * La démo à proposer en premier. Sur un téléphone, la version mobile du projet
+ * quand elle existe : ouvrir un site de bureau sur un écran de poche, c'est
+ * montrer le projet sous son plus mauvais jour.
+ */
+export function demoPrincipale(projet: Projet, telephone: boolean) {
+  const demos = projet.demos ?? [];
+  return (telephone && demos.find((d) => d.support === "mobile")) || demos.find((d) => d.support !== "mobile") || demos[0];
+}
+
 /** Ce qu'un visiteur peut ouvrir ou regarder sur un projet. Jamais vide. */
 export function ceQuOnPeutVoir(projet: Projet) {
   return {

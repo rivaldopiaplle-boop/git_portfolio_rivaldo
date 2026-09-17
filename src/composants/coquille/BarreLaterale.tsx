@@ -6,6 +6,7 @@ import {
   Layers,
   PanelLeftClose,
   PanelLeftOpen,
+  Smartphone,
   Workflow,
   X,
 } from "lucide-react";
@@ -29,6 +30,7 @@ const NAVIGATION: { vers: string; nom: string; icone: ComponentType<{ className?
   { vers: "/parcours", nom: "Parcours", icone: GraduationCap },
   { vers: "/competences", nom: "Compétences", icone: Layers },
   { vers: "/cv", nom: "CV", icone: FileText },
+  { vers: "/mobile", nom: "Version téléphone", icone: Smartphone },
 ];
 
 export function BarreLaterale() {

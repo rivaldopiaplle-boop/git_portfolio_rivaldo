@@ -24,6 +24,12 @@ export interface LienDemo {
   libelle: string;
   url: string;
   detail?: string;
+  /**
+   * `mobile` : la version faite pour le téléphone (application, page
+   * d'installation). Sur un téléphone, c'est elle que le bouton « Ouvrir »
+   * propose en premier. Sans valeur : la version web.
+   */
+  support?: "web" | "mobile";
 }
 
 /**
