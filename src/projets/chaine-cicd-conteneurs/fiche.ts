@@ -10,9 +10,9 @@ const fiche: Projet = {
   titre: "Chaîne CI/CD multi-conteneurs",
   accroche: "Quatre étages qui vérifient vraiment : 22 tests, pile montée en conteneurs, charge k6 avec seuils et parcours d'un visiteur rejoué dans Chrome.",
   resume:
-    "Une chaîne GitHub Actions en quatre étages, et l'application qu'elle vérifie : un suivi de tâches complet, front statique servi par nginx, API .NET 10 et base MySQL. On y crée, coche, filtre et supprime, et les compteurs sont calculés par la base. Chaque étage de la chaîne ne part que si le précédent est vert, l'intégration monte la pile entière par docker compose, et les images ne sont publiées que depuis main, étiquetées par le hash du commit. La pile se lance en une commande sur n'importe quel poste : node demarrer.mjs.",
+    "Une chaîne GitHub Actions en quatre étages, et l'application qu'elle vérifie : un suivi de tâches complet, front statique servi par nginx, API .NET 10 et base MySQL. On y crée, coche, filtre et supprime, et les compteurs sont calculés par la base. Chaque étage de la chaîne ne part que si le précédent est vert, l'intégration monte la pile entière par docker compose, et les images ne sont publiées que depuis main, étiquetées par le hash du commit. La pile se lance en une commande sur n'importe quel poste (node demarrer.mjs), et tourne en ligne sur Render, avec une base MySQL chez Aiven.",
   categorie: "devops",
-  statut: "termine",
+  statut: "en-ligne",
   annee: "2026",
   cadre: "Formation déploiement",
   couleur: "#6d5bd0",
@@ -112,6 +112,7 @@ const fiche: Projet = {
       taches: [{ nom: "Pile complète", controles: ["docker compose up --wait", "Schéma appliqué", "k6 : création, coche, filtre, compteurs, suppression", "Chrome : le parcours entier d'un visiteur"] }],
     },
     { genre: "publication", titre: "Images", taches: [{ nom: "Matrice", controles: ["frontend + backend", "GHCR, depuis main", "Étiquette = hash du commit"] }] },
+    { genre: "hebergement", titre: "En ligne", taches: [{ nom: "Render et Aiven", controles: ["Image du commit redéployée", "MySQL géré, en TLS", "Schéma appliqué au démarrage"] }] },
   ],
   extraits: [
     {
@@ -153,7 +154,7 @@ if (refus !== 400) throw new Error(\`Le serveur a répondu \${refus} au lieu de 
     {
       fichier: ".github/workflows/ci.yml",
       langage: "yaml",
-      commentaire: "Les images ne partent que si l'intégration est verte, ne sont poussées que depuis main, et portent le hash du commit.",
+      commentaire: "Les images ne partent que si l'intégration est verte, ne sont poussées que depuis main, et portent le hash du commit. Ce sont elles que Render exécute en production.",
       code: `build-image:
   needs: [integration-test]
   strategy:
@@ -162,19 +163,20 @@ if (refus !== 400) throw new Error(\`Le serveur a répondu \${refus} au lieu de 
   steps:
     - uses: docker/build-push-action@v6
       with:
-        context: ./\${{ matrix.composant }}
+        context: \${{ matrix.composant == 'backend' && '.' || './frontend' }}
+        file: ./\${{ matrix.composant }}/Dockerfile
         push: \${{ github.event_name == 'push' && github.ref_name == 'main' }}
         tags: |
           ghcr.io/\${{ github.repository_owner }}/spm-\${{ matrix.composant }}:\${{ github.sha }}
           ghcr.io/\${{ github.repository_owner }}/spm-\${{ matrix.composant }}:main`,
     },
   ],
-  demos: [],
-  feuilleDeRoute: [
+  demos: [
     {
-      titre: "En ligne sur Render, avec une base MySQL chez Aiven",
-      detail: "Render exécutera exactement les images que la chaîne publie sur GHCR, étiquetées par commit ; la base MySQL gratuite vit chez Aiven. L'application se prépare seule au premier démarrage.",
-      etat: "prevu",
+      libelle: "L'application en ligne",
+      url: "https://cicd-taches-web.onrender.com",
+      detail: "Les images publiées par la chaîne, exécutées par Render, avec une base MySQL chez Aiven. Premier chargement lent : le service gratuit se réveille",
+      support: "web",
     },
   ],
   preuves: [
@@ -183,6 +185,11 @@ if (refus !== 400) throw new Error(\`Le serveur a répondu \${refus} au lieu de 
       url: `${CHAINE}?query=branch%3Amain`,
       detail: "Chaque étage, ses journaux et sa durée, sur GitHub Actions",
       badge: `${CHAINE}/badge.svg?branch=main`,
+    },
+    {
+      libelle: "La sonde de santé en production",
+      url: "https://cicd-taches-api.onrender.com/api/sante",
+      detail: "Elle interroge vraiment la base MySQL à chaque appel",
     },
   ],
   depots: [{ libelle: "Dépôt de la chaîne", url: DEPOT, visibilite: "public" }],
