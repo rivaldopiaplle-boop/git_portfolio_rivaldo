@@ -172,8 +172,8 @@ if (refus !== 400) throw new Error(\`Le serveur a répondu \${refus} au lieu de 
   demos: [],
   feuilleDeRoute: [
     {
-      titre: "En ligne sur Northflank",
-      detail: "Deux services et une base gratuits, sans mise en veille : la pile y tient telle quelle, MySQL compris. L'application se prépare seule au démarrage, et le README donne les réglages.",
+      titre: "En ligne sur Render, avec une base MySQL chez Aiven",
+      detail: "Render exécutera exactement les images que la chaîne publie sur GHCR, étiquetées par commit ; la base MySQL gratuite vit chez Aiven. L'application se prépare seule au premier démarrage.",
       etat: "prevu",
     },
   ],
