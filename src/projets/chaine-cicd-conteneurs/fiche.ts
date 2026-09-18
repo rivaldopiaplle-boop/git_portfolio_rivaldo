@@ -25,7 +25,7 @@ const fiche: Projet = {
       format: "ecran",
     },
   ],
-  stack: ["githubactions", "docker", "dotnet", "mysql", "nginx", "k6", "puppeteer", "node"],
+  stack: ["githubactions", "docker", "dotnet", "mysql", "nginx", "k6", "puppeteer", "node", "render", "aiven"],
   chiffres: [
     { valeur: 4, libelle: "étages, chacun conditionné au précédent" },
     { valeur: 22, libelle: "tests : 16 contre une vraie base, 6 sur les règles du front" },

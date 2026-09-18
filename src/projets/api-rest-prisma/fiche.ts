@@ -1,5 +1,6 @@
 import type { Projet } from "../types";
 import administration from "./administration.webp";
+import assistant from "./assistant.webp";
 
 const DEPOT = "https://github.com/rivaldopiaplle-boop/git_api_rest_rivaldo";
 const CHAINE = `${DEPOT}/actions/workflows/ci.yml`;
@@ -8,9 +9,9 @@ const fiche: Projet = {
   slug: "api-rest-prisma",
   ordre: 35,
   titre: "API REST avec Next.js et Prisma",
-  accroche: "Une API protégée par clé, sur PostgreSQL, avec son interface d'administration et sept tests qui l'interrogent en HTTP.",
+  accroche: "Une API protégée par clé, sur PostgreSQL, avec un assistant de recettes par Mistral AI et dix tests qui l'interrogent en HTTP.",
   resume:
-    "Un projet d'abord construit en Express, avec les données dans un fichier JSON, puis refondu en une seule application Next.js : routes d'API protégées par l'en-tête x-api-key, Prisma sur PostgreSQL, migrations versionnées, jeu de démonstration, et une interface d'administration qui parle directement à Prisma par des actions serveur. Une chaîne d'intégration rejoue les tests contre une vraie base à chaque poussée, et l'ensemble est en ligne sur Vercel, avec une base Neon.",
+    "Un projet d'abord construit en Express, avec les données dans un fichier JSON, puis refondu en une seule application Next.js : routes d'API protégées par l'en-tête x-api-key, Prisma sur PostgreSQL, migrations versionnées, jeu de démonstration, et une interface d'administration qui parle directement à Prisma par des actions serveur. Un assistant de recettes propose un plat à partir d'ingrédients, par Mistral AI. Une chaîne d'intégration rejoue les tests contre une vraie base à chaque poussée, et l'ensemble est en ligne sur Vercel, avec une base Neon.",
   categorie: "devops",
   statut: "en-ligne",
   annee: "2026",
@@ -24,11 +25,17 @@ const fiche: Projet = {
       legende: "L'administration, en français : actions serveur sur Prisma, et l'API qui garde son contrat par clé",
       format: "ecran",
     },
+    {
+      src: assistant,
+      alt: "Assistant de recettes : un plat proposé par Mistral AI, ajouté en tête de la liste",
+      legende: "L'assistant de recettes en production : des ingrédients, un plat proposé par Mistral AI, validé puis ajouté",
+      format: "ecran",
+    },
   ],
-  stack: ["nextjs", "prisma", "postgresql", "node", "githubactions", "docker"],
+  stack: ["nextjs", "prisma", "postgresql", "node", "githubactions", "docker", "vercel", "neon", "mistral"],
   chiffres: [
-    { valeur: 7, libelle: "routes, de la sonde de santé au CRUD complet" },
-    { valeur: 7, libelle: "tests qui interrogent l'API en HTTP" },
+    { valeur: 8, libelle: "routes, de la sonde de santé à l'assistant de recettes" },
+    { valeur: 10, libelle: "tests qui interrogent l'API en HTTP" },
     { valeur: 1, libelle: "commande pour tout lancer en local" },
   ],
   probleme:
@@ -44,6 +51,16 @@ const fiche: Projet = {
         "Client Prisma en singleton : pas de nouvelle connexion à chaque rechargement",
         "Routes /api/foods en CRUD complet, sonde /api/health qui interroge vraiment la base",
         "Refonte assumée : d'Express et JSON à Next.js et Prisma, l'historique du dépôt garde la première version",
+      ],
+    },
+    {
+      titre: "Un assistant de recettes, par Mistral AI",
+      texte: "Des ingrédients en entrée, un plat proposé en sortie. Le modèle n'est pas cru sur parole.",
+      points: [
+        "POST /api/foods/suggestion, protégé par la clé comme le reste : personne ne consomme le quota à la place du propriétaire",
+        "La réponse du modèle, demandée en JSON, passe par la même validation qu'une saisie à la main avant d'entrer en base",
+        "Mistral absent ou muet : la route répond 503, le reste de l'API fonctionne normalement",
+        "Testé sur sa clé et sa validation à chaque poussée ; l'appel réel ne part qu'à la demande, pour ne pas épuiser le quota gratuit",
       ],
     },
     {
@@ -92,7 +109,7 @@ const fiche: Projet = {
     {
       genre: "verification",
       titre: "API réelle",
-      taches: [{ nom: "PostgreSQL 17 en service", controles: ["migrate deploy", "db seed", "application démarrée", "7 tests en HTTP"] }],
+      taches: [{ nom: "PostgreSQL 17 en service", controles: ["migrate deploy", "db seed", "application démarrée", "10 tests en HTTP"] }],
     },
   ],
   extraits: [

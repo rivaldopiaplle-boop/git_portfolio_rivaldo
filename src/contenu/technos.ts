@@ -79,6 +79,7 @@ const definitions = {
   vercel: { nom: "Vercel", icone: siVercel },
   supabase: { nom: "Supabase", icone: siSupabase },
   neon: { nom: "Neon", icone: siNeon },
+  aiven: { nom: "Aiven" },
   linux: { nom: "Linux", icone: siLinux },
   git: { nom: "Git", icone: siGit },
   github: { nom: "GitHub", icone: siGithub },
