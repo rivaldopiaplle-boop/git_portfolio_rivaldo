@@ -21,7 +21,7 @@ const fiche: Projet = {
     {
       src: administration,
       alt: "Interface d'administration de l'API",
-      legende: "L'administration : actions serveur sur Prisma, et l'API qui garde son contrat par clé",
+      legende: "L'administration, en français : actions serveur sur Prisma, et l'API qui garde son contrat par clé",
       format: "ecran",
     },
   ],

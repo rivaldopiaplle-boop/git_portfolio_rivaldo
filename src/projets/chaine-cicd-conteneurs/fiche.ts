@@ -8,9 +8,9 @@ const fiche: Projet = {
   slug: "chaine-cicd-conteneurs",
   ordre: 30,
   titre: "Chaîne CI/CD multi-conteneurs",
-  accroche: "Quatre étages qui vérifient vraiment : tests du front, tests .NET contre MySQL, pile montée en conteneurs, charge k6 et parcours Chrome.",
+  accroche: "Quatre étages qui vérifient vraiment : 22 tests, pile montée en conteneurs, charge k6 avec seuils et parcours d'un visiteur rejoué dans Chrome.",
   resume:
-    "Une chaîne GitHub Actions en quatre étages, et l'application qu'elle vérifie : un front statique servi par nginx, une API .NET 10 et une base MySQL. L'application reste volontairement petite, car le sujet du projet est la chaîne. Chaque étage ne part que si le précédent est vert, l'intégration monte la pile entière par docker compose, et les images ne sont publiées que depuis main, étiquetées par le hash du commit.",
+    "Une chaîne GitHub Actions en quatre étages, et l'application qu'elle vérifie : un suivi de tâches complet, front statique servi par nginx, API .NET 10 et base MySQL. On y crée, coche, filtre et supprime, et les compteurs sont calculés par la base. Chaque étage de la chaîne ne part que si le précédent est vert, l'intégration monte la pile entière par docker compose, et les images ne sont publiées que depuis main, étiquetées par le hash du commit. La pile se lance en une commande sur n'importe quel poste : node demarrer.mjs.",
   categorie: "devops",
   statut: "termine",
   annee: "2026",
@@ -28,12 +28,12 @@ const fiche: Projet = {
   stack: ["githubactions", "docker", "dotnet", "mysql", "nginx", "k6", "puppeteer", "node"],
   chiffres: [
     { valeur: 4, libelle: "étages, chacun conditionné au précédent" },
-    { valeur: 3, libelle: "conteneurs montés à chaque intégration" },
+    { valeur: 22, libelle: "tests : 16 contre une vraie base, 6 sur les règles du front" },
     { valeur: 10, libelle: "utilisateurs simultanés sous k6" },
-    { valeur: 2, libelle: "images publiées par commit" },
+    { valeur: 1, libelle: "commande pour monter la pile entière" },
   ],
   probleme:
-    "Une chaîne d'intégration peut passer au vert sans rien vérifier : un test qui affiche « rien à lancer » a la même couleur qu'un test qui protège. C'était le cas ici, et c'est le piège que ce projet corrige.",
+    "Une chaîne d'intégration peut passer au vert sans rien vérifier : un test qui affiche « rien à lancer » a la même couleur qu'un test qui protège. Le squelette de départ était dans ce cas, et tout le travail a consisté à donner à chaque étage quelque chose de réel à vérifier.",
   solution:
     "Donner à chaque étage un travail réel : des règles testées côté front, des tests d'API contre une vraie base MySQL, la pile entière montée en conteneurs puis mise sous charge avec des seuils, et le parcours d'un visiteur rejoué dans un vrai Chrome.",
   sections: [
@@ -48,11 +48,23 @@ const fiche: Projet = {
       ],
     },
     {
+      titre: "L'application, assez complète pour être vérifiable",
+      texte: "Une liste où tout reste à faire ne prouve rien : il faut des écritures, des lectures filtrées et des suppressions.",
+      points: [
+        "Créer, cocher, décocher, supprimer une tâche",
+        "Filtrer entre « toutes », « à faire » et « faites », depuis l'adresse de l'API",
+        "Compteurs calculés par la base, pas par la page : trois nombres ne demandent pas de tout télécharger",
+        "PATCH ne change que ce qui est envoyé : cocher une tâche n'oblige pas à renvoyer son titre",
+        "Un filtre inconnu montre tout, plutôt que de répondre par une erreur",
+      ],
+    },
+    {
       titre: "Ce que la chaîne refuse de laisser passer",
       texte: "Les seuils font échouer la chaîne d'eux-mêmes : sans seuil, un test de charge affiche des chiffres que personne ne lit.",
       points: [
         "Moins de 1 % de requêtes en échec, et 95 % des réponses sous 500 ms",
         "Un titre vide refusé par le serveur, formulaire contourné : le test l'appelle directement en HTTP",
+        "Le parcours complet d'un visiteur dans Chrome : créer, cocher, voir la tâche quitter le filtre « À faire », la supprimer",
         "Une sonde de santé qui interroge vraiment la base, par un SELECT 1",
         "Jamais d'étiquette latest : le hash du commit nomme exactement l'image qui tourne",
       ],
@@ -69,7 +81,7 @@ const fiche: Projet = {
   lecons: [
     {
       titre: "Un test vide est pire qu'aucun test",
-      texte: "Il donne la couleur verte de la confiance sans le travail de la vérification. Les quatre étages passaient au vert sur des scripts qui affichaient « placeholder: nothing to run ».",
+      texte: "Il donne la couleur verte de la confiance sans le travail de la vérification. Les scripts du squelette de départ affichaient « placeholder: nothing to run » : la chaîne était verte, et ne protégeait rien.",
     },
     {
       titre: "Un seuil transforme une mesure en garde-fou",
@@ -78,6 +90,10 @@ const fiche: Projet = {
     {
       titre: "Attendre une base, ce n'est pas attendre son port",
       texte: "MySQL répond sur son socket local bien avant d'accepter le réseau. La sonde interroge donc 127.0.0.1, sans quoi la migration part trop tôt.",
+    },
+    {
+      titre: "Une règle de style trop large déforme un composant",
+      texte: "La règle des champs de saisie s'appliquait aussi aux cases à cocher, étirées sur 220 pixels. Le parcours navigateur l'a rendue visible avant un visiteur.",
     },
   ],
   pipeline: [
@@ -93,7 +109,7 @@ const fiche: Projet = {
     {
       genre: "verification",
       titre: "Intégration",
-      taches: [{ nom: "Pile complète", controles: ["docker compose up --wait", "Schéma appliqué", "k6 : 10 utilisateurs, seuils", "Chrome : parcours complet"] }],
+      taches: [{ nom: "Pile complète", controles: ["docker compose up --wait", "Schéma appliqué", "k6 : création, coche, filtre, compteurs, suppression", "Chrome : le parcours entier d'un visiteur"] }],
     },
     { genre: "publication", titre: "Images", taches: [{ nom: "Matrice", controles: ["frontend + backend", "GHCR, depuis main", "Étiquette = hash du commit"] }] },
   ],
@@ -153,6 +169,7 @@ if (refus !== 400) throw new Error(\`Le serveur a répondu \${refus} au lieu de 
           ghcr.io/\${{ github.repository_owner }}/spm-\${{ matrix.composant }}:main`,
     },
   ],
+  demos: [],
   preuves: [
     {
       libelle: "Les exécutions de la chaîne",
