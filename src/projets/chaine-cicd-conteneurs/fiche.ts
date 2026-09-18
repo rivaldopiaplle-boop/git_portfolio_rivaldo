@@ -170,6 +170,13 @@ if (refus !== 400) throw new Error(\`Le serveur a répondu \${refus} au lieu de 
     },
   ],
   demos: [],
+  feuilleDeRoute: [
+    {
+      titre: "En ligne sur Northflank",
+      detail: "Deux services et une base gratuits, sans mise en veille : la pile y tient telle quelle, MySQL compris. L'application se prépare seule au démarrage, et le README donne les réglages.",
+      etat: "prevu",
+    },
+  ],
   preuves: [
     {
       libelle: "Les exécutions de la chaîne",
