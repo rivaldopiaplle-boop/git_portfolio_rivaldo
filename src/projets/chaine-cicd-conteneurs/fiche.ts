@@ -8,9 +8,9 @@ const fiche: Projet = {
   slug: "chaine-cicd-conteneurs",
   ordre: 30,
   titre: "Chaîne CI/CD multi-conteneurs",
-  accroche: "Quatre étages qui vérifient vraiment : 22 tests, pile montée en conteneurs, charge k6 avec seuils et parcours d'un visiteur rejoué dans Chrome.",
+  accroche: "Cinq étages, du git push à la production : 22 tests, pile montée en conteneurs, charge k6 avec seuils, parcours rejoué dans Chrome, puis mise en ligne de l'image vérifiée.",
   resume:
-    "Une chaîne GitHub Actions en quatre étages, et l'application qu'elle vérifie : un suivi de tâches complet, front statique servi par nginx, API .NET 10 et base MySQL. On y crée, coche, filtre et supprime, et les compteurs sont calculés par la base. Chaque étage de la chaîne ne part que si le précédent est vert, l'intégration monte la pile entière par docker compose, et les images ne sont publiées que depuis main, étiquetées par le hash du commit. La pile se lance en une commande sur n'importe quel poste (node demarrer.mjs), et tourne en ligne sur Render, avec une base MySQL chez Aiven.",
+    "Une chaîne GitHub Actions en cinq étages, et l'application qu'elle vérifie : un suivi de tâches complet, front statique servi par nginx, API .NET 10 et base MySQL. On y crée, coche, filtre et supprime, et les compteurs sont calculés par la base. Chaque étage de la chaîne ne part que si le précédent est vert, l'intégration monte la pile entière par docker compose, et les images ne sont publiées que depuis main, étiquetées par le hash du commit. La pile se lance en une commande sur n'importe quel poste (node demarrer.mjs), et tourne en ligne sur Render, avec une base MySQL chez Aiven.",
   categorie: "devops",
   statut: "en-ligne",
   annee: "2026",
@@ -27,7 +27,7 @@ const fiche: Projet = {
   ],
   stack: ["githubactions", "docker", "dotnet", "mysql", "nginx", "k6", "puppeteer", "node", "render", "aiven"],
   chiffres: [
-    { valeur: 4, libelle: "étages, chacun conditionné au précédent" },
+    { valeur: 5, libelle: "étages, du git push à la production" },
     { valeur: 22, libelle: "tests : 16 contre une vraie base, 6 sur les règles du front" },
     { valeur: 10, libelle: "utilisateurs simultanés sous k6" },
     { valeur: 1, libelle: "commande pour monter la pile entière" },
@@ -38,12 +38,13 @@ const fiche: Projet = {
     "Donner à chaque étage un travail réel : des règles testées côté front, des tests d'API contre une vraie base MySQL, la pile entière montée en conteneurs puis mise sous charge avec des seuils, et le parcours d'un visiteur rejoué dans un vrai Chrome.",
   sections: [
     {
-      titre: "Quatre étages, chacun conditionné au précédent",
+      titre: "Cinq étages, chacun conditionné au précédent",
       points: [
         "Front : les règles d'affichage sous node --test",
         "Back : tests des règles, puis tests d'API contre un service MySQL doté d'une sonde de santé",
         "Intégration : pile montée par docker compose, schéma appliqué, charge k6 avec seuils, parcours Chrome",
         "Images front et back construites en matrice, poussées sur GHCR uniquement depuis main",
+        "Mise en ligne : Render tire l'image exacte du commit par ses crochets de déploiement",
         "Mot de passe de la base injecté par les secrets GitHub, jamais écrit dans le dépôt",
       ],
     },
