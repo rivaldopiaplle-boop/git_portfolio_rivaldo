@@ -1,4 +1,5 @@
 import type { Projet } from "../types";
+import animationBras from "./animation-bras.gif";
 import angleDistance from "./angle-selon-distance.png";
 import assemblage from "./assemblage.jpg";
 import chariot from "./chariot-lineaire.jpg";
@@ -7,6 +8,11 @@ import mediator from "./mediator-imprime.jpg";
 import simulation from "./simulation-cinematique.png";
 import supportMoteur from "./support-moteur.jpg";
 import tendeur from "./tendeur-courroie.jpg";
+import trajectoireOutil from "./trajectoire-outil.png";
+import vitesses from "./vitesses-accelerations.png";
+
+const DEPOT = "https://github.com/rivaldopiaplle-boop/git_robot-guitariste";
+const CHAINE = `${DEPOT}/actions/workflows/ci.yml`;
 
 const fiche: Projet = {
   slug: "robot-guitariste",
@@ -24,6 +30,26 @@ const fiche: Projet = {
   puce: "STM32F411",
   couverture: { src: assemblage, alt: "Assemblage mécanique du robot guitariste", format: "photo" },
   galerie: [
+    {
+      src: animationBras,
+      alt: "Animation de la cinématique du bras, avec les courbes de theta et de d",
+      legende:
+        "La simulation rejouée : le bras suit trois mouvements, et les deux courbes de droite montrent l'angle et la translation à chaque instant",
+      format: "schema",
+    },
+    {
+      src: vitesses,
+      alt: "Position, vitesse et accélération des deux axes",
+      legende:
+        "Ce que ces courbes servent à décider : le mouvement adouci demande la moitié de l'accélération de l'aller-retour entretenu, pour une vitesse presque égale",
+      format: "schema",
+    },
+    {
+      src: trajectoireOutil,
+      alt: "Chemin parcouru par l'outil dans le plan de la corde",
+      legende: "Le chemin de l'outil dans le plan de la corde, pour les trois mouvements",
+      format: "schema",
+    },
     { src: assemblage, alt: "Assemblage du robot", legende: "L'assemblage : translation sur les frettes et bras de médiator", format: "photo" },
     { src: chariot, alt: "Chariot linéaire", legende: "Chariot linéaire : le déplacement le long du manche", format: "photo" },
     { src: supportMoteur, alt: "Support du moteur pas-à-pas", legende: "Support du moteur pas-à-pas", format: "photo" },
@@ -80,7 +106,30 @@ def note_freq(note, octave):
     return 440.0 * (2 ** ((n - A4_INDEX) / 12))`,
     },
   ],
-  depots: [{ libelle: "Micrologiciel, simulation et interface", url: "https://github.com/rivaldopiaplle-boop/git_robot-guitariste", visibilite: "public" }],
+  preuves: [
+    {
+      libelle: "Le micrologiciel compile hors de son atelier",
+      url: `${CHAINE}?query=branch%3Amain`,
+      detail:
+        "À chaque poussée de code, une machine vierge installe le compilateur ARM, construit le micrologiciel STM32 avec les options du poste de travail, et affiche la place occupée en mémoire. Un projet embarqué qui ne compile que dans l'atelier de son auteur n'est pas reprenable",
+      badge: `${CHAINE}/badge.svg?branch=main`,
+    },
+    {
+      libelle: "La simulation rejouée par la chaîne",
+      url: `${CHAINE}?query=branch%3Amain`,
+      detail:
+        "Le même passage rejoue la simulation cinématique et dépose ses images en résultat : elles se téléchargent sans rien installer",
+    },
+  ],
+  depots: [
+    {
+      libelle: "Micrologiciel, simulation et interface",
+      url: DEPOT,
+      visibilite: "public",
+      detail:
+        "Le micrologiciel STM32 avec sa chaîne de compilation, le modèle cinématique et les scripts qui produisent les images, les pièces SolidWorks et les documents de l'équipe",
+    },
+  ],
 };
 
 export default fiche;
