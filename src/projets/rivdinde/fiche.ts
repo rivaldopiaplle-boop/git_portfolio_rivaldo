@@ -127,16 +127,18 @@ const fiche: Projet = {
   ],
   depots: [
     {
-      libelle: "API, front web, tests et intégration",
-      url: `${GH}/git_e_commerce_livraison`,
+      libelle: "Code publié",
+      url: `${GH}/git_rivdinde`,
       visibilite: "public",
-      detail: "Dépôt public : une version antérieure et allégée, ouverte à la lecture. Le projet complet, celui qui tourne en ligne, reste privé",
+      detail:
+        "Une version antérieure, volontairement allégée, qui n'évolue plus : vitrine, catalogue filtré et panier, avec son API Django. Elle existe pour montrer du code sans livrer le projet entier",
     },
     {
-      libelle: "Complet : mobile, conception et version déployée",
+      libelle: "Projet complet, celui qui est en ligne",
       url: `${GH}/git_e_commerce_livraison_v2`,
       visibilite: "prive",
-      detail: "Dépôt privé : le projet complet et à jour, celui qui est déployé. Accès sur demande, le temps d'un entretien",
+      detail:
+        "Cinq métiers et leurs écrans, application mobile, paiement partagé entre les vendeurs, tournées de livraison, mise en ligne automatisée. Privé pour que le projet ne soit pas récupérable ; l'accès en lecture peut être ouvert le temps d'un entretien",
     },
   ],
 };
