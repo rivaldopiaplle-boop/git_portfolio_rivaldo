@@ -43,7 +43,7 @@ export const FORMATION: ElementParcours[] = [
 export const EXPERIENCES: ElementParcours[] = [
   {
     periode: "2026",
-    titre: "Parcours DevOps : deux plateformes complètes",
+    titre: "Deux plateformes complètes, du serveur à la mise en ligne",
     lieu: "Formation et projets personnels",
     details: [
       "Banque App : NestJS, React, Expo, chaîne d'intégration à cinq tâches, Render et Supabase",

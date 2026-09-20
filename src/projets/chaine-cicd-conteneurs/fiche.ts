@@ -172,6 +172,31 @@ if (refus !== 400) throw new Error(\`Le serveur a répondu \${refus} au lieu de 
           ghcr.io/\${{ github.repository_owner }}/spm-\${{ matrix.composant }}:main`,
     },
   ],
+  film: {
+    src: "/videos/chaine-cicd.mp4",
+    affiche: "/videos/chaine-cicd.webp",
+    duree: "2 min 20, commenté à la voix",
+    legende:
+      "L'application, puis la chaîne qui la met en ligne : la sonde de santé en JSON, la liste des exécutions, et une exécution ouverte où l'on voit les six étages s'enchaîner jusqu'au déploiement de l'image du commit vérifié.",
+    chapitres: [
+      { instant: 0, titre: "Une chaîne de mise en ligne, de bout en bout" },
+      { instant: 6, titre: "L'application est simple, exprès" },
+      { instant: 14, titre: "L'interface dit si le serveur répond" },
+      { instant: 22, titre: "Une vraie API .NET, une vraie base MySQL" },
+      { instant: 31, titre: "Comptée, filtrée, sans recharger la page" },
+      { instant: 37, titre: "La sonde de santé, en JSON" },
+      { instant: 45, titre: "Surveillée chaque jour" },
+      { instant: 56, titre: "Une exécution par poussée de code" },
+      { instant: 65, titre: "Six étages, dans un ordre qui compte" },
+      { instant: 72, titre: "D'abord les essais, séparément" },
+      { instant: 79, titre: "Puis la pile entière, montée et parcourue" },
+      { instant: 88, titre: "Une image par commit, publiée" },
+      { instant: 96, titre: "Déployer l'image exacte du commit vérifié" },
+      { instant: 106, titre: "Pourquoi ce détail compte" },
+      { instant: 119, titre: "Le dépôt, ouvert et documenté" },
+      { instant: 127, titre: "cicd-taches-web.onrender.com" },
+    ],
+  },
   demos: [
     {
       libelle: "L'application en ligne",

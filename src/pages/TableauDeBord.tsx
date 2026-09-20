@@ -43,7 +43,7 @@ export default function TableauDeBord() {
             {PROFIL.prenom} {PROFIL.nom}
           </>
         }
-        description={`Élève ingénieur en ${PROFIL.niveau} à l'${PROFIL.ecole}, orientation DevOps : conception d'applications complètes et de la chaîne qui les teste, les empaquette et les met en ligne. La barre latérale donne accès à l'ensemble du portfolio ; cette page en présente l'essentiel.`}
+        description={`Élève ingénieur en ${PROFIL.niveau} à l'${PROFIL.ecole}, développement full-stack et mise en ligne automatisée : les applications elles-mêmes, du serveur à l'interface, et la chaîne qui les teste, les empaquette et les déploie. La barre latérale donne accès à l'ensemble du portfolio ; cette page en présente l'essentiel.`}
         actions={
           <>
             <ActionEnTete href={PROFIL.cv} telecharger>
