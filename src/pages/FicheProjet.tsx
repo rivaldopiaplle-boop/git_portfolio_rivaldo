@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Check, ChevronRight, Code, Copy, Globe, Images, LayoutGrid, Lightbulb, Route, Users, Workflow } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ChevronRight, Code, Copy, Globe, Images, LayoutGrid, Lightbulb, MonitorPlay, Route, Users, Workflow } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router";
@@ -11,6 +11,7 @@ import { TitrePanneau } from "../composants/coquille/PanneauDroit";
 import { LigneDepot, LignePreuve } from "../composants/Depots";
 import { ActionEnTete, EnTetePage, ZonePage } from "../composants/EnTetePage";
 import { IconeTechno, PastilleTechno } from "../composants/IconeTechno";
+import { Lecteur } from "../composants/Lecteur";
 import { Onglets, type Onglet } from "../composants/Onglets";
 import { Pipeline } from "../composants/Pipeline";
 import { CouvertureProjet, ImageCadree } from "../composants/VisuelProjet";
@@ -21,7 +22,7 @@ import { CATEGORIES, STATUTS } from "../projets/categories";
 import type { Media, Projet } from "../projets/types";
 import Introuvable from "./Introuvable";
 
-type IdOnglet = "apercu" | "galerie" | "chaine" | "feuille" | "code" | "lecons";
+type IdOnglet = "apercu" | "film" | "galerie" | "chaine" | "feuille" | "code" | "lecons";
 
 export default function FicheProjet() {
   const { slug } = useParams();
@@ -35,6 +36,7 @@ export default function FicheProjet() {
   if (!projet) return <Introuvable />;
 
   const onglets: Onglet<IdOnglet>[] = [{ id: "apercu", nom: "Vue d'ensemble", icone: LayoutGrid }];
+  if (projet.film) onglets.push({ id: "film", nom: "Démonstration", icone: MonitorPlay });
   if (projet.galerie?.length) onglets.push({ id: "galerie", nom: "Galerie", icone: Images, compte: projet.galerie.length });
   if (projet.pipeline) onglets.push({ id: "chaine", nom: "Chaîne CI/CD", icone: Workflow });
   if (projet.feuilleDeRoute) onglets.push({ id: "feuille", nom: "Feuille de route", icone: Route, compte: projet.feuilleDeRoute.length });
@@ -109,6 +111,7 @@ export default function FicheProjet() {
         <AnimatePresence mode="wait">
           <motion.div key={actif} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.22 }}>
             {actif === "apercu" && <OngletApercu projet={projet} ouvrirImage={setImage} voirGalerie={() => choisir("galerie")} />}
+            {actif === "film" && projet.film && <Lecteur film={projet.film} />}
             {actif === "galerie" && projet.galerie && <OngletGalerie medias={projet.galerie} couleur={projet.couleur} ouvrir={setImage} />}
             {actif === "chaine" && projet.pipeline && (
               <div className="sombre rounded-2xl bg-[#0e1119] p-4 sm:p-5">

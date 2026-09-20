@@ -57,6 +57,22 @@ export interface Preuve {
   badge?: string;
 }
 
+/**
+ * Un film de démonstration, commenté à la voix. Les fichiers sont servis depuis
+ * `public/videos/` : une vidéo n'a rien à faire dans le paquet JavaScript, et
+ * `preload="none"` fait qu'elle ne se télécharge qu'au clic du visiteur.
+ */
+export interface Film {
+  /** Par exemple `/videos/donvie.mp4`. */
+  src: string;
+  /** L'image d'attente, `/videos/donvie.webp`. */
+  affiche: string;
+  duree: string;
+  legende: string;
+  /** Les chapitres : le visiteur saute à ce qui l'intéresse. */
+  chapitres?: { instant: number; titre: string }[];
+}
+
 export interface SectionEtude {
   titre: string;
   texte?: string;
@@ -138,5 +154,6 @@ export interface Projet {
   feuilleDeRoute?: EtapeFeuilleDeRoute[];
   extraits?: Extrait[];
   demos?: LienDemo[];
+  film?: Film;
   preuves?: Preuve[];
 }

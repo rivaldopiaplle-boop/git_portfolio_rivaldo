@@ -10,9 +10,13 @@ import appCarte from "./app-carte.webp";
 import appFiche from "./app-fiche-lieu.webp";
 import appRdv from "./app-rendez-vous.webp";
 
-const DEPOT = "https://github.com/rivaldopiaplle-boop/donvie";
-const CHAINE = `${DEPOT}/actions/workflows/ci.yml`;
-const PRODUCTION = `${DEPOT}/actions/workflows/production.yml`;
+// Le dépôt complet, celui qui est déployé, est privé : le projet est trop avancé
+// pour être récupérable en entier. Le dépôt public porte une version antérieure,
+// figée, qui montre du code sans donner l'application.
+const DEPOT_PRIVE = "https://github.com/rivaldopiaplle-boop/donvie";
+const DEPOT_PUBLIC = "https://github.com/rivaldopiaplle-boop/git_donvie";
+const CHAINE = `${DEPOT_PUBLIC}/actions/workflows/ci.yml`;
+const VEILLE = "https://github.com/rivaldopiaplle-boop/git_portfolio_rivaldo/actions/workflows/veille-bases.yml";
 
 const fiche: Projet = {
   slug: "donvie",
@@ -101,22 +105,57 @@ const fiche: Projet = {
     {
       libelle: "La chaîne de construction",
       url: `${CHAINE}?query=branch%3Amain`,
-      detail: "Imports, types, tests et construction, à chaque poussée",
+      detail: "Types et construction à chaque poussée, sur le dépôt public",
       badge: `${CHAINE}/badge.svg?branch=main`,
     },
     {
-      libelle: "L'essai de la production",
-      url: PRODUCTION,
-      detail: "Après chaque déploiement, l'API parcourue de bout en bout sur l'adresse publique",
-      badge: `${PRODUCTION}/badge.svg`,
-    },
-    {
-      libelle: "Les documents de conception de l'équipe",
-      url: `${DEPOT}/tree/main/docs/conception-equipe`,
-      detail: "Croquis, maquette filaire, persona, source Figma",
+      libelle: "La veille quotidienne de la production",
+      url: VEILLE,
+      detail: "Chaque matin : un compte de découverte est créé puis supprimé sur l'adresse publique, pour vérifier que l'API et la base répondent",
+      badge: `${VEILLE}/badge.svg`,
     },
   ],
-  depots: [{ libelle: "Application, API et conception", url: DEPOT, visibilite: "public" }],
+  depots: [
+    {
+      libelle: "Code publié",
+      url: DEPOT_PUBLIC,
+      visibilite: "public",
+      detail:
+        "Une version antérieure, volontairement allégée, qui n'évolue plus : interface React et TypeScript, treize écrans, données simulées. Elle existe pour montrer du code sans livrer le projet entier",
+    },
+    {
+      libelle: "Projet complet, celui qui est en ligne",
+      url: DEPOT_PRIVE,
+      visibilite: "prive",
+      detail:
+        "API, base PostgreSQL, comptes, collectes réelles de l'EFS, itinéraires, essais de bout en bout. Privé pour que le projet ne soit pas récupérable ; l'accès en lecture peut être ouvert le temps d'un entretien",
+    },
+  ],
+  film: {
+    src: "/videos/donvie.mp4",
+    affiche: "/videos/donvie.webp",
+    duree: "4 min 25, commenté à la voix",
+    legende:
+      "Le parcours complet de l'application, filmé sur l'adresse publique : la carte des collectes de l'EFS, la recherche d'une ville, les filtres, le détail d'un lieu avec son temps de trajet, le compte de découverte, le calcul du prochain don, les alertes, les rendez-vous, le parrainage et l'assistant. Rien n'est simulé : ce sont les vraies données du jour de l'enregistrement.",
+    chapitres: [
+      { instant: 0, titre: "DonVie : où donner, et quand" },
+      { instant: 17, titre: "Les vraies collectes de l'EFS" },
+      { instant: 28, titre: "Chercher une ville ou une adresse" },
+      { instant: 43, titre: "Filtrer : don, période, rayon" },
+      { instant: 54, titre: "Horaires, places, temps de trajet" },
+      { instant: 74, titre: "Réserver chez l'EFS, garder ici" },
+      { instant: 93, titre: "Essayer avec des données d'exemple" },
+      { instant: 105, titre: "Votre prochain don, calculé" },
+      { instant: 126, titre: "Les collectes qui manquent de monde" },
+      { instant: 143, titre: "Agenda, rappel, itinéraire" },
+      { instant: 158, titre: "Vos dons, vos données, votre droit" },
+      { instant: 173, titre: "Parrainer, avec un QR code" },
+      { instant: 187, titre: "HemoBot répond à vos questions" },
+      { instant: 200, titre: "React, API, PostgreSQL" },
+      { instant: 222, titre: "Vérifiée à chaque mise en ligne" },
+      { instant: 251, titre: "donvie-rivaldo.vercel.app" },
+    ],
+  },
 };
 
 export default fiche;
