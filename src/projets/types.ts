@@ -40,6 +40,8 @@ export interface Depot {
   libelle: string;
   url: string | null;
   visibilite: "public" | "prive";
+  /** Ce qu'est ce dépôt, si ce n'est pas évident : version figée, projet complet, code du cours. */
+  detail?: string;
 }
 
 /**

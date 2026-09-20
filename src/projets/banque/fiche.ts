@@ -150,8 +150,18 @@ const fiche: Projet = {
       ]
     : [],
   depots: [
-    { libelle: "Front web et une partie du serveur", url: `${GH}/git_banque-app`, visibilite: "public" },
-    { libelle: "Projet complet : serveur, mobile, simulateur, documents", url: `${GH}/git_banque-app_v2`, visibilite: "prive" },
+    {
+      libelle: "Front web et une partie du serveur",
+      url: `${GH}/git_banque-app`,
+      visibilite: "public",
+      detail: "Dépôt public : une version antérieure et allégée, ouverte à la lecture. Le projet complet, celui qui tourne en ligne, reste privé",
+    },
+    {
+      libelle: "Projet complet : serveur, mobile, simulateur, documents",
+      url: `${GH}/git_banque-app_v2`,
+      visibilite: "prive",
+      detail: "Dépôt privé : le projet complet et à jour, celui qui est déployé. Accès sur demande, le temps d'un entretien",
+    },
   ],
 };
 

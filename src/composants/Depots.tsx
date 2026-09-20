@@ -60,7 +60,7 @@ export function LigneDepot({ depot }: { depot: Depot }) {
         </span>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium text-encre">{depot.libelle}</p>
-          <p className="mt-0.5 text-xs text-encre-3">Dépôt public sur GitHub</p>
+          <p className="mt-0.5 text-xs text-encre-3">{depot.detail ?? "Dépôt public sur GitHub"}</p>
           <p className="mt-1.5 truncate font-mono text-[11px] text-encre-2">{sansProtocole(url)}</p>
           <div className="mt-2.5 flex flex-wrap gap-1.5">
             <a
@@ -92,7 +92,7 @@ export function LigneDepot({ depot }: { depot: Depot }) {
         </span>
         <div className="min-w-0">
           <p className="text-sm font-medium text-encre">{depot.libelle}</p>
-          <p className="mt-0.5 text-xs text-encre-3">Dépôt privé : il contient du code fourni par le cours. Les extraits de la fiche montrent le travail</p>
+          <p className="mt-0.5 text-xs text-encre-3">{depot.detail ?? "Dépôt privé. Les extraits de la fiche montrent le travail"}</p>
           <button
             type="button"
             onClick={() => ouvrirContact(true)}

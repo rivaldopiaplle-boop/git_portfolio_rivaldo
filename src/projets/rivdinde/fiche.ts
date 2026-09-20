@@ -126,8 +126,18 @@ const fiche: Projet = {
     { libelle: "Application mobile", url: `${SITE}/mobile/`, detail: "À ouvrir sur un téléphone", support: "mobile" },
   ],
   depots: [
-    { libelle: "API, front web, tests et intégration", url: `${GH}/git_e_commerce_livraison`, visibilite: "public" },
-    { libelle: "Complet : mobile et dossier de conception", url: `${GH}/git_e_commerce_livraison_v2`, visibilite: "prive" },
+    {
+      libelle: "API, front web, tests et intégration",
+      url: `${GH}/git_e_commerce_livraison`,
+      visibilite: "public",
+      detail: "Dépôt public : une version antérieure et allégée, ouverte à la lecture. Le projet complet, celui qui tourne en ligne, reste privé",
+    },
+    {
+      libelle: "Complet : mobile, conception et version déployée",
+      url: `${GH}/git_e_commerce_livraison_v2`,
+      visibilite: "prive",
+      detail: "Dépôt privé : le projet complet et à jour, celui qui est déployé. Accès sur demande, le temps d'un entretien",
+    },
   ],
 };
 

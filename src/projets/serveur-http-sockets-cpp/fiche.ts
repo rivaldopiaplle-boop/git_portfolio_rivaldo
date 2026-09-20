@@ -109,12 +109,13 @@ crs::close(listen_socket);`,
       fichier: "tests/routes.sh",
       langage: "bash",
       commentaire: "La clé et la réponse d'exemple de la RFC 6455 : si le serveur calcule mal Sec-WebSocket-Accept, aucun navigateur n'ouvrira la connexion.",
-      code: `entetes=$(curl -s -m 3 -D - -o /dev/null   -H 'Connection: Upgrade' -H 'Upgrade: websocket' -H 'Sec-WebSocket-Version: 13'   -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' "$BASE/" | tr -d '')
+      code: `entetes=$(curl -s -m 3 -D - -o /dev/null   -H 'Connection: Upgrade' -H 'Upgrade: websocket' -H 'Sec-WebSocket-Version: 13'   -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' "$BASE/" | tr -d '
+')
 verifier "la poignée de main répond 101"   "$(echo "$entetes" | head -1 | cut -d' ' -f2)" "101"
 verifier "Sec-WebSocket-Accept est conforme à la RFC 6455"   "$(echo "$entetes" | grep -i '^Sec-WebSocket-Accept:' | cut -d' ' -f2)" "s3pPLMBiTxaQ9kYGzzhZRbK+xOo="`,
     },
   ],
-  depots: [{ libelle: "Les six paliers", url: "https://github.com/rivaldopiaplle-boop/git_serveur-http-sockets", visibilite: "prive" }],
+  depots: [{ libelle: "Les six paliers", url: "https://github.com/rivaldopiaplle-boop/git_serveur-http-sockets", visibilite: "prive", detail: "Dépôt privé : il mêle du code fourni par le cours. Les extraits de la fiche montrent le travail personnel" }],
 };
 
 export default fiche;

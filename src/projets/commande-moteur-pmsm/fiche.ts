@@ -59,7 +59,7 @@ const fiche: Projet = {
 SocketCanMock::CanFrame frame;   // consigne de vitesse ou de couple`,
     },
   ],
-  depots: [{ libelle: "Micrologiciel, schémas et interface", url: "https://github.com/rivaldopiaplle-boop/git_commande-moteur", visibilite: "prive" }],
+  depots: [{ libelle: "Micrologiciel, schémas et interface", url: "https://github.com/rivaldopiaplle-boop/git_commande-moteur", visibilite: "prive", detail: "Dépôt privé : il mêle du code fourni par le cours. Les extraits de la fiche montrent le travail personnel" }],
 };
 
 export default fiche;
