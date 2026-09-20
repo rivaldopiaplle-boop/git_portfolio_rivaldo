@@ -6,6 +6,10 @@
 # de la banque ne trouve plus sa base, échoue au démarrage, et Render finit par
 # la marquer « Failed service ». Le site s'ouvre, la connexion ne répond plus.
 #
+# Aiven fait pire : il **éteint** un service gratuit resté inactif. C'est arrivé à
+# la base MySQL de la chaîne CI/CD le 20 septembre 2026 : l'API répondait « live »
+# chez Render mais tournait dans le vide. Depuis, sa sonde est surveillée ici aussi.
+#
 # ── Pourquoi une fois par jour, et pas toutes les dix minutes ────────────────
 #
 # La sonde /api/v1/sante de la banque exécute un SELECT 1 sur la base : un appel
@@ -60,3 +64,39 @@ jobs:
               exit 1
               ;;
           esac
+
+  chaine_cicd:
+    name: Base MySQL de la chaîne CI/CD (Aiven)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Interroger la sonde de santé
+        run: |
+          sonde="https://cicd-taches-api.onrender.com/api/sante"
+          reponse=$(curl -s --max-time 150 "$sonde" || true)
+          echo "Réponse : ${reponse:-aucune}"
+          case "$reponse" in
+            *'"base":"disponible"'*)
+              echo "La base MySQL répond : Aiven compte une activité de plus."
+              ;;
+            *)
+              echo "::error::La base de la chaîne CI/CD ne répond pas. Vérifier le service MySQL sur console.aiven.io (éteint ?), le rallumer, puis redémarrer cicd-taches-api sur Render."
+              exit 1
+              ;;
+          esac
+
+  donvie:
+    name: Base PostgreSQL de DonVie (Neon)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Créer puis supprimer un compte de découverte
+        run: |
+          # Neon réveille sa base au premier appel : cette sonde vérifie donc
+          # surtout que l'API et la base se parlent encore.
+          cookie=$(curl -s -i --max-time 60 -X POST "https://donvie-rivaldo.vercel.app/api/demo" | tr -d '\r' | sed -n 's/^[Ss]et-[Cc]ookie: \(donvie_session=[^;]*\).*/\1/p')
+          if [ -z "$cookie" ]; then
+            echo "::error::DonVie n'a pas créé de compte de découverte. Vérifier /api/demo et la base Neon."
+            exit 1
+          fi
+          code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 60 -X DELETE -H "Cookie: $cookie" "https://donvie-rivaldo.vercel.app/api/moi")
+          echo "Compte de découverte supprimé : $code"
+          [ "$code" = "200" ] || { echo "::error::Le compte de découverte n'a pas pu être supprimé."; exit 1; }
