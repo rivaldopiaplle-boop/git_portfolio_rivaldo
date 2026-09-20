@@ -131,31 +131,6 @@ const fiche: Projet = {
         "API, base PostgreSQL, comptes, collectes réelles de l'EFS, itinéraires, essais de bout en bout. Privé pour que le projet ne soit pas récupérable ; l'accès en lecture peut être ouvert le temps d'un entretien",
     },
   ],
-  film: {
-    src: "/videos/donvie.mp4",
-    affiche: "/videos/donvie.webp",
-    duree: "4 min 25, commenté à la voix",
-    legende:
-      "Le parcours complet de l'application, filmé sur l'adresse publique : la carte des collectes de l'EFS, la recherche d'une ville, les filtres, le détail d'un lieu avec son temps de trajet, le compte de découverte, le calcul du prochain don, les alertes, les rendez-vous, le parrainage et l'assistant. Rien n'est simulé : ce sont les vraies données du jour de l'enregistrement.",
-    chapitres: [
-      { instant: 0, titre: "DonVie : où donner, et quand" },
-      { instant: 17, titre: "Les vraies collectes de l'EFS" },
-      { instant: 28, titre: "Chercher une ville ou une adresse" },
-      { instant: 43, titre: "Filtrer : don, période, rayon" },
-      { instant: 54, titre: "Horaires, places, temps de trajet" },
-      { instant: 74, titre: "Réserver chez l'EFS, garder ici" },
-      { instant: 93, titre: "Essayer avec des données d'exemple" },
-      { instant: 105, titre: "Votre prochain don, calculé" },
-      { instant: 126, titre: "Les collectes qui manquent de monde" },
-      { instant: 143, titre: "Agenda, rappel, itinéraire" },
-      { instant: 158, titre: "Vos dons, vos données, votre droit" },
-      { instant: 173, titre: "Parrainer, avec un QR code" },
-      { instant: 187, titre: "HemoBot répond à vos questions" },
-      { instant: 200, titre: "React, API, PostgreSQL" },
-      { instant: 222, titre: "Vérifiée à chaque mise en ligne" },
-      { instant: 251, titre: "donvie-rivaldo.vercel.app" },
-    ],
-  },
 };
 
 export default fiche;
