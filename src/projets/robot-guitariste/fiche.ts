@@ -1,6 +1,8 @@
 import type { Projet } from "../types";
 import animationBras from "./animation-bras.gif";
 import angleDistance from "./angle-selon-distance.png";
+import gesteMesure from "./geste-mesure.png";
+import gesteVitesse from "./geste-vitesse.png";
 import assemblage from "./assemblage.jpg";
 import chariot from "./chariot-lineaire.jpg";
 import distanceCordes from "./distance-cordes.png";
@@ -29,7 +31,28 @@ const fiche: Projet = {
   couleur: "#c96a17",
   puce: "STM32F411",
   couverture: { src: assemblage, alt: "Assemblage mécanique du robot guitariste", format: "photo" },
+  film: {
+    src: "/videos/robot-guitariste.mp4",
+    affiche: "/videos/robot-guitariste.webp",
+    duree: "22 secondes, sans commentaire",
+    legende:
+      "La simulation de mouvement sortie de SolidWorks : le bras pivote au-dessus des cordes et le médiator vient les attaquer. C'est cette animation qui a servi à vérifier que le mécanisme ne se heurtait pas lui-même avant d'usiner les pièces.",
+  },
   galerie: [
+    {
+      src: gesteMesure,
+      alt: "Le geste du médiator relevé image par image",
+      legende:
+        "Le point de départ : le geste d'un guitariste filmé à cinquante images par seconde, puis suivi point par point. Étalonnage pris sur l'écart de onze millimètres entre deux cordes",
+      format: "schema",
+    },
+    {
+      src: gesteVitesse,
+      alt: "Vitesse et accélération du geste mesuré",
+      legende:
+        "Ce que le mécanisme doit reproduire : 33,3 mm de balayage, 465 mm/s en pointe. Ces chiffres sont la cible ; les courbes de la simulation disent ce que le bras sait faire",
+      format: "schema",
+    },
     {
       src: animationBras,
       alt: "Animation de la cinématique du bras, avec les courbes de theta et de d",
@@ -60,6 +83,12 @@ const fiche: Projet = {
     { src: distanceCordes, alt: "Distances entre cordes", legende: "Distances corde à corde", format: "schema" },
   ],
   stack: ["python", "c", "stm32", "arm", "solidworks"],
+  chiffres: [
+    { valeur: 272, libelle: "points du geste suivis image par image" },
+    { valeur: 33, suffixe: " mm", libelle: "de balayage à reproduire, soit trois cordes" },
+    { valeur: 465, suffixe: " mm/s", libelle: "en pointe, la vitesse visée" },
+    { valeur: 3, libelle: "mouvements simulés, comparés avant de choisir" },
+  ],
   role: [
     "Modélisation complète des mécanismes : construction et ajustement des modèles cinématiques des articulations",
     "Outils de simulation : scripts Python pour les trajectoires, vitesses et accélérations, courbes de validation",
