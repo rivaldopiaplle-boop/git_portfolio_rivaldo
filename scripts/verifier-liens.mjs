@@ -84,7 +84,9 @@ console.log(`\n── ${adresses.size} adresses promises au visiteur`);
 await Promise.all(
   [...adresses].map(async ([url, origine]) => {
     try {
-      const reponse = await fetch(url, { redirect: "follow", headers: { "user-agent": "Mozilla/5.0 (verifier-liens du portfolio)" }, signal: AbortSignal.timeout(90_000) });
+      // 150 secondes : un service gratuit endormi (Render) met jusqu'à deux minutes
+      // à revenir, et un faux négatif ferait douter d'un lien pourtant valide.
+      const reponse = await fetch(url, { redirect: "follow", headers: { "user-agent": "Mozilla/5.0 (verifier-liens du portfolio)" }, signal: AbortSignal.timeout(150_000) });
       if (reponse.ok) console.log(`  ✓ ${reponse.status} ${url}`);
       else if (NON_VERIFIABLES.includes(reponse.status) || HOTES_FERMES_AUX_ROBOTS.includes(new URL(url).hostname)) console.log(`  ~ ${reponse.status} ${url} (non vérifiable automatiquement)`);
       else echec(`${reponse.status} ${url}, ${origine}`);
