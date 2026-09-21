@@ -121,6 +121,25 @@ const fiche: Projet = {
     },
     { genre: "surveillance", titre: "Réveil", taches: [{ nom: "Tâche planifiée", controles: ["Toutes les 10 min, de 5 h à 20 h", "/sante : révision servie"] }] },
   ],
+  film: {
+    src: "/videos/rivdinde.mp4",
+    affiche: "/videos/rivdinde.webp",
+    duree: "1 min 41, commenté à la voix",
+    legende:
+      "Le catalogue et ses deux rythmes de livraison, les comptes d'essai par métier, puis l'espace vendeur avec son tableau de bord. Le paiement partagé entre les boutiques et la pile technique, qui n'ont pas d'écran, sont annoncés comme tels.",
+    chapitres: [
+      { instant: 0, titre: "Une place de marché, un seul panier" },
+      { instant: 10, titre: "Express depuis la boutique, standard par l'entrepôt" },
+      { instant: 19, titre: "Filtrer, et voir le stock réel" },
+      { instant: 28, titre: "Cinq métiers, un compte d'essai par rôle" },
+      { instant: 36, titre: "L'espace vendeur" },
+      { instant: 45, titre: "Tableau de bord, litiges, personnel" },
+      { instant: 54, titre: "Cinq métiers, cinq espaces" },
+      { instant: 67, titre: "Un paiement, trois versements" },
+      { instant: 78, titre: "Ce qui tourne derrière" },
+      { instant: 92, titre: "git-e-commerce-livraison-v2.vercel.app" },
+    ],
+  },
   demos: [
     { libelle: "Site web", url: SITE, detail: "Vitrine publique, comptes de démonstration fournis", support: "web" },
     { libelle: "Application mobile", url: `${SITE}/mobile/`, detail: "À ouvrir sur un téléphone", support: "mobile" },

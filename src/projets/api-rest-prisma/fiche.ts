@@ -188,6 +188,26 @@ assert.equal(modification.status, 200);`,
 }`,
     },
   ],
+  film: {
+    src: "/videos/api-rest.mp4",
+    affiche: "/videos/api-rest.webp",
+    duree: "1 min 41, commenté à la voix",
+    legende:
+      "La sonde de santé telle qu'elle répond, la base des plats, puis l'assistant : quatre ingrédients tapés, et Mistral propose un plat qui passe la même validation qu'une saisie à la main avant d'entrer en base. Le compteur monte de onze à douze plats sous les yeux du visiteur.",
+    chapitres: [
+      { instant: 0, titre: "Une API protégée par clé, et son administration" },
+      { instant: 6, titre: "Lire est ouvert, écrire demande une clé" },
+      { instant: 15, titre: "La sonde de santé, en JSON" },
+      { instant: 24, titre: "PostgreSQL chez Neon, à travers Prisma" },
+      { instant: 33, titre: "Un assistant branché sur Mistral" },
+      { instant: 43, titre: "Proposer, valider, puis enregistrer" },
+      { instant: 54, titre: "Le plus petit modèle qui suffit" },
+      { instant: 66, titre: "Aucun secret dans le code" },
+      { instant: 75, titre: "Vérifiée à chaque poussée de code" },
+      { instant: 83, titre: "La sonde interrogée après le déploiement" },
+      { instant: 91, titre: "git-api-rest-rivaldo.vercel.app" },
+    ],
+  },
   demos: [
     {
       libelle: "L'administration en ligne",
