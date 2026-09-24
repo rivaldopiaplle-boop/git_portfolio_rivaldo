@@ -150,6 +150,14 @@ def note_freq(note, octave):
         "Le même passage rejoue la simulation cinématique et dépose ses images en résultat : elles se téléchargent sans rien installer",
     },
   ],
+  demos: [
+    {
+      libelle: "Le médiator, à régler soi-même",
+      url: "https://git-simulateur-mediator.vercel.app",
+      detail:
+        "Le modèle cinématique du porte-médiator, porté depuis les scripts du projet et rendu manipulable : la hauteur de la potence, la longueur du médiator, son inclinaison en fin de course et le diamètre de la corde se règlent, et le chemin de la pointe se redessine avec les instants de contact marqués. Site autonome, tout est calculé dans le navigateur",
+    },
+  ],
   depots: [
     {
       libelle: "Micrologiciel, simulation et interface",
@@ -157,6 +165,13 @@ def note_freq(note, octave):
       visibilite: "public",
       detail:
         "Le micrologiciel STM32 avec sa chaîne de compilation, le modèle cinématique et les scripts qui produisent les images, les pièces SolidWorks et les documents de l'équipe",
+    },
+    {
+      libelle: "Le simulateur du médiator",
+      url: "https://github.com/rivaldopiaplle-boop/git_simulateur-mediator",
+      visibilite: "public",
+      detail:
+        "Le site autonome qui rend le modèle manipulable : la cinématique portée en TypeScript, le tracé du chemin de la pointe et la recherche du diamètre limite",
     },
   ],
 };
