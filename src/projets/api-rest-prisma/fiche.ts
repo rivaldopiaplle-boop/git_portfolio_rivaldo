@@ -229,6 +229,11 @@ assert.equal(modification.status, 200);`,
   ],
   preuves: [
     {
+      libelle: "La publication LinkedIn",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7508918977755037696/",
+      detail: "Le projet raconté en public : une interface de programmation fermée à clé, même en lecture",
+    },
+    {
       libelle: "Les exécutions de la chaîne",
       url: `${CHAINE}?query=branch%3Amain`,
       detail: "Schéma, construction, puis l'API interrogée en HTTP contre un vrai PostgreSQL",
