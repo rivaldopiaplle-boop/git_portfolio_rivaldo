@@ -17,7 +17,7 @@ export const PROFIL = {
   /** Adresse durable, donnée juste après : un recruteur écrit parfois des mois plus tard. */
   emailSecondaire: "rivaldopiaplle@gmail.com",
   github: "https://github.com/rivaldopiaplle-boop",
-  linkedin: "https://www.linkedin.com/in/rivaldo-piaplle-720356308/" as string | null,
+  linkedin: "https://www.linkedin.com/in/rivaldo-piaplle" as string | null,
   cv: "/cv/Rivaldo-Piaplle-CV.pdf",
   langues: [
     { nom: "Français", niveau: "natif" },

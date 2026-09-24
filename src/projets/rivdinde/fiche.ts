@@ -144,6 +144,13 @@ const fiche: Projet = {
     { libelle: "Site web", url: SITE, detail: "Vitrine publique, comptes de démonstration fournis", support: "web" },
     { libelle: "Application mobile", url: `${SITE}/mobile/`, detail: "À ouvrir sur un téléphone", support: "mobile" },
   ],
+  preuves: [
+    {
+      libelle: "La publication LinkedIn",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7508576051455991809/",
+      detail: "Le projet raconté en public : deux rythmes de livraison, cinq métiers",
+    },
+  ],
   depots: [
     {
       libelle: "Code publié",

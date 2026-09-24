@@ -140,6 +140,11 @@ const fiche: Projet = {
   ],
   preuves: [
     {
+      libelle: "La publication LinkedIn",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7508189862915817472/",
+      detail: "Le projet raconté en public, avec ce qui a été difficile",
+    },
+    {
       libelle: "La chaîne de construction",
       url: `${CHAINE}?query=branch%3Amain`,
       detail: "Types et construction à chaque poussée, sur le dépôt public",

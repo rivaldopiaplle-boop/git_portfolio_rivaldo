@@ -191,6 +191,13 @@ const fiche: Projet = {
         { libelle: "Simulateur de réseau monétique", url: SIMULATEUR, detail: "Distributeur, guichet, terminal marchand et compensation SEPA", support: "web" },
       ]
     : [],
+  preuves: [
+    {
+      libelle: "La publication LinkedIn",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7508435831984988160/",
+      detail: "Le projet raconté en public : les règles qui empêchent de tricher",
+    },
+  ],
   depots: [
     {
       libelle: "Front web et une partie du serveur",

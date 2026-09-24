@@ -69,7 +69,7 @@ export const EXPERIENCES: ElementParcours[] = [
   {
     periode: "Mai à septembre 2023",
     titre: "Développeur full-stack, application e-commerce",
-    lieu: "CynoMedia, Yaoundé, Cameroun",
+    lieu: "Juddev Corporation, Yaoundé, Cameroun",
     details: ["Front JavaScript : produits, panier, interactions", "API Node.js modulaire sur MongoDB, validée avec Postman"],
   },
   {
