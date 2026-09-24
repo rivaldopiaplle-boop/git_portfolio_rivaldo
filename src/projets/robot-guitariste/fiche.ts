@@ -155,7 +155,7 @@ def note_freq(note, octave):
       libelle: "Le médiator, à régler soi-même",
       url: "https://git-simulateur-mediator.vercel.app",
       detail:
-        "Le modèle cinématique du porte-médiator, porté depuis les scripts du projet et rendu manipulable : la hauteur de la potence, la longueur du médiator, son inclinaison en fin de course et le diamètre de la corde se règlent, et le chemin de la pointe se redessine avec les instants de contact marqués. Site autonome, tout est calculé dans le navigateur",
+        "Un atelier à panneaux déplaçables : on règle la potence, la longueur du médiator, son inclinaison et le diamètre de la corde, on lance, on entend la corde, et on peut descendre jusqu'au centième de la vitesse réelle pour voir la lame franchir la corde. Site autonome, tout est calculé dans le navigateur",
     },
   ],
   depots: [
@@ -171,7 +171,7 @@ def note_freq(note, octave):
       url: "https://github.com/rivaldopiaplle-boop/git_simulateur-mediator",
       visibilite: "public",
       detail:
-        "Le site autonome qui rend le modèle manipulable : la cinématique portée en TypeScript, le tracé du chemin de la pointe et la recherche du diamètre limite",
+        "Le code du site, dans une version antérieure et volontairement plus simple : la cinématique portée en TypeScript, le tracé du chemin de la pointe et la recherche du diamètre limite. La version en ligne, celle qui porte l'atelier à panneaux, le son et le manche, vit dans un dépôt privé",
     },
   ],
 };
