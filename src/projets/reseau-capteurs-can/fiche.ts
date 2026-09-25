@@ -92,9 +92,9 @@ const fiche: Projet = {
     },
     {
       src: courbes,
-      alt: "Les courbes en temps réel portent la trace des trois gestes",
+      alt: "Les quatre courbes, dans un bandeau sous la scène qu'on manipule",
       legende:
-        "Les quatre tracés sur les soixante dernières secondes : les rafales produites au soufflet, l'orientation imposée à la main, l'ambiance, et la mesure du temps de vol qui saute au moment du basculement. Les tracés viennent de pyqtgraph.",
+        "Les quatre tracés sur les soixante dernières secondes, rangés sous la scène et non dans un onglet du fond : on voit la mesure monter pendant qu'on manipule l'objet, pas après avoir changé de page. Les tracés viennent de pyqtgraph.",
       format: "ecran",
     },
     {
