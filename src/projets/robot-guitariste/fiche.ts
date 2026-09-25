@@ -28,7 +28,7 @@ const fiche: Projet = {
   statut: "termine",
   annee: "2025",
   cadre: "ENIB · projet pluridisciplinaire",
-  equipe: "Projet d'équipe",
+  equipe: "Projet d'équipe, à deux",
   couleur: "#c96a17",
   puce: "STM32F411",
   couverture: { src: assemblage, alt: "Assemblage mécanique du robot guitariste", format: "photo" },
