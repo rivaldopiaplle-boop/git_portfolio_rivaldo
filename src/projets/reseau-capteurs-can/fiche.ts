@@ -1,9 +1,10 @@
 import type { Projet } from "../types";
-import dispositionComplete from "./disposition-complete.webp";
-import orientation3d from "./orientation-3d.webp";
-import courbes from "./courbes-en-temps-reel.webp";
-import bancReglable from "./banc-reglable.webp";
-import panneauDetache from "./panneau-detache.webp";
+import disposition from "./disposition.webp";
+import centrale from "./centrale-a-la-main.webp";
+import tempsDeVol from "./temps-de-vol.webp";
+import luminosite from "./luminosite.webp";
+import anemometre from "./anemometre.webp";
+import courbes from "./courbes.webp";
 
 const fiche: Projet = {
   slug: "reseau-capteurs-can",
@@ -27,43 +28,50 @@ const fiche: Projet = {
   couleur: "#2f8f6b",
   puce: "STM32F1 · CAN",
   couverture: {
-    src: dispositionComplete,
-    alt: "L'atelier du réseau de capteurs : banc de réglage, courbes en temps réel, mesures et trames",
+    src: centrale,
+    alt: "La centrale inertielle : on attrape le solide à la souris et on le tourne",
   },
   galerie: [
     {
-      src: dispositionComplete,
-      alt: "La disposition complète : banc à gauche, courbes au centre, mesures à droite, trames en bas",
+      src: centrale,
+      alt: "Le solide 3D tourné à la souris, et les angles mesurés qui suivent",
       legende:
-        "La disposition d'un logiciel de conception, en miniature : les réglages à gauche, la vue qui compte au centre, les mesures à droite, les trames en bas. Chaque panneau se déplace à la souris, se détache en fenêtre, se referme et se rouvre depuis le menu Affichage.",
+        "On attrape le solide et on le tourne. La centrale lit son orientation, compose sa trame et l'envoie sur le bus ; ce qui s'affiche, les trois angles et la cadence de 47 trames par seconde, vient du bus. Le geste n'écrit rien dans un afficheur.",
       format: "ecran",
     },
     {
-      src: bancReglable,
-      alt: "Le banc d'essai : consignes de vent, d'angles, d'ambiance et de proximité",
+      src: tempsDeVol,
+      alt: "Le capteur de temps de vol, et la cible qu'on éloigne à la souris",
       legende:
-        "Le banc répond à une question simple : d'où sortent ces chiffres ? Sans capteur branché, ils sortent d'ici, et le panneau le dit avant le premier curseur. Chaque consigne agit dans la seconde sur la courbe et sur la jauge.",
+        "La cible s'attrape et s'éloigne du capteur : la distance mesurée suit le geste, bornée à la portée réelle du VL6180X. Les réglages de l'objet sélectionné apparaissent à gauche, pour faire la même chose sans souris.",
+      format: "ecran",
+    },
+    {
+      src: luminosite,
+      alt: "Le même capteur en luminosité : une main masque la lampe et l'éclairement tombe",
+      legende:
+        "Le même composant bascule en mesure d'éclairement. La lampe éclaire en 1/d², et la main qu'on interpose projette une ombre d'autant plus large qu'elle est proche de la lampe. Ici, 60 lux au lieu de 1400.",
+      format: "ecran",
+    },
+    {
+      src: anemometre,
+      alt: "L'anémomètre : un soufflet qu'on agite, une hélice qui tourne, une réserve qui se remplit",
+      legende:
+        "Le vent ne se règle pas, il se produit : on approche le soufflet de l'hélice et on l'agite. L'énergie récoltée s'accumule, et le moteur ne démarre que lorsque la réserve le permet. C'est la seule commande à qui la scène peut dire non.",
       format: "ecran",
     },
     {
       src: courbes,
-      alt: "Courbes en temps réel : la vitesse du vent suit sa consigne en trapèze",
+      alt: "Les courbes en temps réel portent la trace des trois gestes",
       legende:
-        "Le régime en rampe montre ce qu'une jauge seule ne montre pas : la vitesse monte à accélération bornée, tient la consigne, redescend. La consigne est en pointillés orange, la mesure en bleu. Les tracés viennent de pyqtgraph, la bibliothèque de tracé en temps réel de l'écosystème Qt.",
+        "Les quatre tracés sur les soixante dernières secondes : les rafales produites au soufflet, l'orientation imposée à la main, l'ambiance, et la mesure du temps de vol qui saute au moment du basculement. Les tracés viennent de pyqtgraph.",
       format: "ecran",
     },
     {
-      src: orientation3d,
-      alt: "L'orientation en 3D, et les trois angles d'Euler lus en direct",
+      src: disposition,
+      alt: "La disposition complète : réglages à gauche, scène au centre, mesures à droite, trames en bas",
       legende:
-        "L'orientation reconstituée par la fusion de capteurs, en OpenGL, avec les trois angles lus sous la vue et la cadence réelle des trames : le repère tourne parce qu'une trame arrive, et non parce qu'une animation tourne toute seule.",
-      format: "ecran",
-    },
-    {
-      src: panneauDetache,
-      alt: "Un panneau détaché de la fenêtre, posé au-dessus des courbes",
-      legende:
-        "Un panneau s'attrape par son titre et se pose ailleurs, ou sort en fenêtre à lui. C'est l'ancrage fourni avec Qt, celui des logiciels de conception, et non un mécanisme réécrit pour l'occasion.",
+        "La disposition d'un logiciel de conception, en miniature. Chaque panneau s'attrape par son titre, se pose ailleurs, se détache en fenêtre, se referme et se rouvre depuis le menu Affichage. C'est l'ancrage fourni avec Qt.",
       format: "ecran",
     },
   ],
@@ -103,8 +111,20 @@ const fiche: Projet = {
         "Le bus se choisit par deux variables d'environnement, et garde son comportement d'origine par défaut",
         "python-can fournit une interface en mémoire, sans pilote ni matériel : c'est elle qui porte la démonstration",
         "Les trames sont décrites une fois dans un fichier DBC, le format standard du métier, que le banc et les outils lisent tous les deux",
-        "Une commande lance le réseau simulé et l'interface ensemble, ouvre chaque page, presse chaque bouton et photographie le résultat",
+        "Une commande lance le réseau simulé et l'interface ensemble, déroule la démonstration seule et photographie le résultat",
         "Une capture prise sur le vrai bus se rejoue dans l'interface, à la cadence où elle a été prise",
+      ],
+    },
+    {
+      titre: "Les trois mondes manipulables",
+      texte:
+        "Une première version proposait des curseurs : on réglait « vent = 9 m/s » et la jauge affichait 9 m/s. Une tautologie, qui ne prouve rien. Ce qu'on manipule maintenant, c'est une scène physique ; le capteur la lit, compose sa trame, l'envoie sur le bus, et l'interface affiche ce qu'elle reçoit. La chaîne entière est exercée à chaque geste.",
+      points: [
+        "La centrale : on attrape le solide et on le tourne, au bouton gauche pour le roulis et le tangage, au bouton droit pour le lacet",
+        "Le temps de vol : on éloigne une cible du capteur, ou on masque une lampe avec une main dont on règle la taille et la position",
+        "L'anémomètre : on agite un soufflet devant l'hélice, l'énergie s'accumule, et le moteur ne démarre que si la réserve le permet",
+        "Sélectionner un objet fait apparaître ses réglages à gauche : le même contrôle, sans souris",
+        "Les scènes 2D sont des QGraphicsScene de Qt, avec ses objets déplaçables et sélectionnables : le glisser-déposer vient du cadre, pas d'un mécanisme réécrit",
       ],
     },
   ],
@@ -117,7 +137,12 @@ const fiche: Projet = {
     {
       titre: "Un bouton qui ne fait rien est pire qu'un bouton absent",
       texte:
-        "La page des réglages affichait un bus imaginaire, proposait des thèmes qui n'existaient pas et un bouton « Sauvegarder » relié à rien. Elle montre maintenant l'état réel du bus, et ses deux boutons agissent. Le banc simulé, lui, obéit aux commandes que l'interface envoie : presser « Démarrer moteur » fait vraiment monter la vitesse du vent.",
+        "La page des réglages affichait un bus imaginaire, proposait des thèmes qui n'existaient pas et un bouton « Sauvegarder » relié à rien. Elle a disparu : ce qu'elle prétendait régler est maintenant dans la barre d'état, ou dans les scènes, ou nulle part parce que cela n'existait pas.",
+    },
+    {
+      titre: "Simuler n'est pas afficher ce qu'on vient de saisir",
+      texte:
+        "Régler un curseur pour voir une jauge afficher la même valeur ne démontre rien : c'est une tautologie. Ce qui démontre quelque chose, c'est un geste sur une scène dont un capteur tire une mesure, qui devient une trame, qui traverse le bus, et que l'interface affiche. La même exigence qu'une démonstration sur le vrai matériel, à ceci près que le monde est dessiné.",
     },
     {
       titre: "Une démonstration qu'on regarde à l'oeil se croit sur parole",
