@@ -22,7 +22,10 @@ const fiche: Projet = {
   resume:
     "Projet pluridisciplinaire d'équipe : concevoir un mécanisme capable de se placer sur les frettes et d'attaquer la corde en rythme. Du geste humain filmé et analysé à la cinématique simulée, jusqu'au micrologiciel temps réel et à l'interface de pilotage. Contribution personnelle : la modélisation des mécanismes, les outils de simulation et l'intégration du système.",
   categorie: "robotique",
-  statut: "termine",
+  // En ligne : l'atelier du médiator se manipule dans un navigateur. La fiche
+  // portait encore « terminé, hors ligne », ce qui contredisait son propre
+  // bouton « Voir en ligne ».
+  statut: "en-ligne",
   annee: "2025",
   cadre: "ENIB · projet pluridisciplinaire",
   equipe: "Projet d'équipe, à deux",
