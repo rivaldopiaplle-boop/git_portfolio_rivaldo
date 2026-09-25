@@ -1,6 +1,8 @@
 import type { Projet } from "../types";
-import animationBras from "./animation-bras.gif";
 import angleDistance from "./angle-selon-distance.png";
+import cheminPointe from "./chemin-pointe.png";
+import coupeMediator from "./coupe-mediator.png";
+import inclinaisonSelonD from "./inclinaison-selon-d.png";
 import gesteMesure from "./geste-mesure.png";
 import gesteVitesse from "./geste-vitesse.png";
 import assemblage from "./assemblage.jpg";
@@ -10,8 +12,6 @@ import mediator from "./mediator-imprime.jpg";
 import simulation from "./simulation-cinematique.png";
 import supportMoteur from "./support-moteur.jpg";
 import tendeur from "./tendeur-courroie.jpg";
-import trajectoireOutil from "./trajectoire-outil.png";
-import vitesses from "./vitesses-accelerations.png";
 
 const DEPOT = "https://github.com/rivaldopiaplle-boop/git_robot-guitariste";
 const CHAINE = `${DEPOT}/actions/workflows/ci.yml`;
@@ -33,12 +33,42 @@ const fiche: Projet = {
   puce: "STM32F411",
   couverture: { src: assemblage, alt: "Assemblage mécanique du robot guitariste", format: "photo" },
   film: {
-    src: "/videos/robot-guitariste.mp4",
-    affiche: "/videos/robot-guitariste.webp",
-    duree: "22 secondes, sans commentaire",
+    src: "/videos/mediator.mp4",
+    affiche: "/videos/mediator.webp",
+    duree: "7 min 43, commentée",
     legende:
-      "La simulation de mouvement sortie de SolidWorks : le bras pivote au-dessus des cordes et le médiator vient les attaquer. C'est cette animation qui a servi à vérifier que le mécanisme ne se heurtait pas lui-même avant d'usiner les pièces.",
+      "L'atelier du médiator, en ligne : on règle la potence, la longueur de la lame et le diamètre de la corde, on lance, et on descend jusqu'au centième de la vitesse réelle pour voir la lame franchir la corde. Le film montre aussi le second espace, celui du chariot qui se déplace le long du manche, dont le profil de vitesse est celui du micrologiciel STM32.",
+    chapitres: [
+      { instant: 0, titre: "L'atelier" },
+      { instant: 42, titre: "On déplace un panneau" },
+      { instant: 61, titre: "On le rouvre depuis le rail" },
+      { instant: 80, titre: "Le montage" },
+      { instant: 112, titre: "La bascule en fin de course" },
+      { instant: 138, titre: "La corde" },
+      { instant: 160, titre: "Le diamètre limite" },
+      { instant: 186, titre: "Le jeu" },
+      { instant: 224, titre: "On lance" },
+      { instant: 247, titre: "Quarante fois plus lent" },
+      { instant: 285, titre: "L'inclinaison" },
+      { instant: 310, titre: "La vitesse du médiator" },
+      { instant: 342, titre: "Aller à une position" },
+      { instant: 354, titre: "Le chariot du manche" },
+      { instant: 379, titre: "Trapèze ou triangle" },
+      { instant: 401, titre: "La table de minuterie" },
+      { instant: 422, titre: "Les frettes" },
+      { instant: 435, titre: "Le micrologiciel" },
+      { instant: 448, titre: "L'adresse" },
+    ],
   },
+  films: [
+    {
+      src: "/videos/robot-guitariste.mp4",
+      affiche: "/videos/robot-guitariste.webp",
+      duree: "22 secondes, sans commentaire",
+      legende:
+        "La simulation de mouvement sortie de SolidWorks : le bras pivote au-dessus des cordes et le médiator vient les attaquer. C'est cette animation qui a servi à vérifier que le mécanisme ne se heurtait pas lui-même avant d'usiner les pièces.",
+    },
+  ],
   galerie: [
     {
       src: gesteMesure,
@@ -51,27 +81,28 @@ const fiche: Projet = {
       src: gesteVitesse,
       alt: "Vitesse et accélération du geste mesuré",
       legende:
-        "Ce que le mécanisme doit reproduire : 33,3 mm de balayage, 465 mm/s en pointe. Ces chiffres sont la cible ; les courbes de la simulation disent ce que le bras sait faire",
+        "Ce que le mécanisme doit reproduire : 33,3 mm de balayage, 465 mm/s en pointe. Ces chiffres sont la cible relevée sur le geste humain, et l'atelier en ligne dit ce que le mécanisme, lui, sait faire",
       format: "schema",
     },
     {
-      src: animationBras,
-      alt: "Animation de la cinématique du bras, avec les courbes de theta et de d",
+      src: coupeMediator,
+      alt: "Le mécanisme dans le plan de coupe, avec la corde",
       legende:
-        "La simulation rejouée : le bras suit trois mouvements, et les deux courbes de droite montrent l'angle et la translation à chaque instant",
+        "Le mécanisme dans le plan où la corde est un cercle : la potence à gauche, la translation en haut, puis le bras et le médiator. Les cotes sont en millimètres, et elles sortent du modèle du projet",
       format: "schema",
     },
     {
-      src: vitesses,
-      alt: "Position, vitesse et accélération des deux axes",
+      src: cheminPointe,
+      alt: "Chemin de la pointe du médiator sur une période, contacts marqués",
       legende:
-        "Ce que ces courbes servent à décider : le mouvement adouci demande la moitié de l'accélération de l'aller-retour entretenu, pour une vitesse presque égale",
+        "Le chemin de la pointe sur une période entière. Les points orange sont les instants de contact : la lame ne traverse pas la corde, elle pivote jusqu'à lui rester tangente",
       format: "schema",
     },
     {
-      src: trajectoireOutil,
-      alt: "Chemin parcouru par l'outil dans le plan de la corde",
-      legende: "Le chemin de l'outil dans le plan de la corde, pour les trois mouvements",
+      src: inclinaisonSelonD,
+      alt: "Inclinaison totale du médiator selon la translation",
+      legende:
+        "L'inclinaison totale en fonction de la translation. Les deux branches sont l'aller et le retour, et le décrochement de chacune est le contact",
       format: "schema",
     },
     { src: assemblage, alt: "Assemblage du robot", legende: "L'assemblage : translation sur les frettes et bras de médiator", format: "photo" },

@@ -155,5 +155,13 @@ export interface Projet {
   extraits?: Extrait[];
   demos?: LienDemo[];
   film?: Film;
+  /**
+   * D'autres films, montrés à la suite du premier dans le même onglet.
+   *
+   * Un projet peut en avoir plusieurs sans qu'ils se remplacent : la
+   * démonstration de l'atelier et l'animation SolidWorks du robot ne disent
+   * pas la même chose, et retirer l'une pour l'autre appauvrirait la fiche.
+   */
+  films?: Film[];
   preuves?: Preuve[];
 }

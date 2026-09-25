@@ -111,7 +111,13 @@ export default function FicheProjet() {
         <AnimatePresence mode="wait">
           <motion.div key={actif} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.22 }}>
             {actif === "apercu" && <OngletApercu projet={projet} ouvrirImage={setImage} voirGalerie={() => choisir("galerie")} />}
-            {actif === "film" && projet.film && <Lecteur film={projet.film} />}
+            {actif === "film" && projet.film && (
+              <div className="grid gap-8">
+                {[projet.film, ...(projet.films ?? [])].map((film) => (
+                  <Lecteur key={film.src} film={film} />
+                ))}
+              </div>
+            )}
             {actif === "galerie" && projet.galerie && <OngletGalerie medias={projet.galerie} couleur={projet.couleur} ouvrir={setImage} />}
             {actif === "chaine" && projet.pipeline && (
               <div className="sombre rounded-2xl bg-[#0e1119] p-4 sm:p-5">
