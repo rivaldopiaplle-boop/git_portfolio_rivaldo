@@ -47,7 +47,16 @@ export function Lecteur({ film }: { film: Film }) {
       <div>
         <p className="text-sm text-encre-2">{film.legende}</p>
         {film.chapitres?.length ? (
-          <ol className="mt-4 divide-y divide-ligne overflow-hidden rounded-2xl border border-ligne bg-surface">
+          <>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-encre-3">
+              {film.chapitres.length} chapitres, cliquez pour y aller
+            </p>
+            {/*
+              La liste défile dans son propre cadre.
+              Trente-trois chapitres à la suite poussaient la page sur deux écrans,
+              et le reste de la fiche passait sous la ligne de flottaison.
+            */}
+            <ol className="mt-2 max-h-72 divide-y divide-ligne overflow-y-auto overscroll-contain rounded-2xl border border-ligne bg-surface">
             {film.chapitres.map((chapitre, rang) => (
               <li key={chapitre.instant}>
                 <button
@@ -64,8 +73,9 @@ export function Lecteur({ film }: { film: Film }) {
                   </span>
                 </button>
               </li>
-            ))}
-          </ol>
+              ))}
+            </ol>
+          </>
         ) : null}
       </div>
     </div>

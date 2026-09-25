@@ -1,15 +1,12 @@
 import type { Projet } from "../types";
-import angleDistance from "./angle-selon-distance.png";
 import cheminPointe from "./chemin-pointe.png";
+import distanceALaCorde from "./distance-a-la-corde.png";
 import coupeMediator from "./coupe-mediator.png";
 import inclinaisonSelonD from "./inclinaison-selon-d.png";
-import gesteMesure from "./geste-mesure.png";
-import gesteVitesse from "./geste-vitesse.png";
+import gesteReleve from "./geste-releve.png";
 import assemblage from "./assemblage.jpg";
 import chariot from "./chariot-lineaire.jpg";
-import distanceCordes from "./distance-cordes.png";
 import mediator from "./mediator-imprime.jpg";
-import simulation from "./simulation-cinematique.png";
 import supportMoteur from "./support-moteur.jpg";
 import tendeur from "./tendeur-courroie.jpg";
 
@@ -71,24 +68,17 @@ const fiche: Projet = {
   ],
   galerie: [
     {
-      src: gesteMesure,
-      alt: "Le geste du médiator relevé image par image",
+      src: gesteReleve,
+      alt: "Le geste d'un guitariste relevé image par image : chemin du médiator et vitesse",
       legende:
-        "Le point de départ : le geste d'un guitariste filmé à cinquante images par seconde, puis suivi point par point. Étalonnage pris sur l'écart de onze millimètres entre deux cordes",
-      format: "schema",
-    },
-    {
-      src: gesteVitesse,
-      alt: "Vitesse et accélération du geste mesuré",
-      legende:
-        "Ce que le mécanisme doit reproduire : 33,3 mm de balayage, 465 mm/s en pointe. Ces chiffres sont la cible relevée sur le geste humain, et l'atelier en ligne dit ce que le mécanisme, lui, sait faire",
+        "Le point de départ : le geste d'un guitariste filmé à cinquante images par seconde, puis suivi point par point, l'étalonnage étant pris sur l'écart de onze millimètres entre deux cordes. Le chemin à gauche, la vitesse à droite, et les deux chiffres qui fixent la cible : 33,3 mm de balayage, 465 mm/s en pointe, relevés sur la même prise",
       format: "schema",
     },
     {
       src: coupeMediator,
-      alt: "Le mécanisme dans le plan de coupe, avec la corde",
+      alt: "Le mécanisme à l'instant où le médiator touche la corde",
       legende:
-        "Le mécanisme dans le plan où la corde est un cercle : la potence à gauche, la translation en haut, puis le bras et le médiator. Les cotes sont en millimètres, et elles sortent du modèle du projet",
+        "Le mécanisme dans le plan où la corde est un cercle, pris à un instant de contact : la potence à gauche, la translation en haut, puis le bras et le médiator dont la lame s'efface contre la corde. Les cotes sont en millimètres, et elles sortent du modèle du projet",
       format: "schema",
     },
     {
@@ -110,9 +100,13 @@ const fiche: Projet = {
     { src: supportMoteur, alt: "Support du moteur pas-à-pas", legende: "Support du moteur pas-à-pas", format: "photo" },
     { src: tendeur, alt: "Système tendeur de courroie", legende: "Tendeur de courroie : la précision de positionnement", format: "photo" },
     { src: mediator, alt: "Médiator imprimé en 3D", legende: "Médiator imprimé en 3D", format: "photo" },
-    { src: simulation, alt: "Simulation cinématique du bras", legende: "Simulation : la chaîne cinématique du bras, en Python", format: "schema" },
-    { src: angleDistance, alt: "Courbe de l'angle total selon la distance", legende: "Angle total en fonction de la distance", format: "schema" },
-    { src: distanceCordes, alt: "Distances entre cordes", legende: "Distances corde à corde", format: "schema" },
+    {
+      src: distanceALaCorde,
+      alt: "Distance de la pointe du médiator à l'axe de la corde, au fil d'une période",
+      legende:
+        "Deux contacts par période : la pointe descend jusqu'au rayon de la corde, y reste le temps de l'attaque, puis s'en éloigne. Le palier au niveau de la bande orange est le contact lui-même.",
+      format: "schema",
+    },
   ],
   stack: ["python", "c", "stm32", "arm", "solidworks"],
   chiffres: [
