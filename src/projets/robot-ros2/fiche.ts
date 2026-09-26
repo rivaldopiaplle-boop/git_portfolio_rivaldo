@@ -1,4 +1,7 @@
 import type { Projet } from "../types";
+import piloteAutomatique from "./pilote-automatique.webp";
+import pilotageManuel from "./pilotage-manuel.webp";
+import suiveurDeCible from "./suiveur-de-cible.webp";
 
 const fiche: Projet = {
   slug: "robot-ros2",
@@ -8,7 +11,8 @@ const fiche: Projet = {
   resume:
     "Base robotique pilotée par un STM32 sous FreeRTOS, reliée à ROS 2 par micro-ROS. Une Raspberry Pi filme, isole une cible verte, calcule son barycentre et sa surface, et publie le tout ; le robot s'y abonne pour se diriger. Une interface PyQt supervise l'ensemble.",
   categorie: "robotique",
-  statut: "termine",
+  // En ligne : l'atelier reprend les trois modes dans un navigateur.
+  statut: "en-ligne",
   annee: "2026",
   cadre: "ENIB · projet pluridisciplinaire",
   equipe: "Projet d'équipe",
@@ -98,6 +102,41 @@ rclc_subscription_init_default(&subscriber_bary, &node,
 
 rclc_executor_add_subscription(&executor, &subscriber_bary, &bary_msg,
     &bary_callback, ON_NEW_DATA);`,
+    },
+  ],
+  demos: [
+    {
+      libelle: "L'atelier, à manipuler dans le navigateur",
+      url: "https://atelier-robot-ros2.vercel.app",
+      detail:
+        "Les trois modes du projet, sans rien à installer : on conduit le robot, on le laisse éviter les obstacles avec ses trois capteurs, ou on lui fait suivre une cible verte filmée par la webcam. La chaîne de vision est celle du projet, avec les mêmes fonctions OpenCV et les mêmes seuils",
+    },
+  ],
+  couverture: {
+    src: suiveurDeCible,
+    alt: "L'atelier : la caméra détecte la cible verte, et le robot tourne vers elle",
+  },
+  galerie: [
+    {
+      src: suiveurDeCible,
+      alt: "Mode suiveur : le masque du vert à gauche, le robot qui tourne vers la cible à droite",
+      legende:
+        "La caméra à gauche, le robot à droite, et entre les deux le graphe ROS 2. Le masque ne retient que le vert : les objets rouges et bleus de l'image en sont écartés. Les deux vitesses de roue diffèrent parce que le barycentre est décalé, et c'est tout ce qui fait tourner le robot.",
+      format: "ecran",
+    },
+    {
+      src: piloteAutomatique,
+      alt: "Mode automatique : le robot évite les obstacles avec ses trois capteurs",
+      legende:
+        "Les trois faisceaux partent du robot : deux devant, écartés comme des phares, un derrière au centre. Un obstacle vu à droite se contourne par la gauche, vu par les deux il barre la route et on recule, vu par l'arrière on accélère.",
+      format: "ecran",
+    },
+    {
+      src: pilotageManuel,
+      alt: "Mode manuel : la croix de pilotage, et les seuils du vert réglables",
+      legende:
+        "Les flèches du clavier publient sur /command/move, le même message que l'interface du projet envoie au STM32. Les quatre seuils du vert sont ceux de send_camera.py, et on peut les déplacer pour voir le masque changer.",
+      format: "ecran",
     },
   ],
   depots: [{ libelle: "Base, vision et interface", url: "https://github.com/rivaldopiaplle-boop/robot-ros2-vision", visibilite: "public" }],
