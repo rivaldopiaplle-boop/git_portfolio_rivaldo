@@ -206,6 +206,11 @@ def note_freq(note, octave):
   ],
   preuves: [
     {
+      libelle: "La publication LinkedIn",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7509194904330207232/",
+      detail: "Le projet raconté en public, avec le binôme et l'atelier du médiator",
+    },
+    {
       libelle: "Le profil de vitesse, calculé avant le mouvement",
       url: `${FIRMWARE}#L1026-L1085`,
       detail:

@@ -14,7 +14,8 @@ const fiche: Projet = {
   resume:
     "Des nœuds STM32 lisent humidité, température, pression, distance, vitesse du vent et centrale inertielle, puis publient leurs mesures sur un bus CAN, le réseau des automobiles, où chaque trame porte un identifiant plutôt qu'une adresse. Une interface PyQt les affiche en direct, avec l'orientation reconstituée par fusion des capteurs.",
   categorie: "robotique",
-  statut: "termine",
+  // En ligne : l'atelier se manipule dans un navigateur, sans rien installer.
+  statut: "en-ligne",
   annee: "2026",
   cadre: "ENIB · réseaux et systèmes embarqués",
   equipe: "Projet d'équipe",
@@ -212,6 +213,14 @@ while (1) {
 msg->id     = CanHandle.pRxMsg->IDE == CAN_ID_STD
               ? CanHandle.pRxMsg->StdId : CanHandle.pRxMsg->ExtId;
 msg->format = CanHandle.pRxMsg->IDE == CAN_ID_STD ? CANStandard : CANExtended;`,
+    },
+  ],
+  demos: [
+    {
+      libelle: "L'atelier, à manipuler dans le navigateur",
+      url: "https://atelier-reseau-capteurs.vercel.app",
+      detail:
+        "Les trois mondes du projet, sans rien à installer : on attrape le solide de la centrale et on le tourne, on éloigne une cible du capteur de temps de vol ou on masque sa lampe, on agite un soufflet devant l'hélice. À chaque geste, le capteur lit la scène, compose sa trame et l'envoie sur le bus",
     },
   ],
   depots: [{ libelle: "Micrologiciel et interface", url: "https://github.com/rivaldopiaplle-boop/git_reseau-capteurs", visibilite: "prive", detail: "Dépôt privé : il mêle du code fourni par le cours. La part personnelle est le programme principal `main.c`, le plan de trames et toute l'interface" }],

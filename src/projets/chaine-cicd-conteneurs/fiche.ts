@@ -207,6 +207,11 @@ if (refus !== 400) throw new Error(\`Le serveur a répondu \${refus} au lieu de 
   ],
   preuves: [
     {
+      libelle: "La publication LinkedIn",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7509333570247831553/",
+      detail: "Le projet raconté en public : la chaîne, ses étages et ce qu'elle vérifie",
+    },
+    {
       libelle: "Les exécutions de la chaîne",
       url: `${CHAINE}?query=branch%3Amain`,
       detail: "Chaque étage, ses journaux et sa durée, sur GitHub Actions",
