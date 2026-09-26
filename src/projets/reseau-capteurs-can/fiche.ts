@@ -223,6 +223,14 @@ msg->format = CanHandle.pRxMsg->IDE == CAN_ID_STD ? CANStandard : CANExtended;`,
         "Les trois mondes du projet, sans rien à installer : on attrape le solide de la centrale et on le tourne, on éloigne une cible du capteur de temps de vol ou on masque sa lampe, on agite un soufflet devant l'hélice. À chaque geste, le capteur lit la scène, compose sa trame et l'envoie sur le bus",
     },
   ],
+  preuves: [
+    {
+      libelle: "L'application Windows, à télécharger",
+      url: "https://github.com/rivaldopiaplle-boop/git_portfolio_rivaldo/releases/tag/atelier-reseau-capteurs-v1.0.0",
+      detail:
+        "La vraie application de bureau, celle du projet, avec sa vue 3D en OpenGL. Un fichier unique de 93 Mo : pas d'assistant d'installation, rien dans le registre",
+    },
+  ],
   depots: [{ libelle: "Micrologiciel et interface", url: "https://github.com/rivaldopiaplle-boop/git_reseau-capteurs", visibilite: "prive", detail: "Dépôt privé : il mêle du code fourni par le cours. La part personnelle est le programme principal `main.c`, le plan de trames et toute l'interface" }],
 };
 
