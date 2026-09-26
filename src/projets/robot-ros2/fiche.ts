@@ -109,19 +109,19 @@ rclc_executor_add_subscription(&executor, &subscriber_bary, &bary_msg,
       libelle: "L'atelier, à manipuler dans le navigateur",
       url: "https://atelier-robot-ros2.vercel.app",
       detail:
-        "Les trois modes du projet, sans rien à installer : on conduit le robot, on le laisse éviter les obstacles avec ses trois capteurs, ou on lui fait suivre une cible verte filmée par la webcam. La chaîne de vision est celle du projet, avec les mêmes fonctions OpenCV et les mêmes seuils",
+        "Les trois modes du projet, sans rien à installer : on conduit le robot au clavier, on le laisse éviter les obstacles avec ses trois capteurs, ou on lui fait poursuivre le bloc vert de l'arène. En mode suiveur, le panneau de gauche montre l'image de la caméra embarquée, celle que le traitement analyse vraiment. La chaîne de vision est celle du projet, avec les mêmes fonctions OpenCV et les mêmes seuils",
     },
   ],
   couverture: {
     src: suiveurDeCible,
-    alt: "L'atelier : la caméra détecte la cible verte, et le robot tourne vers elle",
+    alt: "L'atelier : la caméra embarquée détecte le bloc vert, et le robot tourne vers lui",
   },
   galerie: [
     {
       src: suiveurDeCible,
-      alt: "Mode suiveur : le masque du vert à gauche, le robot qui tourne vers la cible à droite",
+      alt: "Mode suiveur : l'image de la caméra embarquée et son masque à gauche, le robot qui poursuit le bloc vert à droite",
       legende:
-        "La caméra à gauche, le robot à droite, et entre les deux le graphe ROS 2. Le masque ne retient que le vert : les objets rouges et bleus de l'image en sont écartés. Les deux vitesses de roue diffèrent parce que le barycentre est décalé, et c'est tout ce qui fait tourner le robot.",
+        "À gauche, ce que voit vraiment le robot : un second rendu de l'arène pris depuis son châssis, et au-dessous le masque qui ne retient que le vert. Les obstacles ocre en sont écartés, le bloc vert reste. À droite, la même scène vue de haut. Les deux vitesses de roue diffèrent parce que le barycentre est décalé, et c'est tout ce qui fait tourner le robot. Le bloc se prend à la souris, dérive seul, ou se laisse mener par un objet vert montré à la webcam.",
       format: "ecran",
     },
     {
@@ -133,9 +133,9 @@ rclc_executor_add_subscription(&executor, &subscriber_bary, &bary_msg,
     },
     {
       src: pilotageManuel,
-      alt: "Mode manuel : la croix de pilotage, et les seuils du vert réglables",
+      alt: "Mode manuel : la croix de pilotage, les capteurs qui réagissent, et les seuils du vert réglables",
       legende:
-        "Les flèches du clavier publient sur /command/move, le même message que l'interface du projet envoie au STM32. Les quatre seuils du vert sont ceux de send_camera.py, et on peut les déplacer pour voir le masque changer.",
+        "Les flèches du clavier publient sur /command/move, le même message que l'interface du projet envoie au STM32. Le capteur avant droit lit 393 mm parce que le robot longe le mur : en manuel, rien ne l'empêche d'approcher, les capteurs se contentent de mesurer. Les quatre seuils du vert sont ceux de send_camera.py, et on peut les déplacer pour voir le masque changer.",
       format: "ecran",
     },
   ],

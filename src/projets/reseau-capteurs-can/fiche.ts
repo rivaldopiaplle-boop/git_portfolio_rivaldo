@@ -225,6 +225,12 @@ msg->format = CanHandle.pRxMsg->IDE == CAN_ID_STD ? CANStandard : CANExtended;`,
   ],
   preuves: [
     {
+      libelle: "La publication LinkedIn",
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7509554592515473408/",
+      detail:
+        "Le projet raconté en public : la première réparation ratée, pourquoi une simulation qui renvoie la consigne ne prouve rien, et ce que les trois mondes manipulables changent",
+    },
+    {
       libelle: "L'application Windows, à télécharger",
       url: "https://github.com/rivaldopiaplle-boop/git_portfolio_rivaldo/releases/tag/atelier-reseau-capteurs-v1.0.0",
       detail:
