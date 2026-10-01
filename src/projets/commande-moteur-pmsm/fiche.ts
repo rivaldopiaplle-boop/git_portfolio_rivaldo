@@ -1,4 +1,5 @@
 import type { Projet } from "../types";
+import alarme from "./alarme.webp";
 import frein from "./frein.webp";
 import regulation from "./regulation.webp";
 
@@ -91,7 +92,14 @@ SocketCanMock::CanFrame frame;   // consigne de vitesse ou de couple`,
       src: regulation,
       alt: "La commande du projet régule la vitesse, et le schéma-blocs est dessiné depuis son propre fichier",
       legende:
-        "À gauche, les trois correcteurs du schéma : leurs gains ne sont pas recopiés, ils sont lus et écrits dans la commande compilée, là où elle les range. Au centre, le banc qu'on manipule. À droite, le schéma-blocs du projet, dessiné depuis le fichier pmsm_target.dgm lui-même, ses trente-six blocs et ses quarante-huit liaisons.",
+        "Le coup de consigne, celui qu'on fait sur un vrai banc : on demande brutalement une autre vitesse et l'atelier juge la réponse. Ici, dépassement de neuf pour cent, stabilisé en trente-cinq centièmes de seconde, erreur résiduelle d'un tour par minute. À gauche, les trois correcteurs du schéma, dont les gains sont lus et écrits dans la commande compilée. Au-dessus des courbes, l'état vital de l'entraînement.",
+      format: "ecran",
+    },
+    {
+      src: alarme,
+      alt: "Le moniteur passe au rouge quand la commande décroche : la vitesse tombe à plat",
+      legende:
+        "Le réglage « Instable », choisi d'un clic. L'écart de régulation passe à mille cent quatre-vingt-deux tours par minute, le courant arrive en butée à cinq ampères, la modulation sature, et la vitesse tombe à plat comme sur un moniteur d'hôpital. Derrière, en gris, la réponse de l'essai précédent, celle du réglage du projet, reste affichée pour la comparaison.",
       format: "ecran",
     },
     {
