@@ -115,6 +115,14 @@ verifier "la poignée de main répond 101"   "$(echo "$entetes" | head -1 | cut 
 verifier "Sec-WebSocket-Accept est conforme à la RFC 6455"   "$(echo "$entetes" | grep -i '^Sec-WebSocket-Accept:' | cut -d' ' -f2)" "s3pPLMBiTxaQ9kYGzzhZRbK+xOo="`,
     },
   ],
+  preuves: [
+    {
+      libelle: "La chaîne, verte le 1er octobre 2026",
+      url: "https://github.com/rivaldopiaplle-boop/git_serveur-http-sockets/actions/runs/35406820564",
+      detail:
+        "Dix étapes en une minute : image Docker construite en deux temps, serveur démarré, quinze vérifications en curl sur les types de fichiers, le listing, les codes d'erreur, le POST texte et binaire, la poignée WebSocket de la RFC 6455 et le maintien de connexion, puis vingt utilisateurs virtuels sous k6 avec seuils. Le dépôt étant privé, la page n'est visible qu'avec ton compte",
+    },
+  ],
   depots: [{ libelle: "Les six paliers", url: "https://github.com/rivaldopiaplle-boop/git_serveur-http-sockets", visibilite: "prive", detail: "Dépôt privé : il mêle du code fourni par le cours. Les extraits de la fiche montrent le travail personnel" }],
 };
 
