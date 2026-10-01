@@ -2,6 +2,7 @@ import type { Projet } from "../types";
 import alarme from "./alarme.webp";
 import frein from "./frein.webp";
 import regulation from "./regulation.webp";
+import schemaVivant from "./schema.webp";
 
 const fiche: Projet = {
   slug: "commande-moteur-pmsm",
@@ -94,6 +95,13 @@ SocketCanMock::CanFrame frame;   // consigne de vitesse ou de couple`,
       alt: "La commande du projet régule la vitesse, et le schéma-blocs est dessiné depuis son propre fichier",
       legende:
         "Le coup de consigne, celui qu'on fait sur un vrai banc : on demande brutalement une autre vitesse et l'atelier juge la réponse. Ici, dépassement de neuf pour cent, stabilisé en trente-cinq centièmes de seconde, erreur résiduelle d'un tour par minute. À gauche, les trois correcteurs du schéma, dont les gains sont lus et écrits dans la commande compilée. Au-dessus des courbes, l'état vital de l'entraînement.",
+      format: "ecran",
+    },
+    {
+      src: schemaVivant,
+      alt: "Le schéma-blocs du projet, ouvert en grand, avec les valeurs sous chaque bloc",
+      legende:
+        "Le schéma du projet, ouvert sur toute la fenêtre, avec la molette pour zoomer et le glisser pour se déplacer. Ce n'est pas une image refaite : pysimCoder enregistre ses schémas en JSON, et l'atelier lit le fichier du projet. Chaque bloc affiche la valeur qu'il vient de produire, lue dans le code compilé, et des points circulent le long des liaisons d'autant plus vite que le signal est fort, comme dans le simulateur de circuits de Paul Falstad.",
       format: "ecran",
     },
     {
