@@ -23,10 +23,29 @@ export function Popup({ ouvert, fermer, titre, sousTitre, children, pied, largeu
   const idTitre = useId();
   const fenetre = useRef<HTMLDivElement>(null);
 
+  /**
+   * La fonction de fermeture est gardée dans une référence, et ce n'est pas un
+   * détail de style : c'est la correction d'un défaut qui rendait le formulaire
+   * de contact inutilisable.
+   *
+   * Les parents écrivent `fermer={() => ouvrirContact(false)}`, donc une
+   * nouvelle fonction à chaque rendu. Mise en dépendance de l'effet, elle le
+   * faisait rejouer à **chaque frappe** : le nettoyage rendait le focus à
+   * l'élément d'origine, puis l'effet le reprenait sur la fenêtre. On tapait
+   * une lettre, et il fallait recliquer dans le champ.
+   *
+   * L'effet ne dépend donc plus que de l'ouverture, et la touche Échap lit la
+   * dernière version de `fermer` au moment où elle est pressée.
+   */
+  const fermerRef = useRef(fermer);
+  useEffect(() => {
+    fermerRef.current = fermer;
+  });
+
   useEffect(() => {
     if (!ouvert) return;
     const origine = document.activeElement as HTMLElement | null;
-    const surTouche = (e: KeyboardEvent) => e.key === "Escape" && fermer();
+    const surTouche = (e: KeyboardEvent) => e.key === "Escape" && fermerRef.current();
     document.addEventListener("keydown", surTouche);
     const debordement = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -36,7 +55,7 @@ export function Popup({ ouvert, fermer, titre, sousTitre, children, pied, largeu
       document.body.style.overflow = debordement;
       origine?.focus?.();
     };
-  }, [ouvert, fermer]);
+  }, [ouvert]);
 
   return createPortal(
     <AnimatePresence>
