@@ -7,9 +7,9 @@ const fiche: Projet = {
   slug: "commande-moteur-pmsm",
   ordre: 76,
   titre: "Commande d'un moteur synchrone",
-  accroche: "Un moteur synchrone piloté par un STM32F446 : modulation vectorielle, schémas-blocs et interface de pilotage sur bus CAN.",
+  accroche: "Un moteur synchrone piloté par un STM32F446, dont la commande embarquée tourne aujourd'hui dans un navigateur : on freine l'arbre, et elle tient sa consigne.",
   resume:
-    "Travaux sur la commande d'un moteur synchrone à aimants permanents : micrologiciel temps réel sur carte Nucleo F446 avec son étage de puissance, modélisation de la commande par schémas-blocs, et interface de bureau qui pilote le moteur par le bus CAN. La base de commande est fournie par l'enseignant ; l'étude, l'intégration sur la carte et l'interface de pilotage constituent le travail réalisé.",
+    "Travaux sur la commande d'un moteur synchrone à aimants permanents : micrologiciel temps réel sur carte Nucleo F446 avec son étage de puissance, modélisation de la commande par schémas-blocs, et interface de bureau qui pilote le moteur par le bus CAN. La base de commande est fournie par l'enseignant ; l'étude, l'intégration sur la carte et l'interface de pilotage constituent le travail réalisé. Le banc ayant été rendu à l'école, le code embarqué produit par le schéma-blocs a été compilé en WebAssembly : il pilote désormais un moteur simulé, dans un atelier en ligne où l'on freine l'arbre à la souris.",
   categorie: "robotique",
   // En ligne : la commande embarquée du projet tourne dans un navigateur.
   statut: "en-ligne",
@@ -22,6 +22,7 @@ const fiche: Projet = {
     "Intégration sur carte Nucleo STM32F446 : mesure des courants, codeur incrémental, découpage",
     "Interface de pilotage en Qt reliée par le bus CAN, avec une version à bus simulé",
     "Essais sur l'étage de puissance triphasé",
+    "Remise en marche du projet après restitution du matériel : code embarqué compilé en WebAssembly, moteur et charge simulés, banc manipulable en ligne",
   ],
   couleur: "#b5542b",
   puce: "STM32F446",
@@ -80,7 +81,7 @@ SocketCanMock::CanFrame frame;   // consigne de vitesse ou de couple`,
       libelle: "L'atelier, à manipuler dans le navigateur",
       url: "https://atelier-moteur-pmsm.vercel.app",
       detail:
-        "La commande embarquée du projet, compilée en WebAssembly, pilote un moteur simulé. On tire le frein contre le disque et le courant de couple monte pendant que la vitesse ne bouge pas, on accroche des masses, on tourne la consigne, on coupe une phase, et l'on peut dérégler le calage du codeur pour voir la commande produire du flux au lieu du couple",
+        "La commande embarquée du projet, compilée en WebAssembly, pilote un moteur simulé. On tire le frein contre le disque et le courant de couple monte pendant que la vitesse ne bouge pas, on glisse un volant d'inertie sur l'arbre, on tourne la consigne, on coupe une phase. Un bouton « coup de consigne » juge la réponse comme sur un vrai banc, dépassement et temps de stabilisation, et un bandeau d'état vital passe au rouge quand la commande décroche",
     },
   ],
   couverture: {
