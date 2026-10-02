@@ -1,5 +1,6 @@
 import type { Projet } from "../types";
 
+import atelier from "./atelier-http.webp";
 import etagesAccueil from "./etages.webp";
 import etagesRequete from "./etages-requete.webp";
 import etagesUdp from "./etages-udp.webp";
