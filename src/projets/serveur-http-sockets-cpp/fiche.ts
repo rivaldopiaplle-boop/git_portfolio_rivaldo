@@ -59,6 +59,7 @@ const fiche: Projet = {
         "Deux étages sont fabriqués par ces programmes : la page qui montre au visiteur sa propre requête, et un échange UDP joué au moment du clic",
         "Hébergement décrit dans le dépôt par un fichier render.yaml, pas par des cases cochées sur un tableau de bord : si le service est perdu, il se recrée à l'identique",
         "Une sonde vérifie les cinq étages en ligne après chaque mise à jour, y compris la poignée de main WebSocket, qui ne se teste pas en curl",
+        "L'accueil est un atelier installable qui joue neuf scénarios : la réponse s'affiche comme une page, ses liens relancent l'atelier, et le schéma des décisions du serveur s'allume sur la branche empruntée",
       ],
     },
     {
