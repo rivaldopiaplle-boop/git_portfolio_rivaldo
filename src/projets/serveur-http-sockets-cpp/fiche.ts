@@ -143,6 +143,13 @@ verifier "Sec-WebSocket-Accept est conforme à la RFC 6455"   "$(echo "$entetes"
 
   galerie: [
     {
+      src: atelier,
+      alt: "L'atelier du serveur : scénarios, échange brut, schéma des décisions",
+      legende:
+        "La page d'accueil n'est pas un texte à lire : c'est un atelier servi par le serveur qu'il explique. On clique un scénario, une vraie requête part, et trois panneaux montrent ce qu'elle devient. À gauche l'en-tête tel que le serveur l'a lu sur la socket, rendu par un programme CGI à qui le serveur passe sa propre lecture ; à droite le schéma de ses décisions, dans l'ordre du code, avec la branche empruntée qui s'allume.",
+      format: "ecran",
+    },
+    {
       src: etagesAccueil,
       alt: "La page d'accueil du serveur, qui présente ses cinq étages",
       legende:
