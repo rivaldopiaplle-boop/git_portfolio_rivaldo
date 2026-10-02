@@ -1,21 +1,26 @@
 import type { Projet } from "../types";
 
+import etagesAccueil from "./etages.webp";
+import etagesRequete from "./etages-requete.webp";
+import etagesUdp from "./etages-udp.webp";
+import etagesWebsocket from "./etages-websocket.webp";
+
 const fiche: Projet = {
   slug: "serveur-http-sockets-cpp",
   ordre: 38,
   titre: "Serveur HTTP écrit sur les sockets",
-  accroche: "Des datagrammes UDP au serveur HTTP multi-clients qui sert pages, formulaires et WebSocket, sans aucune bibliothèque web. Mis en image Docker et vérifié par 15 tests en HTTP et une charge k6.",
+  accroche: "Des datagrammes UDP au serveur HTTP multi-clients qui sert pages, formulaires et WebSocket, sans aucune bibliothèque web. Mis en image Docker et vérifié par 18 tests en HTTP et une charge k6.",
   resume:
     "Progression en C++ sur l'API des sockets : échanges UDP puis TCP, en texte et en binaire, client HTTP, puis un serveur HTTP qui lit lui-même les en-têtes, sert des fichiers, traite des formulaires GET et POST et ouvre une connexion WebSocket. C'est ce qui rend lisible tout le reste : derrière une requête d'API, il y a une socket et un protocole texte. À la reprise : une image Docker, des tests en curl, une mesure de charge, et une faille de chemin trouvée puis corrigée.",
   categorie: "devops",
-  statut: "termine",
+  statut: "en-ligne",
   annee: "2025",
   cadre: "ENIB · communication réseau et systèmes",
   couleur: "#4f5fd6",
   stack: ["cpp", "linux", "docker", "k6"],
   chiffres: [
     { valeur: 6, libelle: "paliers, de l'UDP au WebSocket" },
-    { valeur: 15, libelle: "vérifications en HTTP, WebSocket compris" },
+    { valeur: 18, libelle: "vérifications en HTTP, WebSocket compris" },
     { valeur: 20, libelle: "clients simultanés sous k6, p95 sous 100 ms" },
   ],
   probleme:
@@ -39,9 +44,20 @@ const fiche: Projet = {
       texte: "Un serveur qui ne tourne que sur le poste de son auteur ne prouve rien.",
       points: [
         "Image Docker en deux étapes : compilation par GCC 14, puis une image sans compilateur, lancée par un utilisateur sans privilège",
-        "15 vérifications en curl : types des fichiers, listing, 404, POST texte et binaire, poignée de main WebSocket contrôlée avec l'exemple de la RFC 6455, connexion persistante, 20 clients simultanés",
+        "18 vérifications en curl : types des fichiers, listing, 404, POST texte et binaire, poignée de main WebSocket contrôlée avec l'exemple de la RFC 6455, connexion persistante, 20 clients simultanés",
         "Charge k6 : 20 utilisateurs virtuels, et des seuils sur le taux d'échec et le 95e centile",
         "make : construire, lancer, tester et mettre sous charge en une commande",
+      ],
+    },
+    {
+      titre: "Le mettre en ligne, et donner à voir ce qu'il fait",
+      texte:
+        "Un serveur dont on ne peut montrer qu'un fichier source ne prouve rien non plus. Il sert maintenant son propre site, et chaque palier du projet y est une page.",
+      points: [
+        "Les deux blocs CGI restés vides en cours ont été écrits : le serveur crée un processus enfant, lui passe la socket à la place de son entrée et de sa sortie, l'environnement de la requête, et l'attend",
+        "Deux étages sont fabriqués par ces programmes : la page qui montre au visiteur sa propre requête, et un échange UDP joué au moment du clic",
+        "Hébergement décrit dans le dépôt par un fichier render.yaml, pas par des cases cochées sur un tableau de bord : si le service est perdu, il se recrée à l'identique",
+        "Une sonde vérifie les cinq étages en ligne après chaque mise à jour, y compris la poignée de main WebSocket, qui ne se teste pas en curl",
       ],
     },
     {
@@ -115,6 +131,46 @@ verifier "la poignée de main répond 101"   "$(echo "$entetes" | head -1 | cut 
 verifier "Sec-WebSocket-Accept est conforme à la RFC 6455"   "$(echo "$entetes" | grep -i '^Sec-WebSocket-Accept:' | cut -d' ' -f2)" "s3pPLMBiTxaQ9kYGzzhZRbK+xOo="`,
     },
   ],
+  demos: [
+    {
+      libelle: "Le serveur, en ligne, avec ses cinq étages",
+      url: "https://serveur-http-sockets.onrender.com",
+      detail:
+        "La page d'accueil est servie par ce programme, pas par nginx. En dessous, chaque lien descend d'un cran : la page fabriquée à l'instant par un programme que le serveur lance pour toi, la connexion qui change de protocole en cours de route, l'envoi d'octets bruts, le dossier listé, et jusqu'à un échange UDP joué au moment du clic. Service gratuit : il s'endort, et la première visite demande environ une minute",
+    },
+  ],
+
+  galerie: [
+    {
+      src: etagesAccueil,
+      alt: "La page d'accueil du serveur, qui présente ses cinq étages",
+      legende:
+        "Plutôt que six démonstrations côte à côte, les six paliers du projet sont empilés comme ils le sont vraiment : chaque lien descend d'un cran sous la page qu'on lit. L'accueil est lui-même servi par le serveur, dans un conteneur sans compilateur ni sources, sous un utilisateur sans privilège.",
+      format: "ecran",
+    },
+    {
+      src: etagesRequete,
+      alt: "Une page fabriquée par un programme, qui affiche la requête du visiteur",
+      legende:
+        "L'étage de l'application. Cette page n'existe pas sur le disque : le serveur crée un processus enfant, lui donne la socket à la place de sa sortie standard et le remplace par le programme demandé. Le numéro du processus et l'heure changent à chaque rechargement, ce qui se vérifie en deux visites. Les deux blocs qui font cela étaient restés vides en cours.",
+      format: "ecran",
+    },
+    {
+      src: etagesWebsocket,
+      alt: "L'étage du WebSocket, avec les mêmes octets lus dans les deux ordres",
+      legende:
+        "Le serveur envoie dix entiers tels qu'ils sont rangés dans sa mémoire, et la page les relit en ordre réseau : d'où les nombres énormes du journal. Le tableau met les deux lectures côte à côte, et les valeurs attendues réapparaissent dans la colonne de droite. Un WebSocket transporte des octets, jamais des nombres.",
+      format: "ecran",
+    },
+    {
+      src: etagesUdp,
+      alt: "La transcription d'un échange UDP joué au moment de la visite",
+      legende:
+        "Un navigateur ne sait pas parler UDP. Le serveur lance donc les deux programmes du premier palier et rend leur transcription : un datagramme jeté sans connexion ni accusé de réception, et un port attribué par le système, qui change à chaque rechargement.",
+      format: "ecran",
+    },
+  ],
+
   preuves: [
     {
       libelle: "La chaîne, verte le 1er octobre 2026",
