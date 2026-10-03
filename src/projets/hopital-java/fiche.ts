@@ -12,7 +12,7 @@ const fiche: Projet = {
   titre: "MyHopital",
   accroche: "Une application de bureau JavaFX pour un hôpital : trois rôles, rendez-vous sans conflit, dossiers médicaux. Téléchargeable pour Windows et Linux.",
   resume:
-    "Prototype desktop de gestion hospitalière en JavaFX : authentification par rôle (directeur, gestionnaire, médecin), patients, médecins, rendez-vous, consultations, dossiers et documents médicaux. Architecture en couches (interface, services, dépôts, domaine), avec une base SQLite locale et un import initial depuis des CSV. À la reprise : mots de passe hachés, 11 tests JUnit, un défaut corrigé, et des versions publiées automatiquement par jpackage.",
+    "Prototype desktop de gestion hospitalière en JavaFX : authentification par rôle (directeur, gestionnaire, médecin), patients, médecins, rendez-vous, consultations, dossiers et documents médicaux. Architecture en couches (interface, services, dépôts, domaine), avec une base SQLite locale et un import initial depuis des CSV. À la reprise : mots de passe hachés, 11 tests JUnit, un défaut corrigé, et des versions publiées automatiquement par jpackage. C'est le projet d'école, et il a servi de point de départ à RivIbis, qui reprend le même domaine en partant du modèle de données du métier.",
   categorie: "applications",
   statut: "termine",
   annee: "2026",
