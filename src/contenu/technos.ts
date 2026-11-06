@@ -42,6 +42,7 @@ import {
   siPostgresql,
   siPrimevue,
   siPrisma,
+  siPostman,
   siPuppeteer,
   siPytest,
   siPython,
@@ -95,6 +96,7 @@ const definitions = {
   eslint: { nom: "ESLint", icone: siEslint },
   k6: { nom: "k6", icone: siK6 },
   puppeteer: { nom: "Puppeteer", icone: siPuppeteer },
+  postman: { nom: "Postman", icone: siPostman },
   // Back-end et données
   nestjs: { nom: "NestJS", icone: siNestjs },
   django: { nom: "Django", icone: siDjango },

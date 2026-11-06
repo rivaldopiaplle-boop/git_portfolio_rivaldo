@@ -70,9 +70,25 @@ const fiche: Projet = {
       format: "ecran",
     },
   ],
-  stack: ["java", "spring", "angular", "postgresql", "redis", "docker", "kubernetes", "githubactions"],
+  stack: [
+    "java",
+    "spring",
+    "maven",
+    "angular",
+    "typescript",
+    "postgresql",
+    "redis",
+    "nginx",
+    "docker",
+    "kubernetes",
+    "linux",
+    "githubactions",
+    "postman",
+    "puppeteer",
+  ],
   chiffres: [
-    { valeur: 54, libelle: "tests, contre une vraie PostgreSQL" },
+    { valeur: 68, libelle: "tests, contre une vraie PostgreSQL" },
+    { valeur: 479, libelle: "contrôles d'API sur les sept métiers, refus compris" },
     { valeur: 4, libelle: "portes seulement ouvrent un dossier, et pas une de plus" },
     { valeur: 1, libelle: "commande lève tout : base, mémoire, serveur, client" },
   ],
@@ -81,6 +97,27 @@ const fiche: Projet = {
   solution:
     "Reprendre les trois mécanismes que les vrais systèmes de santé ont et que les exemples n'ont pas : l'amendement signé plutôt que la modification, le journal des lectures, et le lien de soin — le droit vient de la relation entre un soignant et un patient, pour la durée du soin, et il se referme à la fin.",
   sections: [
+    {
+      titre: "Sept métiers, et ce que chacun ne doit pas pouvoir faire",
+      texte:
+        "Chaque métier a sa collection de scénarios, jouée par Newman à chaque poussée : l'accueil, le médecin, l'infirmier, le comptoir de pharmacie, la caisse, les ressources humaines, la direction. Chacune finit par un dossier de gestes que ce métier doit se voir refuser, et c'est ce dossier-là qui a trouvé les défauts.",
+      points: [
+        "**Un infirmier pouvait prescrire.** Le menu ne lui proposait pas l'entrée, donc on croyait la règle tenue : elle ne l'était que dans l'écran. Un appel direct à la route passait, et la chaîne des trois gestes du médicament s'effondrait",
+        "**Celui qui administre pouvait aussi dispenser**, ce qui supprime le contrôle croisé que ces trois gestes existent pour créer",
+        "**N'importe quel agent connecté pouvait fusionner deux identités.** La lecture des fiches était réservée à cinq métiers, l'écriture à personne : le comptoir, qui n'a pas le droit de chercher un patient, pouvait en inventer un",
+        "**Le refus arrivait après la recherche** : un pharmacien recevait 400 sur un patient inconnu et 403 sur un patient connu, et la différence suffisait à savoir qui est inscrit à l'hôpital",
+        "Aucun des 68 tests du serveur ne voyait ces quatre défauts : un test appelle une méthode Java, une collection passe par la porte, avec le cookie de session et le jeton anti-rejeu, exactement comme le client",
+      ],
+    },
+    {
+      titre: "Une démonstration qui ne vieillit pas",
+      texte:
+        "L'agenda de démonstration s'était vidé tout seul. Les créneaux étaient posés une fois, avec un garde-fou qui demandait « y a-t-il déjà des créneaux » : une fois le premier agenda posé, la réponse restait oui pour toujours, et un mois plus tard tout était dans le passé.",
+      points: [
+        "La bonne question n'est pas « y a-t-il des créneaux » mais « reste-t-il un créneau libre à venir ». Au démarrage suivant, l'agenda se remplit tout seul",
+        "Le défaut ne se voit pas le jour où on l'écrit : il apparaît plus tard, chez celui à qui on montre le projet",
+      ],
+    },
     {
       titre: "Les trois mécanismes du métier",
       points: [
@@ -228,6 +265,13 @@ if (!dispensee) {
     },
   ],
   depots: [
+    {
+      libelle: "Voir en ligne",
+      url: "https://rivibis.vercel.app",
+      visibilite: "public",
+      detail:
+        "Sept comptes de démonstration, un par métier, mot de passe demo2026. Le serveur dort après quinze minutes sans visite : la première page peut demander une minute",
+    },
     {
       libelle: "Dépôt du projet",
       url: DEPOT,
