@@ -14,26 +14,26 @@ export const COMPETENCES: Competence[] = [
     titre: "CI/CD et qualité",
     texte: "Des chaînes qui testent contre de vraies bases, bloquent les secrets et ne publient que ce qui est vert.",
     icone: Workflow,
-    technos: ["githubactions", "docker", "pytest", "vitest", "eslint", "ruff", "k6", "puppeteer"],
+    technos: ["githubactions", "docker", "pytest", "vitest", "eslint", "ruff", "k6", "puppeteer", "postman"],
   },
   {
     titre: "Conteneurs et mise en ligne",
     texte:
       "Piles Docker Compose, reverse proxy, variables de construction ou d'exécution, sondes de santé, hébergement gratuit maîtrisé.",
     icone: Container,
-    technos: ["docker", "nginx", "caddy", "render", "vercel", "supabase", "neon", "linux"],
+    technos: ["docker", "kubernetes", "nginx", "caddy", "render", "vercel", "supabase", "neon", "aiven", "linux"],
   },
   {
     titre: "Back-end et données",
     texte: "API REST versionnées, règles métier côté serveur, migrations qui concordent avec le schéma.",
     icone: Database,
-    technos: ["nestjs", "django", "express", "nextjs", "prisma", "postgresql", "mysql", "jwt"],
+    technos: ["spring", "nestjs", "django", "express", "nextjs", "prisma", "postgresql", "mysql", "redis", "jwt"],
   },
   {
     titre: "Front et mobile",
     texte: "Interfaces typées avec leurs états vides, de chargement et d'erreur ; applications installables.",
     icone: Smartphone,
-    technos: ["react", "vue", "typescript", "mui", "primevue", "tailwind", "expo", "ionic"],
+    technos: ["react", "angular", "vue", "typescript", "mui", "primevue", "tailwind", "expo", "ionic"],
   },
   {
     titre: "Embarqué et robotique",
@@ -52,6 +52,7 @@ export const COMPETENCES: Competence[] = [
 export const BANDEAU_HAUT: Techno[] = [
   "githubactions",
   "docker",
+  "kubernetes",
   "nginx",
   "render",
   "vercel",

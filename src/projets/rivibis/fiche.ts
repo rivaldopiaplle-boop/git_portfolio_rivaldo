@@ -17,7 +17,7 @@ const fiche: Projet = {
   resume:
     "Dossier médical miniature mais construit sur le modèle du métier, avec le vocabulaire de HL7 FHIR. Trois idées le séparent des « hospital management system » qu'on trouve par dizaines : une correction est un amendement signé et l'ancienne valeur reste lisible ; toute lecture de dossier est journalisée, parce que la curiosité interne est le vrai risque d'un hôpital ; et un médecin voit les dossiers de ses patients, pas de tous — le dépassement, le bris de glace, est motivé, limité à une heure, et signalé. Le parcours suit celui d'un hôpital camerounais : on paie avant d'être reçu, sauf aux urgences, où rien ne bloque jamais.",
   categorie: "applications",
-  statut: "termine",
+  statut: "en-ligne",
   annee: "2026",
   cadre: "Projet personnel · reprise complète de MyHopital",
   couleur: "#0f6e56",
@@ -36,9 +36,9 @@ const fiche: Projet = {
     },
     {
       src: pharmacie,
-      alt: "La pharmacie et ses trois jalons",
+      alt: "Le comptoir de la pharmacie, et sa file",
       legende:
-        "Le médecin prescrit, la pharmacie dispense, l'infirmier administre. Chaque ligne porte ses trois jalons dans l'ordre, et « Administrer » n'apparaît pas avant la dispensation : c'est exactement là que l'erreur médicamenteuse se produit",
+        "Le médecin prescrit, la pharmacie dispense, l'infirmier administre : trois gestes, trois personnes, et c'est exactement là que l'erreur médicamenteuse se produit. Le comptoir ne voit du patient que son nom, ses lignes à sortir, et ses allergies en rouge — la seule information dont l'absence peut tuer. Rien du dossier",
       format: "ecran",
     },
     {
@@ -264,14 +264,16 @@ if (!dispensee) {
       etat: "prevu",
     },
   ],
-  depots: [
+  demos: [
     {
-      libelle: "Voir en ligne",
+      libelle: "Site web",
       url: "https://rivibis.vercel.app",
-      visibilite: "public",
       detail:
         "Sept comptes de démonstration, un par métier, mot de passe demo2026. Le serveur dort après quinze minutes sans visite : la première page peut demander une minute",
+      support: "web",
     },
+  ],
+  depots: [
     {
       libelle: "Dépôt du projet",
       url: DEPOT,
