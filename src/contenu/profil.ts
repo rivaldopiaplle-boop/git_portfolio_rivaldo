@@ -18,7 +18,15 @@ export const PROFIL = {
   emailSecondaire: "rivaldopiaplle@gmail.com",
   github: "https://github.com/rivaldopiaplle-boop",
   linkedin: "https://www.linkedin.com/in/rivaldo-piaplle" as string | null,
-  cv: "/cv/Rivaldo-Piaplle-CV.pdf",
+  /**
+   * Le CV, avec la date de sa version collée à l'adresse.
+   *
+   * Sans elle, un visiteur qui a déjà ouvert la page garde l'ancien fichier :
+   * le navigateur et le lecteur de PDF le gardent en mémoire sous la même
+   * adresse, et on croit que la mise à jour n'a pas eu lieu. Changer ce
+   * nombre à chaque nouvelle version force le téléchargement.
+   */
+  cv: "/cv/Rivaldo-Piaplle-CV.pdf?v=20261106",
   langues: [
     { nom: "Français", niveau: "natif" },
     { nom: "Anglais", niveau: "intermédiaire" },
