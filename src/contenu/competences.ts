@@ -38,9 +38,9 @@ export const COMPETENCES: Competence[] = [
   {
     titre: "Apprentissage et données",
     texte:
-      "Modèles jugés sur ce qu'ils font gagner et non sur leur exactitude, sur des données déséquilibrées ou trouées, et une chaîne qui refuse de livrer un modèle moins bon que le précédent.",
+      "Modèles jugés sur ce qu'ils font gagner et non sur leur exactitude, sur des données déséquilibrées ou trouées, une chaîne qui refuse de livrer un modèle moins bon que le précédent, et des réseaux exportés en ONNX pour tourner dans le navigateur du visiteur.",
     icone: Brain,
-    technos: ["python", "pandas", "numpy", "scikitlearn", "pytorch", "mlflow", "opencv", "postgresql"],
+    technos: ["python", "pandas", "numpy", "scikitlearn", "pytorch", "onnx", "mlflow", "opencv", "postgresql"],
   },
   {
     titre: "Embarqué et robotique",
