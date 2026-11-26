@@ -1,6 +1,6 @@
 import type { Techno } from "../contenu/technos";
 
-export type Categorie = "devops" | "applications" | "robotique";
+export type Categorie = "devops" | "applications" | "ia-donnees" | "robotique";
 
 /** `en-ligne` : on peut l'utiliser. `termine` : livré, hors ligne. `en-cours` : en construction. */
 export type Statut = "en-ligne" | "termine" | "en-cours";

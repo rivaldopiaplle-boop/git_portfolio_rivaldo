@@ -8,7 +8,7 @@ const fiche: Projet = {
     "Prévoir la courbe de température d'un équipement frigorifique à vingt-quatre heures, pour envoyer le technicien avant la perte et non après.",
   resume:
     "Le second axe de RivVigie. La plateforme constate la rupture quand le seuil est franchi, c'est-à-dire quand la marchandise se perd déjà : le préavis est de zéro heure. Ce projet le porte à six heures en prévoyant la trajectoire au lieu de classer un état. Trois modèles comparés : la prévision naïve comme référence, un réseau séquentiel entraîné en PyTorch, et un modèle de fondation de séries temporelles utilisé sans entraînement, parce qu'un magasin qui ouvre n'a aucun historique. Un autoencodeur attrape ce qu'un seuil ne verra jamais : un compresseur qui met chaque jour un peu plus longtemps à redescendre en froid.",
-  categorie: "applications",
+  categorie: "ia-donnees",
   statut: "en-cours",
   annee: "2026",
   cadre: "Projet personnel · second axe de RivVigie",

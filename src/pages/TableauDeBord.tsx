@@ -112,7 +112,7 @@ export default function TableauDeBord() {
         <section>
           <TitreBloc
             titre="Les autres projets"
-            sous="Applications, logiciel et robotique."
+            sous="Applications, apprentissage, logiciel et robotique."
             action={
               <Link to="/projets" className="shrink-0 text-sm text-vert hover:underline">
                 Tout le catalogue

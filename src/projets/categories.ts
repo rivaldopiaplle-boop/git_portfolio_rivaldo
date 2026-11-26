@@ -1,11 +1,11 @@
-import { AppWindow, Bot, Workflow } from "lucide-react";
+import { AppWindow, Bot, Brain, Workflow } from "lucide-react";
 import type { ComponentType, CSSProperties } from "react";
 import type { Categorie, Statut } from "./types";
 
 type Icone = ComponentType<{ className?: string; style?: CSSProperties }>;
 
 /**
- * Trois catégories, pas une de plus : un visiteur doit pouvoir les retenir
+ * Quatre catégories, pas une de plus : un visiteur doit pouvoir les retenir
  * d'un coup d'œil, comme les rayons d'une boutique.
  */
 export const CATEGORIES: Record<Categorie, { nom: string; court: string; description: string; icone: Icone; couleur: string }> = {
@@ -23,6 +23,13 @@ export const CATEGORIES: Record<Categorie, { nom: string; court: string; descrip
     icone: AppWindow,
     couleur: "#0a7fb0",
   },
+  "ia-donnees": {
+    nom: "IA et analyse de données",
+    court: "IA et données",
+    description: "Projets dont le sujet est ce que les données apprennent : prévision, apprentissage profond, vision, et la chaîne qui met un modèle en service.",
+    icone: Brain,
+    couleur: "#7f4ac4",
+  },
   robotique: {
     nom: "Robotique et embarqué",
     court: "Robotique",
@@ -32,7 +39,7 @@ export const CATEGORIES: Record<Categorie, { nom: string; court: string; descrip
   },
 };
 
-export const ORDRE_CATEGORIES: Categorie[] = ["devops", "applications", "robotique"];
+export const ORDRE_CATEGORIES: Categorie[] = ["devops", "applications", "ia-donnees", "robotique"];
 
 export const STATUTS: Record<Statut, { nom: string; couleur: string }> = {
   "en-ligne": { nom: "En ligne", couleur: "#0c9467" },
