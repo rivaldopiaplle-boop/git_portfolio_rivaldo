@@ -66,7 +66,15 @@ for (const fiche of fiches) {
     fiche.depots.filter((d) => d.visibilite === "public" && d.url).length +
     (fiche.galerie?.length ?? 0) +
     (fiche.extraits?.length ?? 0);
-  if (visible === 0) echec(`${fiche.slug} : rien à montrer (démo, preuve, dépôt public, image ou extrait)`);
+  /**
+   * Un projet encore en construction n'a parfois rien d'ouvrable, et c'est
+   * honnête : ce qu'il montre, c'est sa feuille de route. La règle ne se
+   * relâche que là, et seulement si cette feuille existe vraiment. Un projet
+   * annoncé en ligne ou terminé sans rien à ouvrir reste une faute.
+   */
+  const enChantier = fiche.statut === "en-cours" && (fiche.feuilleDeRoute?.length ?? 0) > 0;
+  if (visible === 0 && !enChantier) echec(`${fiche.slug} : rien à montrer (démo, preuve, dépôt public, image ou extrait)`);
+  else if (visible === 0) console.log(`  ~ ${fiche.slug} (en cours : sa feuille de route tient lieu de preuve)`);
   else console.log(`  ✓ ${fiche.slug}`);
 }
 

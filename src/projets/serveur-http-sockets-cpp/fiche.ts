@@ -72,6 +72,15 @@ const fiche: Projet = {
       ],
     },
     {
+      titre: "La chaîne, et pourquoi son lien n'est pas ici",
+      texte:
+        "Le 1er octobre 2026, la chaîne est passée verte en une minute : image Docker construite en deux temps, serveur démarré, quinze vérifications en curl sur les types de fichiers, le listing, les codes d'erreur, le POST texte et binaire, la poignée WebSocket de la RFC 6455 et le maintien de connexion, puis vingt utilisateurs virtuels sous k6 avec leurs seuils.",
+      points: [
+        "Le dépôt est privé parce qu'il mêle du code fourni par le cours : la page de l'exécution répondrait 404 à un visiteur, et un lien mort vaut moins qu'un lien absent",
+        "Ce qui est montrable l'est ailleurs sur cette fiche : les extraits de code, la galerie des étages, et l'atelier en ligne",
+      ],
+    },
+    {
       titre: "Ce qui vient du cours, ce qui est personnel",
       points: [
         "Fournis par le cours : la bibliothèque utilitaire (sockets, lecture de lignes, WebSocket bas niveau) et le squelette de chaque programme",
@@ -180,14 +189,6 @@ verifier "Sec-WebSocket-Accept est conforme à la RFC 6455"   "$(echo "$entetes"
     },
   ],
 
-  preuves: [
-    {
-      libelle: "La chaîne, verte le 1er octobre 2026",
-      url: "https://github.com/rivaldopiaplle-boop/git_serveur-http-sockets/actions/runs/35406820564",
-      detail:
-        "Dix étapes en une minute : image Docker construite en deux temps, serveur démarré, quinze vérifications en curl sur les types de fichiers, le listing, les codes d'erreur, le POST texte et binaire, la poignée WebSocket de la RFC 6455 et le maintien de connexion, puis vingt utilisateurs virtuels sous k6 avec seuils. Le dépôt étant privé, la page n'est visible qu'avec ton compte",
-    },
-  ],
   depots: [{ libelle: "Les six paliers", url: "https://github.com/rivaldopiaplle-boop/git_serveur-http-sockets", visibilite: "prive", detail: "Dépôt privé : il mêle du code fourni par le cours. Les extraits de la fiche montrent le travail personnel" }],
 };
 
