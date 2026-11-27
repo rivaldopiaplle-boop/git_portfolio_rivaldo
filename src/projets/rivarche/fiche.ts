@@ -31,7 +31,7 @@ const fiche: Projet = {
     },
   ],
   chiffres: [
-    { valeur: 3, libelle: "ateliers ouverts sur neuf, et aucun des six autres n'est promis" },
+    { valeur: 4, libelle: "ateliers ouverts sur neuf, et aucun des cinq autres n'est promis" },
     { valeur: 0, libelle: "octet envoyé à un serveur : les modèles tournent chez le visiteur" },
     { valeur: 4, libelle: "dispositions pour neuf ateliers, choisies par la forme de l'échange" },
     { valeur: 3, libelle: "moteurs de calcul essayés en cascade, chacun vérifié par une vraie passe" },
@@ -84,7 +84,7 @@ const fiche: Projet = {
   feuilleDeRoute: [
     { titre: "RivLimier, la recherche documentaire", detail: "Le seul atelier avec un service, et le seul écran de consentement.", etat: "prevu" },
     { titre: "RivCorbeau, les matrices de Raven", detail: "Produire des symboles avant de répondre, pas deviner la réponse.", etat: "prevu" },
-    { titre: "Les quatre derniers", detail: "Causalité, génération de niveaux, décision visuelle, panorama de l'IA.", etat: "prevu" },
+    { titre: "Les trois derniers", detail: "Causalité, décision visuelle, panorama de l'IA.", etat: "prevu" },
   ],
   lecons: [
     {
