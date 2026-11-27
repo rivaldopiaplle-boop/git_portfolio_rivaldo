@@ -1,5 +1,7 @@
 import type { Projet } from "../types";
 import atelier from "./atelier.webp";
+import banc from "./banc.webp";
+import compromis from "./compromis.webp";
 import epreuve from "./epreuve.webp";
 import loupe from "./loupe.webp";
 
@@ -10,7 +12,7 @@ const fiche: Projet = {
   accroche:
     "Une photo prend les couleurs et les motifs d'un tableau en gardant sa forme, en quelques secondes au lieu de quatre minutes, et sans quitter le navigateur.",
   resume:
-    "Le premier atelier de RivArche, tiré du travail pratique de transfert de style du module IAS. Le sujet ne demandait pas une jolie image : chacune de ses dix questions était un bouton à tourner, dosage du style, couches qui portent le style local contre le global, architecture, stabilité de l'optimisation. La démonstration rend donc ces boutons au visiteur, au lieu de les cacher derrière un résultat.",
+    "Le premier atelier de RivArche. Une boutique doit sortir quarante visuels dans une seule identité, sans payer un graphiste par image et sans confier les photos de ses clients à un service en ligne. Chaque question du sujet est devenue un bouton à tourner : la dose de style, le grain auquel la référence est lue, la conservation des couleurs, le mélange de deux références. Et chaque réglage touché s'inscrit au banc d'essais avec sa mesure, pour que le visiteur reparte avec celui qu'il a choisi.",
   categorie: "ia-donnees",
   statut: "en-ligne",
   annee: "2026",
@@ -25,16 +27,30 @@ const fiche: Projet = {
   galerie: [
     {
       src: atelier,
-      alt: "L'établi complet",
+      alt: "La bande de réglages et l'image, plein écran",
       legende:
-        "Les entrées à gauche, le résultat au centre, les commandes à droite. Le résultat ne quitte jamais l'écran, même pendant un calcul : il reste affiché, voilé, plutôt que de laisser un blanc qui fait croire à une panne",
+        "Une bande de réglages, l'image en grand, et la page ne défile jamais. La mesure est dans la même bande que les commandes qui la déplacent : une commande à gauche et son chiffre à l'extrême droite sont à mille deux cents pixels l'un de l'autre, et personne ne voit le lien",
+      format: "ecran",
+    },
+    {
+      src: compromis,
+      alt: "La courbe du compromis, mesurée",
+      legende:
+        "Six rendus et six mesures sur les images déposées, pas sur un exemple choisi d'avance. L'écart au style tombe de 90 à 39 pour cent quand la dose monte, l'écart au contenu monte en sens inverse. Il n'y a pas de meilleur point, il y a celui du visiteur, et le trait vertical est son réglage",
+      format: "ecran",
+    },
+    {
+      src: banc,
+      alt: "Le banc d'essais et son tableau",
+      legende:
+        "Chaque réglage touché s'inscrit tout seul avec sa mesure. Le visiteur remet un essai d'un clic, garde celui qu'il préfère, et emporte l'image et le journal. C'est la réponse à « comment être sûr que c'est le bon réglage » : il ne le croit pas, il le lit",
       format: "ecran",
     },
     {
       src: epreuve,
       alt: "Le modèle mis à l'épreuve",
       legende:
-        "Décaler la photo de seize pixels ne remplace pas le résultat : il se dédouble, et l'écart se mesure. Ici 16,1 pour cent, affiché en clair. Deux images presque identiques, posées côte à côte, laisseraient croire que l'épreuve n'a rien fait",
+        "Décaler la photo de seize pixels ne remplace pas le résultat : il se dédouble, et l'écart se mesure. Ici 19,6 pour cent, affiché en clair. Deux images presque identiques, posées côte à côte, laisseraient croire que l'épreuve n'a rien fait",
       format: "ecran",
     },
     {
@@ -50,6 +66,7 @@ const fiche: Projet = {
     { valeur: 4, suffixe: " s", libelle: "pour la même image ici, sur un processeur, sans carte graphique" },
     { valeur: 28, suffixe: " Mo", libelle: "téléchargés une seule fois, puis gardés par le navigateur" },
     { valeur: 0, libelle: "octet envoyé : la photo du visiteur reste sur son appareil" },
+    { valeur: 90, suffixe: " %", libelle: "d'écart au style à dose nulle, 39 % à pleine dose : la courbe du compromis" },
   ],
   probleme:
     "La méthode du cours, celle de Gatys, modifie l'image elle-même trois cents fois. Mesuré : 1 404 mégaoctets au pic et 185 secondes pour une image de 256 pixels. Un hébergement gratuit offre 512 mégaoctets et un dixième de processeur, soit environ un quarantième de ma machine : la même image y demanderait près de deux heures. Elle ne sera jamais servie en direct gratuitement, et il valait mieux le mesurer que le découvrir.",
@@ -100,6 +117,34 @@ const fiche: Projet = {
       ],
     },
     {
+      titre: "Le banc d'essais, et pourquoi il change tout",
+      texte:
+        "Une démonstration montre un résultat juste. Un outil laisse essayer, comparer, et repartir avec le meilleur. La différence tient dans un seul composant, le même dans les neuf ateliers.",
+      points: [
+        "Chaque réglage qui produit un résultat **écrit une ligne** : les réglages, la mesure, la référence. Deux réglages identiques ne font qu'une ligne",
+        "Le visiteur **remet** un essai d'un clic, et **garde** celui qu'il préfère : ici personne ne peut trancher à sa place, parce que le résultat est un compromis et non un score. L'écart au style le plus faible serait toujours la dose maximale, et ce serait un faux gagnant",
+        "Il repart avec **l'image et le journal**, un fichier qui dit ce qui a été essayé et ce que cela donnait",
+      ],
+    },
+    {
+      titre: "La courbe du compromis remplace les questions",
+      texte:
+        "Les réponses du sujet étaient des images fixes. Elles deviennent une mesure que le visiteur produit lui-même, sur ses propres images.",
+      points: [
+        "Six vraies passes suivies de six vraies mesures, en aperçu à 192 pixels : trois secondes au lieu de vingt",
+        "L'écart au style est **rapporté à la distance de départ de la photo** : cent pour cent veut dire aussi loin que la photo d'origine, zéro veut dire que les statistiques du tableau sont atteintes. Un chiffre absolu ne voudrait rien dire",
+        "Mesuré, et ce n'était pas attendu : à dose nulle la courbe part de **90 pour cent et non de cent**. Même sans style, le décodeur ne reconstruit pas la photo à l'identique",
+      ],
+    },
+    {
+      titre: "Deux tableaux mélangés, sans un calcul de plus",
+      points: [
+        "AdaIN ne retient d'un style que ses moyennes et ses écarts types par canal",
+        "Mélanger deux références ne demande donc pas de mélanger deux images : il suffit d'**interpoler ces deux poignées de nombres**",
+        "Le visiteur obtient un style qui n'existe dans aucun des deux tableaux, et le curseur coûte le même temps de calcul qu'avant",
+      ],
+    },
+    {
       titre: "Le calcul vit dans un fil de travail",
       points: [
         "Quatre secondes de calcul sur le fil principal gèlent la page entière : le curseur ne répond plus, les points d'attente s'arrêtent",
@@ -113,6 +158,11 @@ const fiche: Projet = {
       titre: "Le TP ne voulait pas une jolie image",
       texte:
         "Ma première maquette prenait deux images et rendait la troisième. Elle jetait tout ce que le sujet demandait de comprendre, et n'aurait pas tenu trente secondes devant un ingénieur. Les dix questions du sujet sont des boutons : la démonstration les rend au visiteur au lieu de les cacher.",
+    },
+    {
+      titre: "La commande et son chiffre dans le même regard",
+      texte:
+        "La première version mettait les entrées à gauche, le résultat au centre et les commandes à droite. Elle avait l'air rangée et elle ne marchait pas : on bougeait un curseur d'un côté de l'écran et le chiffre changeait de l'autre, mille deux cents pixels plus loin. Personne ne voit ce lien. Les réglages, leur valeur et la mesure qu'ils déplacent tiennent maintenant dans une seule bande, et ce qui demande de la place s'ouvre en fenêtre au lieu de pousser le résultat hors de l'écran.",
     },
     {
       titre: "Un bon modèle ne sauve pas une mauvaise image",
