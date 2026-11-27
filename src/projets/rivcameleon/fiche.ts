@@ -1,6 +1,7 @@
 import type { Projet } from "../types";
 import atelier from "./atelier.webp";
 import epreuve from "./epreuve.webp";
+import loupe from "./loupe.webp";
 
 const fiche: Projet = {
   slug: "rivcameleon",
@@ -33,7 +34,14 @@ const fiche: Projet = {
       src: epreuve,
       alt: "Le modèle mis à l'épreuve",
       legende:
-        "Décaler la photo de seize pixels ne remplace pas le résultat : il se dédouble. Avant à gauche, après à droite. Une panne se voit par comparaison, ou elle ne se voit pas",
+        "Décaler la photo de seize pixels ne remplace pas le résultat : il se dédouble, et l'écart se mesure. Ici 16,1 pour cent, affiché en clair. Deux images presque identiques, posées côte à côte, laisseraient croire que l'épreuve n'a rien fait",
+      format: "ecran",
+    },
+    {
+      src: loupe,
+      alt: "La loupe et son rideau",
+      legende:
+        "Les deux images superposées derrière un rideau qu'on fait glisser, avec le zoom à la molette et une vue de leur différence amplifiée. C'est ce qui rend un écart de seize pour cent visible",
       format: "ecran",
     },
   ],

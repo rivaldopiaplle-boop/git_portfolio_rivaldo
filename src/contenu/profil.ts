@@ -26,7 +26,7 @@ export const PROFIL = {
    * adresse, et on croit que la mise à jour n'a pas eu lieu. Changer ce
    * nombre à chaque nouvelle version force le téléchargement.
    */
-  cv: "/cv/Rivaldo-Piaplle-CV.pdf?v=20261106",
+  cv: "/cv/Rivaldo-Piaplle-CV.pdf?v=20261127",
   langues: [
     { nom: "Français", niveau: "natif" },
     { nom: "Anglais", niveau: "intermédiaire" },

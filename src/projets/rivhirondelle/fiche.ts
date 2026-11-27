@@ -1,9 +1,9 @@
 import type { Projet } from "../types";
 
 const fiche: Projet = {
-  slug: "rivpronostic",
+  slug: "rivhirondelle",
   ordre: 24,
-  titre: "RivPronostic",
+  titre: "RivHirondelle",
   accroche:
     "Prévoir la courbe de température d'un équipement frigorifique à vingt-quatre heures, pour envoyer le technicien avant la perte et non après.",
   resume:
