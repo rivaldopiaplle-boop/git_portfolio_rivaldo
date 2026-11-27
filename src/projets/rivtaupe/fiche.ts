@@ -66,6 +66,13 @@ const fiche: Projet = {
       ],
     },
     {
+      titre: "Les deux experiences du sujet, en boutons",
+      points: [
+        "**La mise a l'echelle** se coupe et se remet. Sur le tableau piege, une colonne varie 19 000 fois plus que sa voisine : sans mise a l'echelle, l'exactitude tombe de 0,983 a 0,922, soit exactement le niveau de la reponse la plus bete",
+        "**Le nombre de groupes** se regle de deux a six quand on partitionne. La dispersion baisse toujours quand on en ajoute un : ce n'est donc pas elle qui dit le bon nombre, c'est l'endroit ou elle cesse de baisser vite",
+      ],
+    },
+    {
       titre: "Deux pièges que j'ai créés moi-même",
       points: [
         "Le détecteur d'identifiant marquait une grandeur continue : une mesure a naturellement presque une valeur par ligne. Il ne regarde plus que les colonnes de texte, sinon il faisait exclure une vraie donnée",

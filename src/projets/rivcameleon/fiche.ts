@@ -89,6 +89,17 @@ const fiche: Projet = {
       ],
     },
     {
+      titre: "Les six questions du sujet, rendues au visiteur",
+      texte:
+        "Vingt-six images calculees par la methode d'origine, chacune avec sa question et un curseur. Aucune ne pourrait etre calculee en direct : c'est pour cela qu'elles sont la.",
+      points: [
+        "**Ce que chaque couche retient** : la photo reconstruite depuis les seules activations. conv_1 la rend presque intacte, conv_13 n'en garde qu'une silhouette dans le bruit",
+        "**Style local contre style global** : le tableau reconstruit en ajoutant les couches une a une, du grain aux grandes formes",
+        "**L'architecture** : ResNet18 est cinq fois plus rapide, 53 secondes contre 254, et nettement moins bon",
+        "**LBFGS contre Adam**, avec la courbe de perte en echelle logarithmique, et **le poids du style** de mille a dix milliards",
+      ],
+    },
+    {
       titre: "Le calcul vit dans un fil de travail",
       points: [
         "Quatre secondes de calcul sur le fil principal gèlent la page entière : le curseur ne répond plus, les points d'attente s'arrêtent",

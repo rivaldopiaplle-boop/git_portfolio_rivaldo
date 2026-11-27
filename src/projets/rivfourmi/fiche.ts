@@ -39,6 +39,7 @@ const fiche: Projet = {
   ],
   chiffres: [
     { valeur: 200, libelle: "lignes pour le réseau, sans aucune bibliothèque d'apprentissage" },
+    { valeur: 96, suffixe: " %", libelle: "sur le ou exclusif sans couche cachée, grâce aux traits dérivés" },
     { valeur: 0, libelle: "octet téléchargé : il n'y a pas de modèle, il s'entraîne devant vous" },
     { valeur: 4, libelle: "jeux de points, du séparable à la spirale" },
     { valeur: 10, libelle: "pas d'apprentissage par image affichée" },
@@ -54,6 +55,16 @@ const fiche: Projet = {
         "L'initialisation de Xavier : des poids tirés trop grands saturent la tangente hyperbolique dès le premier pas, et le réseau n'apprend plus rien. Défaut classique, et invisible si on ne l'a jamais vu",
         "L'entropie croisée et non l'erreur quadratique : avec une sortie sigmoïde, l'erreur quadratique rend le gradient minuscule quand le réseau se trompe avec assurance, et l'apprentissage s'arrête là où il faudrait qu'il reparte",
         "La frontière est évaluée sur une grille grossière puis étirée : l'oeil ne voit pas la différence, et le calcul est cent fois moins cher",
+      ],
+    },
+    {
+      titre: "Un trait bien choisi remplace une couche",
+      texte:
+        "C'est l'etape 4 du sujet, et elle vaut l'etape 5. Un bouton ajoute aux entrees le carre de chaque coordonnee et leur produit.",
+      points: [
+        "Sans aucune couche cachee, le reseau ne trace qu'une droite et plafonne sur le ou exclusif, mesure autour de 60 pour cent",
+        "Avec le produit des deux coordonnees parmi les entrees, **toujours sans couche cachee**, il monte a 96 pour cent",
+        "Ce produit est positif dans deux quadrants et negatif dans les deux autres : une droite suffit alors",
       ],
     },
     {
