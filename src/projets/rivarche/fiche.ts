@@ -31,7 +31,7 @@ const fiche: Projet = {
     },
   ],
   chiffres: [
-    { valeur: 9, libelle: "ateliers annoncés, et aucun n'est promis avant d'exister" },
+    { valeur: 2, libelle: "ateliers ouverts sur neuf, et aucun des sept autres n'est promis" },
     { valeur: 0, libelle: "octet envoyé à un serveur : les modèles tournent chez le visiteur" },
     { valeur: 4, libelle: "dispositions pour neuf ateliers, choisies par la forme de l'échange" },
     { valeur: 3, libelle: "moteurs de calcul essayés en cascade, chacun vérifié par une vraie passe" },
@@ -82,7 +82,6 @@ const fiche: Projet = {
     },
   ],
   feuilleDeRoute: [
-    { titre: "RivFourmi, le perceptron", detail: "Poser des points à la souris, voir la frontière se former règle après règle, et le réseau s'effondrer quand on décale le dessin.", etat: "prevu" },
     { titre: "RivTaupe, la fouille de données", detail: "Déposer un tableau, obtenir la référence à battre et les trois pièges présents.", etat: "prevu" },
     { titre: "RivLimier, la recherche documentaire", detail: "Le seul atelier avec un service, et le seul écran de consentement.", etat: "prevu" },
     { titre: "RivCorbeau, les matrices de Raven", detail: "Produire des symboles avant de répondre, pas deviner la réponse.", etat: "prevu" },
