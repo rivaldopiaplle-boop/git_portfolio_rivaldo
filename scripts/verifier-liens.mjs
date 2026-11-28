@@ -91,16 +91,39 @@ for (const fiche of fiches) {
 console.log(`\n── ${adresses.size} adresses promises au visiteur`);
 await Promise.all(
   [...adresses].map(async ([url, origine]) => {
-    try {
-      // 150 secondes : un service gratuit endormi (Render) met jusqu'à deux minutes
-      // à revenir, et un faux négatif ferait douter d'un lien pourtant valide.
-      const reponse = await fetch(url, { redirect: "follow", headers: { "user-agent": "Mozilla/5.0 (verifier-liens du portfolio)" }, signal: AbortSignal.timeout(150_000) });
-      if (reponse.ok) console.log(`  ✓ ${reponse.status} ${url}`);
-      else if (NON_VERIFIABLES.includes(reponse.status) || HOTES_FERMES_AUX_ROBOTS.includes(new URL(url).hostname)) console.log(`  ~ ${reponse.status} ${url} (non vérifiable automatiquement)`);
-      else echec(`${reponse.status} ${url}, ${origine}`);
-    } catch (erreur) {
-      echec(`injoignable ${url}, ${origine} (${erreur.cause?.code ?? erreur.message})`);
+    // 150 secondes : un service gratuit endormi (Render) met jusqu'à deux minutes
+    // à revenir, et un faux négatif ferait douter d'un lien pourtant valide.
+    //
+    // Et un second essai avant de condamner. Mesuré : cette chaîne a échoué
+    // deux fois sur cette étape pour des liens qui répondaient depuis le même
+    // poste quelques minutes plus tard. Une alerte qui se trompe une fois sur
+    // trois finit par n'être plus lue, ce qui est pire que pas d'alerte.
+    const appeler = () =>
+      fetch(url, {
+        redirect: "follow",
+        headers: { "user-agent": "Mozilla/5.0 (verifier-liens du portfolio)" },
+        signal: AbortSignal.timeout(150_000),
+      });
+    let dernier = "";
+    for (let essai = 0; essai < 2; essai += 1) {
+      try {
+        const reponse = await appeler();
+        if (reponse.ok) {
+          console.log(`  ✓ ${reponse.status} ${url}${essai > 0 ? " (au second essai)" : ""}`);
+          return;
+        }
+        if (NON_VERIFIABLES.includes(reponse.status) || HOTES_FERMES_AUX_ROBOTS.includes(new URL(url).hostname)) {
+          console.log(`  ~ ${reponse.status} ${url} (non vérifiable automatiquement)`);
+          return;
+        }
+        dernier = String(reponse.status);
+        if (reponse.status < 500) break; // une vraie erreur de lien ne guérit pas
+      } catch (erreur) {
+        dernier = erreur.cause?.code ?? erreur.message;
+      }
+      if (essai === 0) await new Promise((r) => setTimeout(r, 12_000));
     }
+    echec(`${dernier} ${url}, ${origine}`);
   }),
 );
 
