@@ -104,12 +104,18 @@ await Promise.all(
         headers: { "user-agent": "Mozilla/5.0 (verifier-liens du portfolio)" },
         signal: AbortSignal.timeout(150_000),
       });
+    // Trois essais, et la raison est mesuree : les deux services gratuits
+    // cites par le site s'endorment au bout de quinze minutes et mettent
+    // jusqu'a une minute a se reveiller, en rendant des 502 pendant ce temps.
+    // Un seul nouvel essai douze secondes plus tard tombait encore en plein
+    // reveil. Une vraie erreur de lien, elle, ne guerit pas au troisieme coup.
     let dernier = "";
-    for (let essai = 0; essai < 2; essai += 1) {
+    const ESSAIS = 3;
+    for (let essai = 0; essai < ESSAIS; essai += 1) {
       try {
         const reponse = await appeler();
         if (reponse.ok) {
-          console.log(`  ✓ ${reponse.status} ${url}${essai > 0 ? " (au second essai)" : ""}`);
+          console.log(`  ✓ ${reponse.status} ${url}${essai > 0 ? ` (au ${essai + 1}e essai)` : ""}`);
           return;
         }
         if (NON_VERIFIABLES.includes(reponse.status) || HOTES_FERMES_AUX_ROBOTS.includes(new URL(url).hostname)) {
@@ -121,7 +127,7 @@ await Promise.all(
       } catch (erreur) {
         dernier = erreur.cause?.code ?? erreur.message;
       }
-      if (essai === 0) await new Promise((r) => setTimeout(r, 12_000));
+      if (essai < ESSAIS - 1) await new Promise((r) => setTimeout(r, 20_000));
     }
     echec(`${dernier} ${url}, ${origine}`);
   }),
