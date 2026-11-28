@@ -48,6 +48,7 @@ const fiche: Projet = {
   chiffres: [
     { valeur: 100, suffixe: " %", libelle: "de niveaux jouables, approche constructive, sur 100 tirages" },
     { valeur: 98, suffixe: " %", libelle: "par contraintes : plus varié, et plus souvent faux" },
+    { valeur: 94, suffixe: " %", libelle: "à difficulté maximale et en 96 de large : six tirages sur cent sont infranchissables" },
     { valeur: 5, libelle: "nombres suffisent à décrire la physique, partagée par le jeu et le solveur" },
     { valeur: 0, libelle: "image téléchargée : le décor est dessiné au trait" },
   ],
@@ -56,6 +57,16 @@ const fiche: Projet = {
   solution:
     "Un solveur qui explore les états atteignables par parcours en largeur, avec **exactement le même pas de simulation que le jeu**. La génération tire, le solveur vérifie, et on recommence tant que le niveau ne se termine pas. Le nombre de tirages nécessaires devient la mesure qui compare les deux méthodes.",
   sections: [
+    {
+      titre: "Une seule mesure se truque",
+      texte:
+        "Au seul critère de jouabilité, le meilleur générateur est celui qui pose du sol plat : cent pour cent jouable, et parfaitement ennuyeux. Il fallait donc un second axe.",
+      points: [
+        "La **variété** est l'entropie des profils de colonnes, rapportée à l'entropie maximale : un niveau d'un seul profil vaut zéro, un niveau qui les utilise tous également vaut un",
+        "Mesuré sur cent tirages : l'approche par règles donne **100 pour cent de jouables pour une variété de 0,44**, celle par contraintes **98 pour cent pour 0,59**",
+        "Le banc d'essais les place sur deux axes, et le choix d'un réglage se défend alors au lieu de se décréter",
+      ],
+    },
     {
       titre: "Pourquoi le solveur et le jeu partagent leur physique",
       texte:

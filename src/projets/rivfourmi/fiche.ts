@@ -1,5 +1,6 @@
 import type { Projet } from "../types";
 import plateau from "./plateau.webp";
+import validation from "./validation.webp";
 import sansCouche from "./sans-couche.webp";
 
 const fiche: Projet = {
@@ -23,6 +24,13 @@ const fiche: Projet = {
   },
   galerie: [
     {
+      src: validation,
+      alt: "Le volet de la perte, et les deux exactitudes",
+      legende:
+        "La courbe de perte, le nombre de poids, et les deux exactitudes l'une sous l'autre : sur les points appris, et sur les points gardés de côté. L'écart entre elles dit si le réseau a appris la règle ou les points par coeur",
+      format: "ecran",
+    },
+    {
       src: plateau,
       alt: "Avec deux couches cachées",
       legende:
@@ -39,7 +47,8 @@ const fiche: Projet = {
   ],
   chiffres: [
     { valeur: 200, libelle: "lignes pour le réseau, sans aucune bibliothèque d'apprentissage" },
-    { valeur: 96, suffixe: " %", libelle: "sur le ou exclusif sans couche cachée, grâce aux traits dérivés" },
+    { valeur: 100, suffixe: " %", libelle: "sur le ou exclusif sans couche cachée, grâce au seul produit x·y" },
+    { valeur: 30, suffixe: " %", libelle: "sans couche et sans ce trait : le même réseau s'effondre" },
     { valeur: 0, libelle: "octet téléchargé : il n'y a pas de modèle, il s'entraîne devant vous" },
     { valeur: 4, libelle: "jeux de points, du séparable à la spirale" },
     { valeur: 10, libelle: "pas d'apprentissage par image affichée" },
@@ -49,6 +58,35 @@ const fiche: Projet = {
   solution:
     "Un plateau où l'on pose les points et où la frontière apprise se dessine sous eux. Le nombre de couches cachées est un bouton : à zéro, le réseau ne peut tracer qu'une droite, et le ou exclusif le met à genoux. Mesuré en ligne : de l'ordre de 80 pour cent de points bien classés sans couche cachée, contre 99 avec deux.",
   sections: [
+    {
+      titre: "Le réseau se montre, et ce qui coule dedans",
+      texte:
+        "Le reproche était juste : on ne voyait pas le réseau, seulement son résultat. Il est maintenant l'objet central, dessiné tel qu'il est.",
+      points: [
+        "L'**épaisseur** d'un trait est le poids appris, sa **couleur** le signe de ce poids",
+        "Ses **tirets défilent** à la vitesse de l'activation moyenne qui passe par lui : un lien éteint est un lien par lequel rien ne passe, et avec relu c'est la mort d'un neurone qu'on voit en direct",
+        "Le nombre de couches et le nombre de neurones de chacune se règlent **sur le dessin lui-même**, pas dans un formulaire à côté",
+        "Tracé à la main plutôt qu'avec une bibliothèque de graphes : la disposition se calcule en deux lignes, rien n'est déplaçable, et le débit d'un lien n'existe dans aucune bibliothèque",
+      ],
+    },
+    {
+      titre: "Un point sur trois n'est jamais appris",
+      texte:
+        "C'est la validation du sujet, rendue manipulable, et c'est le seul chiffre honnête.",
+      points: [
+        "Sans elle, un réseau de quatre couches sur cent points affiche cent pour cent et le visiteur croit avoir gagné : il a seulement appris les points par coeur",
+        "Les points gardés de côté portent un **anneau blanc** : on voit lesquels le réseau n'a jamais vus",
+        "Le volet affiche les deux exactitudes l'une sous l'autre. L'écart entre elles est le seul chiffre qui compte",
+      ],
+    },
+    {
+      titre: "Trois fonctions d'activation, et l'initialisation qui va avec",
+      points: [
+        "**tanh**, centrée, la plus sûre sur un petit réseau ; **sigmoïde**, qui sature et fait disparaître le gradient ; **relu**, rapide, mais un neurone peut mourir",
+        "La dérivée est écrite en fonction de l'activation déjà calculée, pas de la somme pondérée : la rétropropagation n'a rien d'autre à garder",
+        "L'échelle d'initialisation suit la fonction : Xavier pour tanh, **He pour relu**, parce que la moitié des sorties est à zéro et que Xavier éteindrait le signal couche après couche",
+      ],
+    },
     {
       titre: "Ce qui est écrit à la main, et pourquoi",
       points: [

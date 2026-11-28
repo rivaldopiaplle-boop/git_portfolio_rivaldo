@@ -57,6 +57,27 @@ const fiche: Projet = {
     "Afficher le résultat et sa référence côte à côte, toujours. Nommer les pièges avant d'entraîner quoi que ce soit, et donner le bouton qui les retire pour que le visiteur voie le chiffre retomber. Sur le tableau piégé : 1,000 avec la fuite, 0,983 sans.",
   sections: [
     {
+      titre: "Trois défauts derrière un seul constat",
+      texte:
+        "« Quand je change le nombre de groupes, rien ne change. » C'était vrai, et il y avait trois causes empilées. Un symptôme, trois causes : il ne faut pas s'arrêter à la première.",
+      points: [
+        "La palette du nuage était `[bleu, vert, ambre][groupe % 3]` : au-delà de trois groupes, le quatrième reprenait la couleur du premier et l'écran était **littéralement identique**",
+        "Le curseur effaçait le résultat et attendait un nouveau clic : on bougeait le réglage et rien ne se passait",
+        "Le cadrage était figé et les axes sans nom : sans mise à l'échelle, les points sortaient du cadre et disparaissaient",
+        "Corrigé : une couleur **et une forme** par groupe, le centre de chacun marqué, les axes nommés avec le choix des colonnes montrées, un cadrage calculé sur les données, et le calcul qui se relance seul",
+      ],
+    },
+    {
+      titre: "Quand il faut passer la main",
+      texte:
+        "Les cinq plus proches voisins tournent en témoin sur le même découpage. Ils ne tracent aucune droite.",
+      points: [
+        "S'ils font nettement mieux que la régression logistique, le tableau n'est pas mauvais : **sa frontière est courbe**",
+        "L'atelier le dit alors en clair et propose d'emmener le tableau chez RivFourmi, plutôt que de laisser croire qu'il n'y a rien à en tirer",
+        "Le signal est un chiffre, pas une impression : cinq points d'écart sur la même partie d'essai",
+      ],
+    },
+    {
       titre: "Ce que les détecteurs cherchent",
       points: [
         "**La fuite** : une colonne dont la corrélation avec la cible dépasse 95 pour cent. Elle contient déjà la réponse, et le modèle sera parfait jusqu'au jour où cette colonne n'existe pas encore",
