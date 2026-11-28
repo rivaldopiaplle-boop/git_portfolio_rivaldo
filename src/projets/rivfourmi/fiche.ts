@@ -47,8 +47,8 @@ const fiche: Projet = {
   ],
   chiffres: [
     { valeur: 200, libelle: "lignes pour le réseau, sans aucune bibliothèque d'apprentissage" },
-    { valeur: 100, suffixe: " %", libelle: "sur le ou exclusif sans couche cachée, grâce au seul produit x·y" },
-    { valeur: 30, suffixe: " %", libelle: "sans couche et sans ce trait : le même réseau s'effondre" },
+    { valeur: 95, suffixe: " %", libelle: "sur le ou exclusif sans couche cachée, grâce au seul produit x·y" },
+    { valeur: 26, libelle: "points de mieux que le même réseau privé de ce trait, mesuré sur cinq essais" },
     { valeur: 0, libelle: "octet téléchargé : il n'y a pas de modèle, il s'entraîne devant vous" },
     { valeur: 4, libelle: "jeux de points, du séparable à la spirale" },
     { valeur: 10, libelle: "pas d'apprentissage par image affichée" },
