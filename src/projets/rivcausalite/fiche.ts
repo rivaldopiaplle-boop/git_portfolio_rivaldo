@@ -1,7 +1,9 @@
 import type { Projet } from "../types";
 import ablation from "./ablation.webp";
 import mesures from "./mesures.webp";
+import paragraphe from "./paragraphe.webp";
 import phrase from "./phrase.webp";
+import poids from "./poids.webp";
 
 const fiche: Projet = {
   slug: "rivcausalite",
@@ -23,6 +25,20 @@ const fiche: Projet = {
     format: "ecran",
   },
   galerie: [
+    {
+      src: paragraphe,
+      alt: "Un paragraphe découpé, phrase par phrase",
+      legende:
+        "L'usage réel : une revue de presse. Le paragraphe est découpé en phrases, chacune jugée, ses deux morceaux surlignés et la relation entre eux nommée. Une phrase seule est la démonstration ; un paragraphe est l'outil",
+      format: "ecran",
+    },
+    {
+      src: poids,
+      alt: "Le poids de chaque mot, par occlusion",
+      legende:
+        "On retire un mot, on redemande, et on note de combien la réponse a bougé. Aucune théorie, une mesure : les mots qui portent la cause se teintent, et retirer « denied » fait basculer le verdict",
+      format: "ecran",
+    },
     {
       src: phrase,
       alt: "Une phrase causale, jugée dans le navigateur",
@@ -46,6 +62,7 @@ const fiche: Projet = {
     },
   ],
   chiffres: [
+    { valeur: 3, libelle: "sous-tâches du sujet traitées : détection, candidats, relation" },
     { valeur: 77.1, suffixe: " %", libelle: "d'exactitude avec le modèle et les traits, sur 340 phrases gardées" },
     { valeur: 74.1, suffixe: " %", libelle: "pour les dix-neuf traits seuls, sans aucun modèle de langue" },
     { valeur: 60.9, suffixe: " %", libelle: "la réponse la plus bête : répondre toujours « causale »" },
@@ -75,6 +92,25 @@ const fiche: Projet = {
         "C'était une **seule graine**, et le classifieur avait convergé vers la classe majoritaire. Un résultat négatif tiré d'un seul essai n'est pas un résultat",
         "Vérifié avec une simple régression logistique, sans réseau : les traits seuls obtiennent 71,2 pour cent contre 60,9 pour la réponse la plus bête. Ils n'étaient donc pas muets, c'était le montage qui les étouffait",
         "Depuis, chaque montage tourne sur trois graines et affiche son écart. Publier un résultat négatif demande plus de preuves qu'un résultat positif, pas moins",
+      ],
+    },
+    {
+      titre: "Les trois questions du sujet, et leurs trois chiffres",
+      texte:
+        "Le sujet en pose trois, et je n'avais d'abord traité que la première. Les trois sont là, y compris la plus faible, avec sa raison.",
+      points: [
+        "**La phrase est-elle causale** : 77,1 pour cent, contre 60,9 pour la réponse la plus bête",
+        "**Quels morceaux sont en jeu** : F1 de 0,435, et c'est faible. L'encodeur est gelé : je n'entraîne qu'une petite tête sur ses états de jetons, ce qui suffit à classer une phrase mais pas à poser les bornes exactes d'un morceau",
+        "**Cause, contre-cause ou rien** : 74,1 pour cent contre 52,6 pour la plus bête, et c'est la question qui compte, puisqu'une contre-cause refuse une cause avec les mêmes mots",
+        "Quand le repéreur ne trouve pas deux morceaux, la phrase est coupée au connecteur causal, et le résultat est **marqué comme tel** : le modèle de relation a été entraîné sur des morceaux annotés, et sur une paire découpée il répond hors de ce qu'il connaît",
+      ],
+    },
+    {
+      titre: "Voir ce dont le modèle dépend",
+      points: [
+        "On retire un mot, on redemande, et on note l'écart : c'est l'occlusion, et c'est la façon la plus honnête de montrer ce qui porte la décision",
+        "Les mots qui soutiennent la cause se teintent d'un côté, ceux qui la retiennent de l'autre",
+        "Une phrase de vingt-cinq mots demande vingt-cinq passes du modèle, soit deux secondes et demie dans le navigateur",
       ],
     },
     {

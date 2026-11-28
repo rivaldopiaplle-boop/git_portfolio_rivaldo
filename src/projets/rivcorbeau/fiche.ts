@@ -1,5 +1,6 @@
 import type { Projet } from "../types";
 import confusion from "./confusion.webp";
+import endurci from "./endurci.webp";
 import matrice from "./matrice.webp";
 import mesures from "./mesures.webp";
 
@@ -31,6 +32,13 @@ const fiche: Projet = {
       format: "ecran",
     },
     {
+      src: endurci,
+      alt: "Les deux lecteurs, face au même flou",
+      legende:
+        "Deux modèles dans la barre : l'un n'a vu que des images nettes, l'autre a été entraîné sur des images abîmées. Sous le même flou, le second résout 60 pour cent du lot contre 28,3 pour le premier. C'est le seul endroit de la plateforme où le visiteur répare un modèle au lieu de le casser",
+      format: "ecran",
+    },
+    {
       src: confusion,
       alt: "La campagne sous épreuve, et la matrice de confusion",
       legende:
@@ -48,6 +56,7 @@ const fiche: Projet = {
   chiffres: [
     { valeur: 99.8, suffixe: " %", libelle: "de matrices résolues, sur 440 problèmes jamais vus" },
     { valeur: 4.2, suffixe: " %", libelle: "le raccourci qui gagnait sur le RAVEN d'origine, mesuré ici sur I-RAVEN" },
+    { valeur: 35, libelle: "points gagnés sous le flou par le lecteur entraîné sur des images abîmées" },
     { valeur: 268, libelle: "milliers de poids, et le modèle tient dans un mégaoctet" },
     { valeur: 42, suffixe: " ms", libelle: "pour lire les seize panneaux, dans le navigateur" },
   ],
@@ -94,6 +103,27 @@ const fiche: Projet = {
         "Dans le jeu d'origine, les sept mauvaises réponses étaient fabriquées en modifiant **un seul** attribut de la bonne. Un modèle qui ne regardait même pas la matrice retrouvait donc la réponse en prenant la plus « moyenne » des huit",
         "Ce raccourci est implémenté dans l'atelier : il ne reçoit que les huit candidats, jamais le contexte",
         "Mesuré sur les quarante-huit matrices d'I-RAVEN : **4,2 pour cent**, donc en dessous même du hasard. Les distracteurs ne sont plus exploitables, et le 99,8 pour cent du modèle vaut quelque chose",
+      ],
+    },
+    {
+      titre: "Réparer un modèle, et ce que la réparation coûte",
+      texte:
+        "Un lecteur entraîné sur des images nettes s'effondre dès qu'on abîme l'entrée : il n'a jamais rien vu d'autre que du propre. La correction porte un nom, l'augmentation de données, et elle se paie.",
+      points: [
+        "Le second lecteur a vu, pendant son entraînement, du bruit, du flou et des décalages mélangés aux images nettes",
+        "Mesuré sur 240 problèmes des trois configurations : **sur images propres il perd cinq points**, parce qu'il a dépensé une partie de sa capacité à tenir sous le bruit",
+        "Sous le flou il en gagne trente-cinq, et sous le décalage le lecteur propre ne lit plus que **un pour cent** des cases",
+        "Au-delà de ce qu'il a vu, il s'effondre aussi : l'augmentation protège dans la plage qu'elle a montrée, pas au-delà, et l'atelier le dit",
+      ],
+    },
+    {
+      titre: "Quand elle rate, elle dit pourquoi",
+      texte:
+        "Un échec a trois causes possibles, et elles ne se corrigent pas de la même façon. L'atelier refait donc le raisonnement sur les attributs exacts pour savoir laquelle est en jeu.",
+      points: [
+        "**La vision a fauté** : avec les attributs exacts le raisonnement trouvait. Les panneaux mal lus sont entourés de rouge",
+        "**La règle n'a pas été trouvée** : même avec les attributs exacts, aucune règle ne tient pour tel attribut, qui n'a donc pas voté",
+        "**L'item ne tranche pas** : plusieurs candidats récoltent le même nombre de votes, et ce n'est la faute ni de la vision ni de la règle",
       ],
     },
     {
