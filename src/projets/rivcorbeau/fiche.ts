@@ -1,4 +1,5 @@
 import type { Projet } from "../types";
+import confusion from "./confusion.webp";
 import matrice from "./matrice.webp";
 import mesures from "./mesures.webp";
 
@@ -30,6 +31,13 @@ const fiche: Projet = {
       format: "ecran",
     },
     {
+      src: confusion,
+      alt: "La campagne sous épreuve, et la matrice de confusion",
+      legende:
+        "On abîme l'entrée exprès et on rejoue les quarante-huit matrices. Sous un flou de soixante pour cent, les formes ne sont plus lues qu'à 37 pour cent et la résolution tombe de 100 à 18,8. La matrice de confusion dit l'erreur systématique : quand les contours se perdent, tout s'effondre vers le triangle",
+      format: "ecran",
+    },
+    {
       src: mesures,
       alt: "Les quatre chiffres de la chaîne",
       legende:
@@ -39,7 +47,7 @@ const fiche: Projet = {
   ],
   chiffres: [
     { valeur: 99.8, suffixe: " %", libelle: "de matrices résolues, sur 440 problèmes jamais vus" },
-    { valeur: 12.5, suffixe: " %", libelle: "la référence : un candidat tiré au hasard parmi huit" },
+    { valeur: 4.2, suffixe: " %", libelle: "le raccourci qui gagnait sur le RAVEN d'origine, mesuré ici sur I-RAVEN" },
     { valeur: 268, libelle: "milliers de poids, et le modèle tient dans un mégaoctet" },
     { valeur: 42, suffixe: " ms", libelle: "pour lire les seize panneaux, dans le navigateur" },
   ],
@@ -79,11 +87,23 @@ const fiche: Projet = {
       ],
     },
     {
-      titre: "Pourquoi I-RAVEN et pas RAVEN",
+      titre: "Pourquoi I-RAVEN et pas RAVEN, et la preuve est dans la page",
+      texte:
+        "C'est la critique la plus connue du jeu d'origine, et elle est habituellement citée. Ici elle est recalculée dans le navigateur à chaque campagne.",
       points: [
-        "Dans le jeu d'origine, les sept mauvaises réponses étaient fabriquées en modifiant **un seul** attribut de la bonne",
-        "Un modèle qui ne regardait même pas la matrice retrouvait donc la réponse en prenant la plus « moyenne » des huit",
-        "I-RAVEN fabrique les distracteurs autrement, et la référence redescend à **un sur huit**. C'est contre elle que le 99,8 pour cent se juge",
+        "Dans le jeu d'origine, les sept mauvaises réponses étaient fabriquées en modifiant **un seul** attribut de la bonne. Un modèle qui ne regardait même pas la matrice retrouvait donc la réponse en prenant la plus « moyenne » des huit",
+        "Ce raccourci est implémenté dans l'atelier : il ne reçoit que les huit candidats, jamais le contexte",
+        "Mesuré sur les quarante-huit matrices d'I-RAVEN : **4,2 pour cent**, donc en dessous même du hasard. Les distracteurs ne sont plus exploitables, et le 99,8 pour cent du modèle vaut quelque chose",
+      ],
+    },
+    {
+      titre: "L'épreuve, et l'erreur systématique qu'elle révèle",
+      texte:
+        "Un modèle qui lit parfaitement des images propres ne prouve rien : les images propres, c'est lui qui les a vues. La question est où il se casse, et dans quel ordre.",
+      points: [
+        "Trois épreuves réglables : du bruit, un flou, un décalage. La campagne rejoue les quarante-huit matrices sous le réglage choisi, et chaque campagne s'inscrit au banc d'essais",
+        "Sous un flou de soixante pour cent : gris lus à 71 pour cent, tailles à 55, **formes à 37**, et la résolution tombe à 18,8. Les trois attributs ne lâchent pas ensemble, et la forme lâche la première",
+        "La matrice de confusion nomme l'erreur : **484 erreurs sur 768 panneaux, toutes vers le triangle**. Quand les contours disparaissent, le réseau répond la forme la plus simple, il ne répond pas au hasard",
       ],
     },
   ],
